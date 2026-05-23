@@ -1,0 +1,25 @@
+---
+title: "About"
+description-meta: "About Matt Hester — mathematician, statistician, and teacher at UA Little Rock."
+toc: false
+---
+
+I'm a mathematician and statistician at the **University of Arkansas at Little
+Rock**, where I teach undergraduate and graduate courses and direct the Math
+Assistance Center. Most of my work sits at the intersection of:
+
+- **Bayesian statistics** — particularly robust Bayesian model-averaged
+  meta-analysis and methods that take publication bias seriously.
+- **Teaching** — designing courses and materials that emphasize conceptual
+  understanding and reproducibility over rote procedure.
+- **Reproducible workflows** — R, Quarto, LaTeX, and Git as everyday tools,
+  not just research artifacts.
+
+## A bit more
+
+Outside the office I climb (mostly bouldering), garden, cook, and share a
+small home zoo with my wife Jenn. A lot of the visual language on this site —
+stone, crystal, ridgeline — comes from that side of life.
+
+If you want to get in touch, the [contact page](contact.qmd) has the best
+ways to reach me.

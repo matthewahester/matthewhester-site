@@ -1,0 +1,19 @@
+---
+title: "Projects → Research"
+pagetitle: "Projects → Research"
+description-meta: "This page has moved to the Research page."
+toc: false
+format:
+  html:
+    include-in-header:
+      text: |
+        <meta http-equiv="refresh" content="0; url=research.html">
+        <link rel="canonical" href="research.html">
+---
+
+This page has moved. You are being redirected to [Research](research.qmd).
+
+<!-- Phase 4A: projects.qmd was folded into research.qmd. This stub
+     exists only as a redirect so that any in-flight bookmark resolves
+     cleanly. Safe to delete once we are confident nothing links to
+     /projects.html. -->

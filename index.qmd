@@ -1,0 +1,92 @@
+---
+title: "Matt Hester"
+subtitle: "Mathematician · Statistician · Teacher"
+pagetitle: "Matt Hester"
+description-meta: "Teaching and research from Matt Hester — Bayesian methods, publication bias, and reproducible course materials at UA Little Rock."
+page-layout: full
+toc: false
+---
+
+<!-- Single H1 lives in the Quarto title block above (driven by the
+     YAML `title:`). The hero-split below holds the intro prose and
+     portrait, without re-introducing a body-level H1.
+
+     Card-image policy (Phase 4C): the homepage cards are intentionally
+     text-only. Boulder/landscape motifs will be re-introduced one card
+     at a time, as a deliberate ad-hoc choice — not as a batch fill.
+     The category cards keep a subtle stone-400 left accent; the course
+     cards keep a slightly warmer crystal-blue left accent (via
+     `.course-card`) so the two groups still read as distinct.
+     Processed motif files are preserved under
+     `assets/images/course-motifs/`. -->
+
+::: {.hero-split}
+
+::: {.hero-split-text}
+I teach mathematics and statistics at the **University of Arkansas at
+Little Rock** and direct the **Math Assistance Center**. My work centers
+on Bayesian methods, publication bias, and building usable, reproducible
+course materials for students and instructors.
+
+This site is a hub for teaching, research, and applied mathematical work.
+
+- [About →](about.qmd)
+- [Research →](research.qmd)
+- [Teaching →](teaching.qmd)
+:::
+
+::: {.hero-split-portrait}
+![](assets/images/brand/portrait-matt-hester-800.webp){.portrait-img fig-alt="Stylized illustrated portrait of Matt Hester."}
+:::
+
+:::
+
+## Explore
+
+::: {.feature-grid}
+
+::: {.feature-card}
+### [Teaching](teaching.qmd)
+Current courses, public course sites, and the Math Assistance Center.
+Concepts first, with reproducible workflows in R and LaTeX.
+:::
+
+::: {.feature-card}
+### [Research](research.qmd)
+Bias-robust Bayesian evidence synthesis, publication bias, and
+reproducible statistical workflows in applied literatures.
+:::
+
+::: {.feature-card}
+### [Resources](resources.qmd)
+Software guides, statistics notes, and small durable resources for
+students and collaborators.
+:::
+
+:::
+
+## Featured course sites
+
+Public, durable resource sites for two of my current courses. Roster-
+and section-specific material lives in the LMS, not here.
+
+::: {.feature-grid}
+
+::: {.feature-card .course-card}
+### [Intro to Mathematical Software](/math-software/)
+A hands-on tour of the tools mathematicians actually use: R, LaTeX,
+Git, and (carefully) AI assistants.
+:::
+
+::: {.feature-card .course-card}
+### [Intro to Statistics](/intro-stats/)
+A first course in statistical reasoning. Concepts before formulas,
+with small reproducible examples in R.
+:::
+
+:::
+
+::: {.future-courses-note}
+A public site for **Applied Statistics I** is planned but not yet live;
+that course currently runs in the LMS only.
+:::

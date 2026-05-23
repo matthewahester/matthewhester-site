@@ -1,0 +1,53 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+
+website:
+  title: "Matt Hester"
+  site-url: https://matthewhester.com
+  description: |
+    Matt Hester — mathematician, statistician, and teacher at UA Little Rock.
+    Bayesian methods, publication bias, and reproducible course materials.
+  image: assets/images/brand/og-default-og.jpg
+  open-graph: true
+  twitter-card: true
+  # TODO(Phase 4C): favicon. Drop a 32x32 .ico and matching .svg into
+  # assets/images/brand/ and uncomment:
+  # favicon: assets/images/brand/favicon.ico
+
+  navbar:
+    pinned: true
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: teaching.qmd
+        text: Teaching
+      - href: research.qmd
+        text: Research
+      - href: resources.qmd
+        text: Resources
+      - href: cv.qmd
+        text: CV
+      - href: contact.qmd
+        text: Contact
+
+  page-footer:
+    left: "© 2026 Matt Hester"
+    right: "Built with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false
+    anchor-sections: true
+    smooth-scroll: true
+    link-external-newwindow: true
+    link-external-icon: false
+    fontsize: 1.05em
+    mainfont: "Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+    monofont: "JetBrains Mono, Consolas, Menlo, monospace"

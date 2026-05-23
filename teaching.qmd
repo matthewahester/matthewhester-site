@@ -1,0 +1,33 @@
+---
+title: "Teaching"
+description-meta: "Courses and teaching materials by Matt Hester at UA Little Rock."
+toc: true
+toc-location: right
+---
+
+I teach mathematics and statistics at UA Little Rock and direct the **Math
+Assistance Center (MAC)**. My teaching emphasizes:
+
+- conceptual understanding over rote procedure,
+- early exposure to Bayesian ideas in introductory statistics,
+- and reproducible workflows using R, LaTeX, and (carefully) AI tools.
+
+## Current courses
+
+### [Intro to Mathematical Software](/math-software/)
+A hands-on tour of R, LaTeX, Git, and AI-assisted workflows for math and
+stats students.
+
+### [Intro to Statistics](/intro-stats/)
+A first course in statistical reasoning. Concepts, simulation, and small
+reproducible R examples.
+
+### Applied Statistics I
+A graduate-level applied statistics course. This course currently runs
+through Blackboard and does not have a public site.
+
+## Math Assistance Center
+
+I direct the MAC at UA Little Rock — a drop-in support center that pairs
+trained peer tutors with students in lower-division mathematics and
+statistics courses.

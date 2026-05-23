@@ -1,0 +1,377 @@
+/* =============================================================
+   matthewhester.com — site styles
+   -------------------------------------------------------------
+   Visual identity: restrained rock / crystal / climbing.
+   The palette draws from cool stone (slate, granite, quartz)
+   with a single muted accent that suggests oxidized iron — the
+   color of weathered bolts and old chalk-stained holds. The aim
+   is "geology field notebook," not "alpine adventure brand."
+
+   Design rules followed here:
+     - Quarto + Bootstrap (cosmo) supply the layout; we only
+       override colors, type, and a small set of components.
+     - No JS. All visual variation is CSS-only.
+     - One accent color, used sparingly. Links and feature-card
+       hovers are the only places it appears by default.
+     - Generous line-height and a slightly larger base size
+       because most pages are prose.
+   ============================================================= */
+
+/* -------------------------------------------------------------
+   Color tokens
+   -------------------------------------------------------------
+   Named like a rock sample drawer so future-me can reason about
+   them without re-picking hex values.
+*/
+:root {
+  --stone-50:  #f6f5f3;   /* quartz dust — page background        */
+  --stone-100: #ecebe7;   /* limestone — card backgrounds         */
+  --stone-200: #d8d6d0;   /* weathered granite — soft borders     */
+  --stone-400: #8a8780;   /* basalt — muted text, captions        */
+  --stone-700: #3a3935;   /* slate — body text                    */
+  --stone-900: #1c1b19;   /* obsidian — headings                  */
+
+  --crystal-blue:   #5b7a8c;  /* oxidized copper / glacial ice    */
+  --iron-accent:    #8a4a2b;  /* weathered bolt / rust — accent   */
+  --moss-quiet:     #6b7a5a;  /* lichen — used only for callouts  */
+
+  --radius-card: 8px;          /* gentle, not pillowy             */
+  --shadow-card: 0 1px 2px rgba(28, 27, 25, 0.04),
+                 0 4px 12px rgba(28, 27, 25, 0.05);
+}
+
+/* -------------------------------------------------------------
+   Base typography
+   -------------------------------------------------------------
+   Quarto already loads the Cosmo theme. We override colors and
+   tighten the type so prose reads like a clean monograph.
+*/
+body {
+  background-color: var(--stone-50);
+  color: var(--stone-700);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--stone-900);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 2.1rem; margin-top: 0.5rem; }
+h2 { font-size: 1.45rem; margin-top: 2.2rem; }
+h3 { font-size: 1.15rem; margin-top: 1.6rem; }
+
+p, li { color: var(--stone-700); }
+
+a {
+  color: var(--iron-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 120ms ease;
+}
+a:hover {
+  /* Underline only on hover — keeps prose visually quiet. */
+  border-bottom-color: var(--iron-accent);
+  color: var(--iron-accent);
+}
+
+/* -------------------------------------------------------------
+   Navbar
+   -------------------------------------------------------------
+   Cosmo's navbar is fine structurally; we just tone it down to
+   stone colors so it doesn't fight the content.
+*/
+.navbar {
+  background-color: var(--stone-900) !important;
+  border-bottom: 1px solid var(--stone-200);
+}
+.navbar .navbar-brand,
+.navbar .nav-link {
+  color: var(--stone-50) !important;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #ffffff !important;
+  /* Subtle crystal-blue hairline — the only accent in the nav. */
+  border-bottom: 2px solid var(--crystal-blue);
+  margin-bottom: -2px;
+}
+
+/* -------------------------------------------------------------
+   Hero block (legacy single-column)
+   -------------------------------------------------------------
+   A single quiet panel with a left rule, like a margin note in
+   a field notebook. No background image, no gradient. Kept for
+   secondary pages that still want a quiet intro panel.
+*/
+.hero {
+  margin: 2.5rem 0 3rem 0;
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid var(--crystal-blue);
+  background-color: var(--stone-100);
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+}
+.hero h2 {
+  margin-top: 0;
+  font-size: 1.6rem;
+}
+.hero p {
+  margin-bottom: 0.5rem;
+}
+
+/* -------------------------------------------------------------
+   Title block (homepage)
+   -------------------------------------------------------------
+   The single page H1 lives in Quarto's title block, driven by
+   the YAML `title:`. We tighten its spacing so it sits cleanly
+   above the split-hero intro below — no banner, no background,
+   no decorative rule.
+*/
+#title-block-header.quarto-title-block {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0;
+}
+#title-block-header.quarto-title-block .title {
+  font-size: 2.6rem;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.25rem;
+}
+#title-block-header.quarto-title-block .subtitle {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--stone-400);
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+/* -------------------------------------------------------------
+   Split hero (homepage)
+   -------------------------------------------------------------
+   Two-column section below the title block: intro paragraph and
+   page links on the left, stylized portrait on the right. The
+   single page H1 lives in Quarto's title block above this block,
+   so .hero-split-text deliberately contains NO heading.
+   Collapses to a single column on narrow viewports with the
+   portrait below the text (deliberate — on a small screen the
+   user is reading first, looking second).
+*/
+.hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+  margin: 1.5rem 0 3rem 0;
+  padding: 0.5rem 0 1.25rem 0;
+}
+.hero-split-text p {
+  font-size: 1.05rem;
+  margin-bottom: 0.9rem;
+}
+.hero-split-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+.hero-split-text ul li {
+  margin: 0;
+}
+.hero-split-text ul li a {
+  font-weight: 500;
+  border-bottom: 1px solid var(--stone-200);
+}
+.hero-split-text ul li a:hover {
+  border-bottom-color: var(--iron-accent);
+}
+.hero-split-portrait {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero-split-portrait img,
+.portrait-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  background-color: var(--stone-100);
+}
+
+/* Collapse to a single column on narrow screens. */
+@media (max-width: 720px) {
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .hero-split-portrait {
+    order: -1; /* portrait above text on mobile */
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  #title-block-header.quarto-title-block .title {
+    font-size: 2.1rem;
+  }
+}
+
+/* -------------------------------------------------------------
+   Feature grid (homepage cards)
+   -------------------------------------------------------------
+   A four-up card grid on wide screens, collapsing gracefully to
+   two and then one. Cards are plain stone tiles with a thin
+   accent edge that warms on hover — the only "interactive"
+   flourish on the site.
+*/
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem 0;
+}
+
+.feature-card {
+  background-color: #ffffff;
+  border: 1px solid var(--stone-200);
+  border-left: 3px solid var(--stone-400);
+  border-radius: var(--radius-card);
+  padding: 1.1rem 1.2rem;
+  box-shadow: var(--shadow-card);
+  transition: border-left-color 160ms ease,
+              transform 160ms ease;
+}
+.feature-card:hover {
+  border-left-color: var(--iron-accent);
+  transform: translateY(-1px);
+}
+.feature-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+.feature-card h3 a {
+  color: var(--stone-900);
+  border-bottom: none;
+}
+.feature-card h3 a:hover {
+  color: var(--iron-accent);
+  border-bottom: none;
+}
+.feature-card p {
+  margin-bottom: 0;
+  color: var(--stone-400);
+  font-size: 0.95rem;
+}
+
+/* -------------------------------------------------------------
+   Course card variant
+   -------------------------------------------------------------
+   Same skeleton as .feature-card but with a slightly warmer left
+   edge by default to signal "this is an external public course
+   site, not a section of this site." Hover behavior matches.
+*/
+.feature-card.course-card {
+  border-left-color: var(--crystal-blue);
+}
+.feature-card.course-card:hover {
+  border-left-color: var(--iron-accent);
+}
+
+/* -------------------------------------------------------------
+   Feature cards with images
+   -------------------------------------------------------------
+   When a card carries a motif image, the image sits at the top
+   inside the card padding, cropped to a consistent aspect via
+   object-fit so different source ratios don't break the grid.
+   Source images are 600px wide / native aspect; the 3:2 frame
+   keeps them visually quiet and uniform.
+*/
+.feature-card.feature-card-with-image {
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.feature-card.feature-card-with-image > p:has(> .feature-card-img),
+.feature-card.feature-card-with-image > p:first-child {
+  /* Quarto wraps single-image lines in <p>; collapse the wrapper. */
+  margin: 0;
+}
+.feature-card-img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  background-color: var(--stone-100);
+}
+.feature-card.feature-card-with-image > section,
+.feature-card.feature-card-with-image > h3 {
+  padding: 1.1rem 1.2rem;
+}
+.feature-card.feature-card-with-image h3 {
+  margin: 0 0 0.4rem 0;
+}
+.feature-card.feature-card-with-image p {
+  padding: 0 1.2rem 1.1rem 1.2rem;
+}
+/* The image-bearing <p> gets `padding: 0` reset above; the prose
+   <p> inside .level3 sections gets the side padding. */
+.feature-card.feature-card-with-image section.level3 > p {
+  padding: 0;
+}
+
+/* -------------------------------------------------------------
+   Future-courses note
+   -------------------------------------------------------------
+   A small caption-style note under the Featured Course Sites
+   block, for courses that don't yet have a public site.
+*/
+.future-courses-note {
+  margin-top: 1rem;
+  padding: 0.7rem 1rem;
+  font-size: 0.92rem;
+  color: var(--stone-400);
+  border-left: 2px solid var(--stone-200);
+}
+
+/* -------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------
+   Quiet, single hairline, basalt text. Matches the navbar's
+   stone-on-stone restraint.
+*/
+.nav-footer {
+  border-top: 1px solid var(--stone-200);
+  color: var(--stone-400);
+  background-color: var(--stone-50);
+}
+.nav-footer a {
+  color: var(--stone-400);
+}
+.nav-footer a:hover {
+  color: var(--iron-accent);
+  border-bottom-color: var(--iron-accent);
+}
+
+/* -------------------------------------------------------------
+   Misc content
+   ------------------------------------------------------------- */
+blockquote {
+  border-left: 3px solid var(--moss-quiet);
+  background-color: var(--stone-100);
+  color: var(--stone-700);
+  padding: 0.5rem 1rem;
+  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+}
+
+code {
+  background-color: var(--stone-100);
+  color: var(--stone-900);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}

@@ -1,0 +1,66 @@
+---
+title: "Research"
+description-meta: "Research interests and projects of Matt Hester — bias-robust Bayesian evidence synthesis, publication bias, nutrition and health, and reproducible statistical workflows."
+toc: true
+toc-location: right
+---
+
+My research focuses on **bias-robust Bayesian evidence synthesis**,
+especially for applied literatures where published findings are noisy,
+selective, and difficult to interpret. I am particularly interested in
+publication bias, meta-analysis, nutrition and health evidence, and
+reproducible statistical workflows.
+
+## Research interests
+
+- **Bias-robust Bayesian meta-analysis.**
+  RoBMA, model-averaged Bayes factors, selection models, heterogeneity,
+  and evidence for or against effects after accounting for bias.
+
+- **Publication bias and evidential fragility.**
+  Selective reporting, small-study effects, threshold behavior, and how
+  these distort applied literatures.
+
+- **Nutrition and health evidence synthesis.**
+  Applying bias-aware Bayesian methods to intervention meta-analyses in
+  nutrition, fitness, and health.
+
+- **Reproducible statistical workflows.**
+  R, Quarto, Git, simulation studies, public repositories, and
+  transparent research pipelines.
+
+- **Statistics education.**
+  Introductory statistics, Bayesian intuition, reproducible work, and
+  AI-supported mathematical/statistical learning.
+
+## Projects
+
+### Bias-robust Bayesian reanalysis of nutrition intervention meta-analyses
+
+Reanalyzing published nutrition intervention meta-analyses with
+bias-aware Bayesian model averaging, to characterize how much
+selective reporting and small-study effects move the conclusions.
+
+### Rigor and attenuation in evidence synthesis
+
+Studying how methodological rigor — design, blinding, reporting,
+preregistration — interacts with bias correction and effect-size
+attenuation in applied literatures.
+
+### Reproducible research and teaching infrastructure
+
+Building durable Quarto + R + Git pipelines for both research analyses
+and the public-facing course sites at
+[`/math-software/`](/math-software/) and
+[`/intro-stats/`](/intro-stats/).
+
+### Bayesian statistics education
+
+Materials and exploratory work on how to bring Bayesian intuition into
+introductory statistics, and on the responsible use of AI assistants
+in mathematical and statistical learning.
+
+## Publications, preprints, and talks
+
+Selected publications, preprints, and talks will be added as they are
+ready for public release.

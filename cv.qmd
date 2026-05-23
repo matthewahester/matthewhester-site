@@ -1,0 +1,45 @@
+---
+title: "CV"
+description-meta: "Brief CV summary for Matt Hester — position, research interests, teaching, and selected work."
+toc: true
+toc-location: right
+---
+
+A short summary appears below. A full PDF CV will be posted here when
+it is ready.
+
+## Position
+
+**University of Arkansas at Little Rock** — faculty in mathematics and
+statistics; director of the Math Assistance Center.
+
+## Research interests
+
+- Bias-robust Bayesian meta-analysis (RoBMA, model-averaged Bayes
+  factors, selection models).
+- Publication bias and evidential fragility in applied literatures.
+- Nutrition and health evidence synthesis.
+- Reproducible statistical workflows (R, Quarto, Git, simulation).
+- Statistics education, including Bayesian intuition at the introductory
+  level and responsible use of AI tools.
+
+See the [Research page](research.qmd) for current project descriptions.
+
+## Teaching and service
+
+- Undergraduate and graduate teaching in mathematics and statistics.
+- Director of the Math Assistance Center (MAC) at UA Little Rock.
+- Maintainer of public course sites for
+  [Intro to Mathematical Software](/math-software/) and
+  [Intro to Statistics](/intro-stats/).
+
+See the [Teaching page](teaching.qmd) for current courses.
+
+## Selected work
+
+A curated list of selected publications, preprints, and talks will be
+added here as items are ready for public listing.
+
+## Full PDF CV
+
+A downloadable PDF version of the full CV will be linked here.

@@ -1,0 +1,17 @@
+---
+title: "Contact"
+description-meta: "How to reach Matt Hester — university, research, and general professional contact."
+toc: false
+---
+
+I'm reachable through a few channels depending on what you're writing
+about.
+
+- **University, course, or Math Assistance Center matters:**
+  [mhester@ualr.edu](mailto:mhester@ualr.edu)
+- **Research, collaboration, or general professional contact:**
+  [matthewahester@gmail.com](mailto:matthewahester@gmail.com)
+- **GitHub:** [github.com/matthewahester](https://github.com/matthewahester)
+
+If you are currently enrolled in one of my courses, use the contact
+instructions in the syllabus or Blackboard.

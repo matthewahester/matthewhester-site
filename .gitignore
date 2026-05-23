@@ -1,0 +1,16 @@
+/.quarto/
+/_site/
+**/*.quarto_ipynb
+.DS_Store
+Thumbs.db
+
+# Raw image originals are staged here for processing; never committed.
+# See IMAGE_ASSET_PLAN.md.
+/assets/images/raw/*
+!/assets/images/raw/README.md
+
+# Review bundles are local one-off handoff artifacts; keep them out
+# of git history. The bundle folder itself is named with a phase
+# suffix (review_bundle_phase4d, etc.). Durable planning docs at the
+# top of _site_planning/ are not affected by this rule.
+/_site_planning/review_bundle_*/
