@@ -81,8 +81,6 @@ them to existing top-level pages.
   - `assets/images/brand/` — portrait, logo, favicon, OG card
   - `assets/images/processed/` — general motifs
   - `assets/images/course-motifs/` — course-specific
-- The old `assets/brand/` is a redirect stub; new assets go under
-  `assets/images/brand/`.
 - Use `tools/process_images.py` (Pillow) to produce web-sized,
   metadata-free outputs.
 - **No location-revealing filenames** in committed assets (raw climbing

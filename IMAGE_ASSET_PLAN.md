@@ -25,10 +25,8 @@ assets/
   icons/              # reserved for SVG icons if needed later
 ```
 
-Already exists: `assets/brand/README.md`. The new structure nests `brand/`
-under `images/` (clearer once we have non-image brand assets like
-typography specimens). The Phase 4A move folds the existing
-`assets/brand/` into `assets/images/brand/`.
+Brand assets live under `assets/images/brand/`. The older top-level
+`assets/brand/` redirect-stub folder was removed in Phase 5F.
 
 ## 2. Privacy and licensing
 
@@ -136,8 +134,6 @@ filenames are preserved at the source folders for personal reference.
 
 **What remains placeholder:**
 
-- `portrait-placeholder.svg` (still in `brand/` but no longer referenced;
-  can be deleted by hand).
 - No favicon — see `_quarto.yml` `TODO(Phase 4C)`.
 
 Image curation remains an ad-hoc, in-chat process. Phase 4B picks are
