@@ -1,12 +1,15 @@
 name: Publish to GitHub Pages
 
+# Manual-only at first. Switching to push-on-main is a separate,
+# deliberate change once we've confirmed a few manual deploys
+# produce a healthy combined site.
 on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: read   # checkout of this repo and public course repos
+  pages: write     # deploy-pages
+  id-token: write  # OIDC for deploy-pages
 
 concurrency:
   group: "pages"
@@ -16,18 +19,75 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      # --- 1. Hub repo ------------------------------------------------
+      - name: Checkout matthewhester-site (hub)
         uses: actions/checkout@v4
+        # No `path:` → checks out at the workflow's working directory.
 
+      # --- 2. Course repos --------------------------------------------
+      # Both course repos are PUBLIC; the default GITHUB_TOKEN is
+      # enough for `actions/checkout` to read them. If either repo
+      # becomes private, add `token: ${{ secrets.COURSE_REPOS_PAT }}`
+      # to that step and create a PAT with `repo` (read) scope.
+      - name: Checkout math-software (course)
+        uses: actions/checkout@v4
+        with:
+          repository: matthewahester/math-software
+          ref: main
+          path: course-math-software
+
+      - name: Checkout intro-stats (course)
+        uses: actions/checkout@v4
+        with:
+          repository: matthewahester/intro-stats
+          ref: main
+          path: course-intro-stats
+
+      # --- 3. Quarto --------------------------------------------------
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Render site
+      # If course-site renders ever need R or Python at render time,
+      # add the setup steps here. Most teaching content displays code
+      # without executing, so this is usually not needed.
+      # - uses: r-lib/actions/setup-r@v2
+      # - uses: actions/setup-python@v5
+      #   with:
+      #     python-version: "3.x"
+
+      # --- 4. Render --------------------------------------------------
+      - name: Render hub
         run: quarto render
 
-      - name: Ensure CNAME is in output
-        run: cp CNAME _site/CNAME
+      - name: Render math-software
+        run: quarto render
+        working-directory: course-math-software
 
+      - name: Render intro-stats
+        run: quarto render
+        working-directory: course-intro-stats
+
+      # --- 5. Assemble combined artifact ------------------------------
+      # Copy CONTENTS of each course _site/ into the matching
+      # subdirectory under the hub _site/. The trailing `/.` is
+      # important — without it, `cp -r src dst` copies the directory
+      # itself and produces `_site/math-software/_site/...`.
+      - name: Assemble combined _site/
+        run: |
+          mkdir -p _site/math-software _site/intro-stats
+          cp -r course-math-software/_site/. _site/math-software/
+          cp -r course-intro-stats/_site/. _site/intro-stats/
+
+      # --- 6. Tidy ---------------------------------------------------
+      # The hub CNAME is the only one that matters at the artifact
+      # root. Any per-course CNAME files would be ignored by Pages
+      # but are dead weight; remove them.
+      - name: Ensure root CNAME and drop nested ones
+        run: |
+          cp CNAME _site/CNAME
+          find _site -mindepth 2 -name CNAME -print -delete
+
+      # --- 7. Upload + deploy ----------------------------------------
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
