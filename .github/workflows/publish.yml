@@ -21,7 +21,7 @@ jobs:
     steps:
       # --- 1. Hub repo ------------------------------------------------
       - name: Checkout matthewhester-site (hub)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         # No `path:` → checks out at the workflow's working directory.
 
       # --- 2. Course repos --------------------------------------------
@@ -30,14 +30,14 @@ jobs:
       # becomes private, add `token: ${{ secrets.COURSE_REPOS_PAT }}`
       # to that step and create a PAT with `repo` (read) scope.
       - name: Checkout math-software (course)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: matthewahester/math-software
           ref: main
           path: course-math-software
 
       - name: Checkout intro-stats (course)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: matthewahester/intro-stats
           ref: main
@@ -89,7 +89,7 @@ jobs:
 
       # --- 7. Upload + deploy ----------------------------------------
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
@@ -102,4 +102,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
