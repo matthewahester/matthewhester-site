@@ -1,66 +1,71 @@
 ---
 title: "Research"
-description-meta: "Research interests and projects of Matt Hester — bias-robust Bayesian evidence synthesis, publication bias, nutrition and health, and reproducible statistical workflows."
+description-meta: "Research by Matt Hester — bias-robust Bayesian evidence synthesis, publication bias, and reproducible statistical workflows. Includes a public arXiv preprint and an archived companion repository."
 toc: true
 toc-location: right
 ---
 
-My research focuses on **bias-robust Bayesian evidence synthesis**,
-especially for applied literatures where published findings are noisy,
-selective, and difficult to interpret. I am particularly interested in
-publication bias, meta-analysis, nutrition and health evidence, and
-reproducible statistical workflows.
+My research focuses on **bias-robust Bayesian evidence synthesis** and
+reproducible statistical workflows for applied literatures where publication
+bias, small-study effects, and selective reporting make conventional summaries
+difficult to interpret.
+
+## Current work
+
+::: {.research-highlight}
+### Quantifying Evidential Rigor in Meta-Analytic Corpora
+
+::: {.preprint-meta}
+Public preprint and archived companion repository · Matt Hester
+:::
+
+*A Simulation-Characterized, Bias-Robust Bayesian Workflow with a Nutrition
+Case Study.*
+
+This preprint introduces a corpus-scale Bayesian evidential-audit workflow for
+meta-analytic evidence. It fits a matched Bayesian random-effects baseline
+alongside a bias-aware, model-averaged ensemble, then summarizes evidential
+yield with a **rigor estimand**: resolved evidence for an effect or for no
+effect, together with the absence of an explicit modeled bias component. The
+workflow is characterized with simulation and resampling designs and
+demonstrated on a nutrition intervention meta-analysis corpus. The companion
+repository supports reproducibility and adaptation of the workflow to other
+literatures.
+
+::: {.link-list}
+- [arXiv preprint — arXiv:2606.01428](https://arxiv.org/abs/2606.01428)
+- [arXiv DOI — 10.48550/arXiv.2606.01428](https://doi.org/10.48550/arXiv.2606.01428)
+- [Companion repository — github.com/matthewahester/evidential-audit-workflow](https://github.com/matthewahester/evidential-audit-workflow)
+- [Archived companion repository (Zenodo) — 10.5281/zenodo.20467258](https://doi.org/10.5281/zenodo.20467258)
+:::
+:::
 
 ## Research interests
 
 - **Bias-robust Bayesian meta-analysis.**
-  RoBMA, model-averaged Bayes factors, selection models, heterogeneity,
-  and evidence for or against effects after accounting for bias.
+  Model-averaged Bayes factors, selection models, heterogeneity, and evidence
+  for or against effects after accounting for bias.
 
 - **Publication bias and evidential fragility.**
-  Selective reporting, small-study effects, threshold behavior, and how
-  these distort applied literatures.
+  Selective reporting, small-study effects, threshold behavior, and how these
+  distort applied literatures.
+
+- **Corpus-scale evidential auditing.**
+  Summarizing evidential yield across many meta-analyses, rather than one
+  effect at a time.
 
 - **Nutrition and health evidence synthesis.**
   Applying bias-aware Bayesian methods to intervention meta-analyses in
   nutrition, fitness, and health.
 
 - **Reproducible statistical workflows.**
-  R, Quarto, Git, simulation studies, public repositories, and
-  transparent research pipelines.
+  R, Quarto, Git, simulation studies, public repositories, and transparent
+  research pipelines.
 
-- **Statistics education.**
-  Introductory statistics, Bayesian intuition, reproducible work, and
-  AI-supported mathematical/statistical learning.
+- **Statistics education and AI-supported learning.**
+  Introductory statistics, Bayesian intuition, reproducible work, and the
+  responsible use of AI assistants in mathematical and statistical learning.
 
-## Projects
+## Research identifiers
 
-### Bias-robust Bayesian reanalysis of nutrition intervention meta-analyses
-
-Reanalyzing published nutrition intervention meta-analyses with
-bias-aware Bayesian model averaging, to characterize how much
-selective reporting and small-study effects move the conclusions.
-
-### Rigor and attenuation in evidence synthesis
-
-Studying how methodological rigor — design, blinding, reporting,
-preregistration — interacts with bias correction and effect-size
-attenuation in applied literatures.
-
-### Reproducible research and teaching infrastructure
-
-Building durable Quarto + R + Git pipelines for both research analyses
-and the public-facing course sites at
-[`/math-software/`](/math-software/) and
-[`/intro-stats/`](/intro-stats/).
-
-### Bayesian statistics education
-
-Materials and exploratory work on how to bring Bayesian intuition into
-introductory statistics, and on the responsible use of AI assistants
-in mathematical and statistical learning.
-
-## Publications, preprints, and talks
-
-Selected publications, preprints, and talks will be added as they are
-ready for public release.
+- **ORCID:** [0009-0008-4242-4094](https://orcid.org/0009-0008-4242-4094)

@@ -11,14 +11,12 @@ toc: false
      YAML `title:`). The hero-split below holds the intro prose and
      portrait, without re-introducing a body-level H1.
 
-     Card-image policy (Phase 4C): the homepage cards are intentionally
-     text-only. Boulder/landscape motifs will be re-introduced one card
-     at a time, as a deliberate ad-hoc choice — not as a batch fill.
-     The category cards keep a subtle stone-400 left accent; the course
-     cards keep a slightly warmer crystal-blue left accent (via
-     `.course-card`) so the two groups still read as distinct.
-     Processed motif files are preserved under
-     `assets/images/course-motifs/`. -->
+     Card-image policy: the category cards (Teaching / Research /
+     Resources) stay text-only with a subtle stone-400 left accent. The
+     two course cards carry their crystal identity image (the course
+     crystal mark on a matching cream panel) plus a crystal-blue left
+     accent via `.course-card`, so the course group reads as distinct.
+     Card images live under `assets/images/course-motifs/`. -->
 
 ::: {.hero-split}
 
@@ -72,21 +70,20 @@ and section-specific material lives in the LMS, not here.
 
 ::: {.feature-grid}
 
-::: {.feature-card .course-card}
+::: {.feature-card .feature-card-with-image .course-card}
+![](assets/images/course-motifs/intro-math-software-card.jpg){.feature-card-img fig-alt="Blue-violet crystal cluster, the visual identity of the Intro to Mathematical Software course site."}
+
 ### [Intro to Mathematical Software](/math-software/)
-A hands-on tour of the tools mathematicians actually use: R, LaTeX,
-Git, and (carefully) AI assistants.
+Modern mathematical workflow — LaTeX, R, Quarto, reproducibility, and
+careful AI-assisted work.
 :::
 
-::: {.feature-card .course-card}
+::: {.feature-card .feature-card-with-image .course-card}
+![](assets/images/course-motifs/intro-stats-card.jpg){.feature-card-img fig-alt="Amber crystal cluster, the visual identity of the Intro to Statistics course site."}
+
 ### [Intro to Statistics](/intro-stats/)
-A first course in statistical reasoning. Concepts before formulas,
-with small reproducible examples in R.
+Statistical reasoning — data, evidence, models, uncertainty, and
+simulation.
 :::
 
-:::
-
-::: {.future-courses-note}
-A public site for **Applied Statistics I** is planned but not yet live;
-that course currently runs in the LMS only.
 :::

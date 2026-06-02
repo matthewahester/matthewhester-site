@@ -339,6 +339,48 @@ a:hover {
 }
 
 /* -------------------------------------------------------------
+   Research highlight + link list
+   -------------------------------------------------------------
+   A single feature panel for the current preprint, matching the
+   feature-card skeleton but with the crystal-blue left edge to mark
+   it as the page's anchor. The link list below stacks the external
+   identifiers (arXiv, DOIs, repository) as quiet, scannable rows.
+*/
+.research-highlight {
+  background-color: #ffffff;
+  border: 1px solid var(--stone-200);
+  border-left: 3px solid var(--crystal-blue);
+  border-radius: var(--radius-card);
+  padding: 1.25rem 1.4rem;
+  margin: 1.25rem 0 2rem 0;
+  box-shadow: var(--shadow-card);
+}
+.research-highlight h3 {
+  margin-top: 0;
+  margin-bottom: 0.3rem;
+}
+.research-highlight .preprint-meta {
+  color: var(--stone-400);
+  font-size: 0.92rem;
+  margin: 0 0 0.75rem 0;
+}
+.link-list {
+  margin: 1rem 0 0 0;
+}
+.link-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.link-list li {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* -------------------------------------------------------------
    Footer
    -------------------------------------------------------------
    Quiet, single hairline, basalt text. Matches the navbar's

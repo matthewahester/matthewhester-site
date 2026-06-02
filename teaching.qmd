@@ -1,33 +1,56 @@
 ---
 title: "Teaching"
-description-meta: "Courses and teaching materials by Matt Hester at UA Little Rock."
+description-meta: "Teaching by Matt Hester at UA Little Rock — public course sites for Intro to Mathematical Software and Intro to Statistics, a concepts-first and reproducible approach, and the Math Assistance Center."
 toc: true
 toc-location: right
 ---
 
-I teach mathematics and statistics at UA Little Rock and direct the **Math
-Assistance Center (MAC)**. My teaching emphasizes:
+I teach mathematics and statistics at the **University of Arkansas at Little
+Rock** and direct the **Math Assistance Center**. My teaching emphasizes
+conceptual understanding, durable public course materials, reproducible work,
+and the careful use of computational and AI tools.
 
-- conceptual understanding over rote procedure,
-- early exposure to Bayesian ideas in introductory statistics,
-- and reproducible workflows using R, LaTeX, and (carefully) AI tools.
+## Current public course sites
 
-## Current courses
+Public, durable resource sites for two of my current courses. Roster- and
+section-specific material lives in the LMS, not here.
+
+::: {.feature-grid}
+
+::: {.feature-card .feature-card-with-image .course-card}
+![](assets/images/course-motifs/intro-math-software-card.jpg){.feature-card-img fig-alt="Blue-violet crystal cluster, the visual identity of the Intro to Mathematical Software course site."}
 
 ### [Intro to Mathematical Software](/math-software/)
-A hands-on tour of R, LaTeX, Git, and AI-assisted workflows for math and
-stats students.
+A studio course in modern mathematical workflow: LaTeX, R, Quarto, project
+organization, reproducibility, and careful AI-assisted technical work.
+:::
+
+::: {.feature-card .feature-card-with-image .course-card}
+![](assets/images/course-motifs/intro-stats-card.jpg){.feature-card-img fig-alt="Amber crystal cluster, the visual identity of the Intro to Statistics course site."}
 
 ### [Intro to Statistics](/intro-stats/)
-A first course in statistical reasoning. Concepts, simulation, and small
-reproducible R examples.
+A first course in statistical reasoning: data, evidence, models, uncertainty,
+simulation, association, regression, and interpretation.
+:::
 
-### Applied Statistics I
-A graduate-level applied statistics course. This course currently runs
-through Blackboard and does not have a public site.
+:::
+
+## Teaching approach
+
+- **Concepts before procedures.** Students should understand *why* a method
+  works before reaching for it, so the procedure becomes a tool rather than a
+  ritual.
+- **Explain, verify, revise, communicate.** I ask students to justify their
+  reasoning, check their results, revise their work, and communicate it
+  clearly — the habits that outlast any single course.
+- **Reproducible artifacts matter.** Rendered documents, organized projects,
+  executable code, and transparent AI-use notes (when AI is used) make student
+  work durable, checkable, and honest.
 
 ## Math Assistance Center
 
-I direct the MAC at UA Little Rock — a drop-in support center that pairs
-trained peer tutors with students in lower-division mathematics and
-statistics courses.
+I direct the **Math Assistance Center (MAC)** at UA Little Rock — a drop-in
+support center staffed by trained peer tutors, focused on lower-division
+mathematics and statistics. Alongside supporting students, the role includes
+mentoring and developing the tutors themselves, so the center builds capacity
+as well as confidence.
