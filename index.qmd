@@ -11,12 +11,11 @@ toc: false
      YAML `title:`). The hero-split below holds the intro prose and
      portrait, without re-introducing a body-level H1.
 
-     Card-image policy: the category cards (Teaching / Research /
-     Resources) stay text-only with a subtle stone-400 left accent. The
-     two course cards carry their crystal identity image (the course
-     crystal mark on a matching cream panel) plus a crystal-blue left
-     accent via `.course-card`, so the course group reads as distinct.
-     Card images live under `assets/images/course-motifs/`. -->
+     Card-image policy: the category cards (Teaching / Research) stay
+     text-only with a subtle stone-400 left accent. The two course cards
+     carry the full course hero artwork (which already contains the
+     course title) with a small caption below, via `.course-hero-card`.
+     Hero images live under `assets/images/course-motifs/`. -->
 
 ::: {.hero-split}
 
@@ -55,12 +54,6 @@ Bias-robust Bayesian evidence synthesis, publication bias, and
 reproducible statistical workflows in applied literatures.
 :::
 
-::: {.feature-card}
-### [Resources](resources.qmd)
-Software guides, statistics notes, and small durable resources for
-students and collaborators.
-:::
-
 :::
 
 ## Featured course sites
@@ -68,22 +61,24 @@ students and collaborators.
 Public, durable resource sites for two of my current courses. Roster-
 and section-specific material lives in the LMS, not here.
 
-::: {.feature-grid}
+::: {.course-hero-card-grid}
 
-::: {.feature-card .feature-card-with-image .course-card}
-![](assets/images/course-motifs/intro-math-software-card.jpg){.feature-card-img fig-alt="Blue-violet crystal cluster, the visual identity of the Intro to Mathematical Software course site."}
+::: {.course-hero-card}
+[![](assets/images/course-motifs/intro-math-software-hero.png){.course-hero-card-img fig-alt="Course identity hero for Intro to Mathematical Software — a blue-violet crystal cluster surrounded by mathematical software, workflow, simulation, and version-control graphics, with the course title."}](/math-software/)
 
-### [Intro to Mathematical Software](/math-software/)
-Modern mathematical workflow — LaTeX, R, Quarto, reproducibility, and
-careful AI-assisted work.
+::: {.course-hero-card-caption}
+[**Intro to Mathematical Software**](/math-software/) — LaTeX, R, Quarto,
+reproducible workflow, and careful AI-assisted work.
+:::
 :::
 
-::: {.feature-card .feature-card-with-image .course-card}
-![](assets/images/course-motifs/intro-stats-card.jpg){.feature-card-img fig-alt="Amber crystal cluster, the visual identity of the Intro to Statistics course site."}
+::: {.course-hero-card}
+[![](assets/images/course-motifs/intro-stats-hero.png){.course-hero-card-img fig-alt="Course identity hero for Intro to Statistics — an amber crystal cluster surrounded by introductory statistics graphics including distributions, uncertainty, scatterplots, center and spread, and sampling distributions, with the course title."}](/intro-stats/)
 
-### [Intro to Statistics](/intro-stats/)
-Statistical reasoning — data, evidence, models, uncertainty, and
-simulation.
+::: {.course-hero-card-caption}
+[**Intro to Statistics**](/intro-stats/) — data, evidence, models,
+uncertainty, and simulation.
+:::
 :::
 
 :::

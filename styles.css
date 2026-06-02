@@ -339,6 +339,62 @@ a:hover {
 }
 
 /* -------------------------------------------------------------
+   Course hero cards
+   -------------------------------------------------------------
+   Full course hero artwork carried as the card image — shown
+   complete, never cropped (the hero already contains the course
+   title), with a small caption below. A separate class from the
+   .feature-card system so the no-crop rule can't leak into it.
+*/
+.course-hero-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0 2.5rem 0;
+}
+.course-hero-card {
+  background-color: #ffffff;
+  border: 1px solid var(--stone-200);
+  border-left: 3px solid var(--crystal-blue);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: border-left-color 160ms ease, transform 160ms ease;
+}
+.course-hero-card:hover {
+  border-left-color: var(--iron-accent);
+  transform: translateY(-1px);
+}
+/* The full hero, uncropped and responsive. */
+.course-hero-card > p {
+  margin: 0;
+}
+.course-hero-card img,
+.course-hero-card-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.course-hero-card-caption {
+  padding: 0.85rem 1rem 1rem 1rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--stone-400);
+}
+.course-hero-card-caption p {
+  margin: 0;
+}
+.course-hero-card-caption a {
+  color: var(--stone-900);
+  font-weight: 600;
+  border-bottom: none;
+}
+.course-hero-card-caption a:hover {
+  color: var(--iron-accent);
+  border-bottom: none;
+}
+
+/* -------------------------------------------------------------
    Research highlight + link list
    -------------------------------------------------------------
    A single feature panel for the current preprint, matching the

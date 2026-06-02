@@ -15,25 +15,32 @@ and the careful use of computational and AI tools.
 Public, durable resource sites for two of my current courses. Roster- and
 section-specific material lives in the LMS, not here.
 
-::: {.feature-grid}
+::: {.course-hero-card-grid}
 
-::: {.feature-card .feature-card-with-image .course-card}
-![](assets/images/course-motifs/intro-math-software-card.jpg){.feature-card-img fig-alt="Blue-violet crystal cluster, the visual identity of the Intro to Mathematical Software course site."}
+::: {.course-hero-card}
+[![](assets/images/course-motifs/intro-math-software-hero.png){.course-hero-card-img fig-alt="Course identity hero for Intro to Mathematical Software — a blue-violet crystal cluster surrounded by mathematical software, workflow, simulation, and version-control graphics, with the course title."}](/math-software/)
 
-### [Intro to Mathematical Software](/math-software/)
-A studio course in modern mathematical workflow: LaTeX, R, Quarto, project
-organization, reproducibility, and careful AI-assisted technical work.
+::: {.course-hero-card-caption}
+[**Intro to Mathematical Software**](/math-software/) — LaTeX, R, Quarto,
+reproducible workflow, and careful AI-assisted work.
+:::
 :::
 
-::: {.feature-card .feature-card-with-image .course-card}
-![](assets/images/course-motifs/intro-stats-card.jpg){.feature-card-img fig-alt="Amber crystal cluster, the visual identity of the Intro to Statistics course site."}
+::: {.course-hero-card}
+[![](assets/images/course-motifs/intro-stats-hero.png){.course-hero-card-img fig-alt="Course identity hero for Intro to Statistics — an amber crystal cluster surrounded by introductory statistics graphics including distributions, uncertainty, scatterplots, center and spread, and sampling distributions, with the course title."}](/intro-stats/)
 
-### [Intro to Statistics](/intro-stats/)
-A first course in statistical reasoning: data, evidence, models, uncertainty,
-simulation, association, regression, and interpretation.
+::: {.course-hero-card-caption}
+[**Intro to Statistics**](/intro-stats/) — data, evidence, models,
+uncertainty, and simulation.
+:::
 :::
 
 :::
+
+Each public course site also carries its own notes, labs, and examples
+alongside curated resource collections — see the
+[Math Software resources](/math-software/resources/) and the
+[Intro Stats resources](/intro-stats/resources/).
 
 ## Teaching approach
 

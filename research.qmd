@@ -34,7 +34,6 @@ literatures.
 
 ::: {.link-list}
 - [arXiv preprint — arXiv:2606.01428](https://arxiv.org/abs/2606.01428)
-- [arXiv DOI — 10.48550/arXiv.2606.01428](https://doi.org/10.48550/arXiv.2606.01428)
 - [Companion repository — github.com/matthewahester/evidential-audit-workflow](https://github.com/matthewahester/evidential-audit-workflow)
 - [Archived companion repository (Zenodo) — 10.5281/zenodo.20467258](https://doi.org/10.5281/zenodo.20467258)
 :::
