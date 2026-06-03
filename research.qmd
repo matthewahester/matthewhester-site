@@ -32,10 +32,11 @@ demonstrated on a nutrition intervention meta-analysis corpus. The companion
 repository supports reproducibility and adaptation of the workflow to other
 literatures.
 
-::: {.link-list}
-- [arXiv preprint — arXiv:2606.01428](https://arxiv.org/abs/2606.01428)
-- [Companion repository — github.com/matthewahester/evidential-audit-workflow](https://github.com/matthewahester/evidential-audit-workflow)
-- [Archived companion repository (Zenodo) — 10.5281/zenodo.20467258](https://doi.org/10.5281/zenodo.20467258)
+::: {.artifact-pills}
+- [arXiv preprint](https://arxiv.org/abs/2606.01428)
+- [Companion repository](https://github.com/matthewahester/evidential-audit-workflow)
+- [Zenodo archive](https://doi.org/10.5281/zenodo.20467258)
+- [ORCID](https://orcid.org/0009-0008-4242-4094)
 :::
 :::
 
@@ -64,7 +65,3 @@ literatures.
 - **Statistics education and AI-supported learning.**
   Introductory statistics, Bayesian intuition, reproducible work, and the
   responsible use of AI assistants in mathematical and statistical learning.
-
-## Research identifiers
-
-- **ORCID:** [0009-0008-4242-4094](https://orcid.org/0009-0008-4242-4094)

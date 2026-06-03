@@ -56,8 +56,15 @@ alongside curated resource collections — see the
 
 ## Math Assistance Center
 
-I direct the **Math Assistance Center (MAC)** at UA Little Rock — a drop-in
-support center staffed by trained peer tutors, focused on lower-division
-mathematics and statistics. Alongside supporting students, the role includes
-mentoring and developing the tutors themselves, so the center builds capacity
-as well as confidence.
+As **Director of the Math Assistance Center (MAC)** at UA Little Rock, I lead
+the university's drop-in support center for lower-division mathematics and
+statistics. The role is part academic service, part leadership:
+
+- **Peer support at scale** — coordinating drop-in tutoring that meets students
+  where they are, across many courses and sections.
+- **Tutor mentoring and development** — hiring, training, and developing peer
+  tutors so they grow as explainers, not just answer-checkers.
+- **Instructional coordination** — aligning support with what courses actually
+  ask of students, in conversation with the instructors who teach them.
+- **Sustainable support workflows** — building durable, low-overhead systems so
+  the center keeps running smoothly from term to term.

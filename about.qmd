@@ -15,11 +15,24 @@ Assistance Center. Most of my work sits at the intersection of:
 - **Reproducible workflows** — R, Quarto, LaTeX, and Git as everyday tools,
   not just research artifacts.
 
-## A bit more
+## Outside the classroom
 
-Outside the office I climb (mostly bouldering), garden, cook, and share a
-small home zoo with my wife Jenn. A lot of the visual language on this site —
-stone, crystal, ridgeline — comes from that side of life.
+Away from the desk I climb — mostly **bouldering**, the short, powerful
+problems that reward patience, reading a sequence carefully, and trying again
+after falling. Closer to home I **garden** and tinker with small homesteading
+projects, do a fair amount of **woodworking and building**, and help look
+after a small menagerie of animals with my wife, Jenn.
+
+The common thread is practical problem-solving and durable, low-fuss systems —
+the same instinct that shows up in a reproducible analysis pipeline, a raised
+bed that survives the summer, or a boulder problem worked out one move at a
+time. A lot of the visual language on this site — stone, crystal, ridgeline —
+comes from that side of life.
+
+<!-- Room for one or two stylized bouldering images here later. Raw source
+     photos exist (assets/images/raw/roof-overhang.jpg and
+     assets/images/raw/structured-face.jpg); stylize them to match the site's
+     illustrated identity before adding, and give each descriptive alt text. -->
 
 If you want to get in touch, the [contact page](contact.qmd) has the best
 ways to reach me.

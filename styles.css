@@ -420,6 +420,34 @@ a:hover {
   font-size: 0.92rem;
   margin: 0 0 0.75rem 0;
 }
+/* Artifact pills — small, sober links to public research artifacts
+   (arXiv, repository, Zenodo, ORCID). No JS, quiet until hovered. */
+.artifact-pills ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.artifact-pills li {
+  margin: 0;
+}
+.artifact-pills li a {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.9rem;
+  color: var(--stone-700);
+  background-color: var(--stone-100);
+  border: 1px solid var(--stone-200);
+  border-radius: 999px;
+  transition: border-color 120ms ease, color 120ms ease;
+}
+.artifact-pills li a:hover {
+  color: var(--iron-accent);
+  border-color: var(--iron-accent);
+}
+
 .link-list {
   margin: 1rem 0 0 0;
 }

@@ -5,8 +5,7 @@ toc: true
 toc-location: right
 ---
 
-A short summary appears below. A full PDF CV will be posted here when
-it is ready.
+A short, public summary appears below.
 
 ## Position
 
@@ -37,9 +36,19 @@ See the [Teaching page](teaching.qmd) for current courses.
 
 ## Selected work
 
-A curated list of selected publications, preprints, and talks will be
-added here as items are ready for public listing.
+**Preprint.** Hester, M. *Quantifying Evidential Rigor in Meta-Analytic
+Corpora: A Simulation-Characterized, Bias-Robust Bayesian Workflow with a
+Nutrition Case Study.* Public preprint, arXiv:2606.01428.
 
-## Full PDF CV
+- arXiv preprint: <https://arxiv.org/abs/2606.01428>
+- Companion repository:
+  <https://github.com/matthewahester/evidential-audit-workflow>
+- Archived companion repository (Zenodo):
+  <https://doi.org/10.5281/zenodo.20467258>
 
-A downloadable PDF version of the full CV will be linked here.
+See the [Research page](research.qmd) for a plain-language description.
+
+## Identifiers
+
+- **ORCID:** [0009-0008-4242-4094](https://orcid.org/0009-0008-4242-4094)
+- **GitHub:** [github.com/matthewahester](https://github.com/matthewahester)
