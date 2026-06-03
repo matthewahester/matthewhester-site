@@ -1,38 +1,50 @@
 ---
 title: "About"
-description-meta: "About Matt Hester — mathematician, statistician, and teacher at UA Little Rock."
+description-meta: "About Matt Hester — mathematician and statistician at UA Little Rock, director of the Math Assistance Center."
 toc: false
 ---
 
-I'm a mathematician and statistician at the **University of Arkansas at Little
-Rock**, where I teach undergraduate and graduate courses and direct the Math
-Assistance Center. Most of my work sits at the intersection of:
+I teach mathematics and statistics at the **University of Arkansas at Little
+Rock**, and I direct the **Math Assistance Center**. Mathematician,
+statistician, teacher — most of what I do connects those three.
 
-- **Bayesian statistics** — particularly robust Bayesian model-averaged
-  meta-analysis and methods that take publication bias seriously.
-- **Teaching** — designing courses and materials that emphasize conceptual
-  understanding and reproducibility over rote procedure.
-- **Reproducible workflows** — R, Quarto, LaTeX, and Git as everyday tools,
-  not just research artifacts.
+## What I work on
 
-## Outside the classroom
+Most of my time goes to teaching and to building course materials that last. I
+care about courses that explain why something works instead of just which
+buttons to press, and I try to keep the materials public and reusable so they
+still help after the semester ends. The two course sites here —
+[Intro to Mathematical Software](/math-software/) and
+[Intro to Statistics](/intro-stats/) — are part of that.
 
-Away from the desk I climb — mostly **bouldering**, the short, powerful
-problems that reward patience, reading a sequence carefully, and trying again
-after falling. Closer to home I **garden** and tinker with small homesteading
-projects, do a fair amount of **woodworking and building**, and help look
-after a small menagerie of animals with my wife, Jenn.
+My research is in Bayesian statistics and evidence synthesis. I work on
+bias-robust Bayesian meta-analysis: how to make sense of a body of studies when
+publication bias, small-study effects, and selective reporting make the usual
+summaries hard to trust. Much of that work is also about reproducibility. I use
+R, Quarto, LaTeX, and Git as everyday tools, and I would rather an analysis be
+something someone else can rerun than a result that only worked once.
 
-The common thread is practical problem-solving and durable, low-fuss systems —
-the same instinct that shows up in a reproducible analysis pipeline, a raised
-bed that survives the summer, or a boulder problem worked out one move at a
-time. A lot of the visual language on this site — stone, crystal, ridgeline —
-comes from that side of life.
+## Outside work
 
-<!-- Room for one or two stylized bouldering images here later. Raw source
-     photos exist (assets/images/raw/roof-overhang.jpg and
-     assets/images/raw/structured-face.jpg); stylize them to match the site's
-     illustrated identity before adding, and give each descriptive alt text. -->
+::: {.about-split}
 
-If you want to get in touch, the [contact page](contact.qmd) has the best
-ways to reach me.
+::: {.about-split-text}
+I do a lot of bouldering. I also garden, take care of animals with my wife,
+Jenn, and spend a fair amount of time building and fixing things — woodworking
+and the steady stream of small projects that come with a house and a yard.
+
+I like work that holds up: a problem climbed cleanly, a garden bed that keeps
+producing, a repair I don't have to do twice. That carries over to the academic
+side, though I won't pretend it all reduces to one tidy idea.
+:::
+
+::: {.about-split-img}
+![](assets/images/about/about-bouldering-close.jpg){fig-alt="Stylized painting of Matt Hester bouldering — pulling through a steep move on a gray rock face, with green foliage to one side and a crash pad below."}
+:::
+
+:::
+
+![](assets/images/about/about-bouldering-aerial.jpg){.about-wide-img fig-alt="Stylized painting of a bouldering area seen from above — a climber moving across large gray boulders surrounded by pine."}
+
+If you want to get in touch, the [contact page](contact.qmd) has the best ways
+to reach me.

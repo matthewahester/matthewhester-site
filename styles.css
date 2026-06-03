@@ -395,6 +395,50 @@ a:hover {
 }
 
 /* -------------------------------------------------------------
+   About page — personal section layout
+   -------------------------------------------------------------
+   A two-column block (text + a portrait climbing image) that
+   collapses to one column on narrow screens, plus a single wide
+   image below. Images are shown whole (no crop) and kept modest
+   so the page still reads as an academic personal site.
+*/
+.about-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 1.75rem;
+  align-items: start;
+  margin: 0.5rem 0 1.5rem 0;
+}
+.about-split-text p:first-child {
+  margin-top: 0;
+}
+.about-split-img img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+.about-wide-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 760px;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  margin: 0.5rem 0 1.75rem 0;
+}
+@media (max-width: 720px) {
+  .about-split {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .about-split-img {
+    max-width: 320px;
+  }
+}
+
+/* -------------------------------------------------------------
    Research highlight + link list
    -------------------------------------------------------------
    A single feature panel for the current preprint, matching the
