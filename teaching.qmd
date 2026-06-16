@@ -55,21 +55,26 @@ sections.** Dates, weights, and final policies are not set here, and
 anything operational for a live offering would live in the LMS. Treat
 them as durable, public course resources rather than finished releases.
 
-::: {.feature-grid}
+::: {.course-hero-card-grid}
 
-::: {.feature-card .course-card}
-### [Bayesian Statistics](/bayesian-statistics/)
-Reasoning with uncertainty: priors, likelihoods, and posteriors;
-Beta-Binomial and Bayesian regression models; simulation, model
-checking, and introductory hierarchical ideas — with reproducible
-R + Quarto labs.
+::: {.course-hero-card}
+[![](assets/images/course-motifs/bayesian-statistics-hero.png){.course-hero-card-img fig-alt="Course identity hero for Bayesian Statistics — a teal crystal cluster surrounded by Bayesian graphics including Bayes' theorem, a prior-to-posterior update, a posterior predictive band, a 95% credible interval, and an MCMC trace, with the course title."}](/bayesian-statistics/)
+
+::: {.course-hero-card-caption}
+[**Bayesian Statistics**](/bayesian-statistics/) — priors, likelihoods,
+and posteriors; Bayesian regression; simulation, model checking, and
+hierarchical models.
+:::
 :::
 
-::: {.feature-card .course-card}
-### [Introduction to Probability](/intro-probability/)
-A first course in probability: sample spaces and rules, conditional
-probability and Bayes' rule, random variables and the standard
-distributions, and limit behavior — with Monte Carlo simulation labs.
+::: {.course-hero-card}
+[![](assets/images/course-motifs/intro-probability-hero.png){.course-hero-card-img fig-alt="Course identity hero for Introduction to Probability — an iridescent opal crystal surrounded by probability graphics including sample spaces and events, the probability rules, Bayes' rule, a binomial distribution, the normal curve, expectation, a Monte Carlo simulation sketch, and the law of large numbers, with the course title."}](/intro-probability/)
+
+::: {.course-hero-card-caption}
+[**Introduction to Probability**](/intro-probability/) — sample spaces,
+conditioning and Bayes' rule, random variables, the standard
+distributions, and simulation.
+:::
 :::
 
 :::
