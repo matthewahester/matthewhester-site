@@ -9,8 +9,7 @@ Thumbs.db
 /assets/images/raw/*
 !/assets/images/raw/README.md
 
-# Review bundles are local one-off handoff artifacts; keep them out
-# of git history. The bundle folder itself is named with a phase
-# suffix (review_bundle_phase4d, etc.). Durable planning docs at the
-# top of _site_planning/ are not affected by this rule.
-/_site_planning/review_bundle_*/
+# Local planning notes and one-off review bundles. These are excluded
+# from the render allowlist (never published) and are kept out of git
+# history; the whole folder is local-only.
+_site_planning/
