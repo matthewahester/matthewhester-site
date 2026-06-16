@@ -25,10 +25,14 @@ jobs:
         # No `path:` → checks out at the workflow's working directory.
 
       # --- 2. Course repos --------------------------------------------
-      # Both course repos are PUBLIC; the default GITHUB_TOKEN is
-      # enough for `actions/checkout` to read them. If either repo
+      # All four course repos are PUBLIC; the default GITHUB_TOKEN is
+      # enough for `actions/checkout` to read them. If any repo
       # becomes private, add `token: ${{ secrets.COURSE_REPOS_PAT }}`
       # to that step and create a PAT with `repo` (read) scope.
+      #
+      # NOTE: bayesian-statistics and intro-probability must exist as
+      # public GitHub repos under matthewahester/ before this workflow
+      # can check them out (added Phase 3, 2026-06-16).
       - name: Checkout math-software (course)
         uses: actions/checkout@v5
         with:
@@ -43,17 +47,72 @@ jobs:
           ref: main
           path: course-intro-stats
 
+      - name: Checkout bayesian-statistics (course)
+        uses: actions/checkout@v5
+        with:
+          repository: matthewahester/bayesian-statistics
+          ref: main
+          path: course-bayesian-statistics
+
+      - name: Checkout intro-probability (course)
+        uses: actions/checkout@v5
+        with:
+          repository: matthewahester/intro-probability
+          ref: main
+          path: course-intro-probability
+
       # --- 3. Quarto --------------------------------------------------
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      # If course-site renders ever need R or Python at render time,
-      # add the setup steps here. Most teaching content displays code
-      # without executing, so this is usually not needed.
-      # - uses: r-lib/actions/setup-r@v2
-      # - uses: actions/setup-python@v5
-      #   with:
-      #     python-version: "3.x"
+      # --- 3b. Executable-visual runtime (conditional) ----------------
+      # Most teaching content shows code WITHOUT executing, so R/Python are
+      # usually not needed. But a course that ships executable figures (e.g.
+      # ```{r} chunks producing plots) needs R + knitr at render time, or the
+      # render silently drops the figures. We do NOT install R for every deploy.
+      #
+      # CI cannot see the private build metadata (_state/visual_plans/ with
+      # generation_engine: quarto_r lives only in the Drive build, never in the
+      # public repos). So CI keys off the PUBLIC-SAFE proxy it CAN see: whether
+      # the content it is about to render contains executable code chunks. The
+      # authoritative visual-plan gate (check-release.py --render-ready) runs
+      # LOCALLY before a quarto_r course is promoted to its public repo
+      # (course-builder docs/24 §6c, templates/release_checklist.md).
+      - name: Detect executable Quarto chunks (decide if R/Python are needed)
+        id: detect
+        run: |
+          set -euo pipefail
+          if grep -rIlE '^[[:space:]]*```\{r[ ,}]' --include='*.qmd' --include='*.md' . >/dev/null 2>&1; then
+            echo "needs_r=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "needs_r=false" >> "$GITHUB_OUTPUT"
+          fi
+          if grep -rIlE '^[[:space:]]*```\{python[ ,}]' --include='*.qmd' --include='*.md' . >/dev/null 2>&1; then
+            echo "needs_python=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "needs_python=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "executable R chunks present: $(grep -rIlE '^[[:space:]]*```\{r[ ,}]' --include='*.qmd' --include='*.md' . 2>/dev/null | wc -l) file(s)"
+
+      - name: Set up R (only if a rendered repo has executable R chunks)
+        if: steps.detect.outputs.needs_r == 'true'
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: "release"
+
+      - name: Install R render deps + verify runtime (fail fast)
+        if: steps.detect.outputs.needs_r == 'true'
+        run: |
+          set -euo pipefail
+          Rscript -e 'install.packages(c("knitr","rmarkdown"), repos="https://cloud.r-project.org")'
+          Rscript -e 'cat("R", as.character(getRversion()), "| knitr", as.character(packageVersion("knitr")), "| rmarkdown", as.character(packageVersion("rmarkdown")), "\n")'
+          quarto check knitr   # render-ready gate: fail BEFORE render if the R runtime is not ready
+
+      - name: Set up Python (only if a rendered repo has executable Python chunks)
+        if: steps.detect.outputs.needs_python == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
 
       # --- 4. Render --------------------------------------------------
       - name: Render hub
@@ -67,6 +126,18 @@ jobs:
         run: quarto render
         working-directory: course-intro-stats
 
+      # bayesian-statistics ships executable {r} figures, so it needs the
+      # R runtime installed above (the detect step finds its chunks and
+      # flips needs_r=true). intro-probability is eval:false and renders
+      # without R.
+      - name: Render bayesian-statistics
+        run: quarto render
+        working-directory: course-bayesian-statistics
+
+      - name: Render intro-probability
+        run: quarto render
+        working-directory: course-intro-probability
+
       # --- 5. Assemble combined artifact ------------------------------
       # Copy CONTENTS of each course _site/ into the matching
       # subdirectory under the hub _site/. The trailing `/.` is
@@ -74,9 +145,11 @@ jobs:
       # itself and produces `_site/math-software/_site/...`.
       - name: Assemble combined _site/
         run: |
-          mkdir -p _site/math-software _site/intro-stats
+          mkdir -p _site/math-software _site/intro-stats _site/bayesian-statistics _site/intro-probability
           cp -r course-math-software/_site/. _site/math-software/
           cp -r course-intro-stats/_site/. _site/intro-stats/
+          cp -r course-bayesian-statistics/_site/. _site/bayesian-statistics/
+          cp -r course-intro-probability/_site/. _site/intro-probability/
 
       # --- 6. Tidy ---------------------------------------------------
       # The hub CNAME is the only one that matters at the artifact

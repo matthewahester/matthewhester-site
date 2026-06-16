@@ -42,6 +42,38 @@ alongside curated resource collections — see the
 [Math Software resources](/math-software/resources/) and the
 [Intro Stats resources](/intro-stats/resources/).
 
+## Assembled undergraduate course materials
+
+Alongside the two course sites above, I have assembled full public
+**course-material sites** for other undergraduate statistics and
+probability courses. Each is a coherent, self-contained resource site —
+synthesized notes, hands-on R/Quarto labs, and curated references —
+built in the same style as the sites above.
+
+These are **assembled course materials, not currently scheduled
+sections.** Dates, weights, and final policies are not set here, and
+anything operational for a live offering would live in the LMS. Treat
+them as durable, public course resources rather than finished releases.
+
+::: {.feature-grid}
+
+::: {.feature-card .course-card}
+### [Bayesian Statistics](/bayesian-statistics/)
+Reasoning with uncertainty: priors, likelihoods, and posteriors;
+Beta-Binomial and Bayesian regression models; simulation, model
+checking, and introductory hierarchical ideas — with reproducible
+R + Quarto labs.
+:::
+
+::: {.feature-card .course-card}
+### [Introduction to Probability](/intro-probability/)
+A first course in probability: sample spaces and rules, conditional
+probability and Bayes' rule, random variables and the standard
+distributions, and limit behavior — with Monte Carlo simulation labs.
+:::
+
+:::
+
 ## Teaching approach
 
 - **Concepts before procedures.** Students should understand *why* a method
