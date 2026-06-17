@@ -25,15 +25,14 @@ jobs:
         # No `path:` → checks out at the workflow's working directory.
 
       # --- 2. Course repos --------------------------------------------
-      # All six course repos are PUBLIC; the default GITHUB_TOKEN is
+      # All eight course repos are PUBLIC; the default GITHUB_TOKEN is
       # enough for `actions/checkout` to read them. If any repo
       # becomes private, add `token: ${{ secrets.COURSE_REPOS_PAT }}`
       # to that step and create a PAT with `repo` (read) scope.
       #
-      # NOTE: each course repo (bayesian-statistics, intro-probability,
-      # statistical-inference, statistical-modeling) must exist as a
-      # public GitHub repo under matthewahester/ before this workflow
-      # can check it out.
+      # NOTE: each course repo must exist as a public GitHub repo under
+      # matthewahester/ before this workflow can check it out
+      # (modern-sas and statistical-design added 2026-06-17).
       - name: Checkout math-software (course)
         uses: actions/checkout@v5
         with:
@@ -75,6 +74,20 @@ jobs:
           repository: matthewahester/statistical-modeling
           ref: main
           path: course-statistical-modeling
+
+      - name: Checkout modern-sas (course)
+        uses: actions/checkout@v5
+        with:
+          repository: matthewahester/modern-sas
+          ref: main
+          path: course-modern-sas
+
+      - name: Checkout statistical-design (course)
+        uses: actions/checkout@v5
+        with:
+          repository: matthewahester/statistical-design
+          ref: main
+          path: course-statistical-design
 
       # --- 3. Quarto --------------------------------------------------
       - name: Set up Quarto
@@ -164,6 +177,16 @@ jobs:
         run: quarto render
         working-directory: course-statistical-modeling
 
+      # modern-sas (static ```sas, synthetic logs) and statistical-design
+      # (static ```r) render deterministically without SAS or R.
+      - name: Render modern-sas
+        run: quarto render
+        working-directory: course-modern-sas
+
+      - name: Render statistical-design
+        run: quarto render
+        working-directory: course-statistical-design
+
       # --- 5. Assemble combined artifact ------------------------------
       # Copy CONTENTS of each course _site/ into the matching
       # subdirectory under the hub _site/. The trailing `/.` is
@@ -171,13 +194,15 @@ jobs:
       # itself and produces `_site/math-software/_site/...`.
       - name: Assemble combined _site/
         run: |
-          mkdir -p _site/math-software _site/intro-stats _site/bayesian-statistics _site/intro-probability _site/statistical-inference _site/statistical-modeling
+          mkdir -p _site/math-software _site/intro-stats _site/bayesian-statistics _site/intro-probability _site/statistical-inference _site/statistical-modeling _site/modern-sas _site/statistical-design
           cp -r course-math-software/_site/. _site/math-software/
           cp -r course-intro-stats/_site/. _site/intro-stats/
           cp -r course-bayesian-statistics/_site/. _site/bayesian-statistics/
           cp -r course-intro-probability/_site/. _site/intro-probability/
           cp -r course-statistical-inference/_site/. _site/statistical-inference/
           cp -r course-statistical-modeling/_site/. _site/statistical-modeling/
+          cp -r course-modern-sas/_site/. _site/modern-sas/
+          cp -r course-statistical-design/_site/. _site/statistical-design/
 
       # --- 6. Tidy ---------------------------------------------------
       # The hub CNAME is the only one that matters at the artifact

@@ -97,6 +97,27 @@ prediction and validation, and logistic regression.
 :::
 :::
 
+::: {.course-hero-card}
+[![](assets/images/course-motifs/modern-sas-hero.png){.course-hero-card-img fig-alt="Course identity hero for Modern SAS for Statistical Analytics — a banded green malachite crystal surrounded by SAS analytics-workflow graphics including an import-validate-analyze-report-decide pipeline, a DATA step example, a SAS project folder tree, a PROC MEANS table, and a PROC SGPLOT scatterplot, with the course title."}](/modern-sas/)
+
+::: {.course-hero-card-caption}
+[**Modern SAS for Statistical Analytics**](/modern-sas/) — the
+professional SAS workflow: DATA steps, PROC SQL, cleaning and
+validation, the core procedures, ODS output, simulation, and
+reproducible reporting.
+:::
+:::
+
+::: {.course-hero-card}
+[![](assets/images/course-motifs/statistical-design-hero.png){.course-hero-card-img fig-alt="Course identity hero for Design, Experiments and Causal Evidence — a tan desert-rose crystal cluster surrounded by study-design graphics including a design-to-evidence workflow, a causal diagram with a confounder and a backdoor path, and a blocking-improves-precision illustration, with the course title."}](/statistical-design/)
+
+::: {.course-hero-card-caption}
+[**Design, Experiments & Causal Evidence**](/statistical-design/) —
+random sampling vs random assignment, bias and confounding, blocked and
+factorial experiments, causal diagrams, sampling, and study critique.
+:::
+:::
+
 :::
 
 ## Teaching approach
