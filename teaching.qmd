@@ -77,6 +77,26 @@ distributions, and simulation.
 :::
 :::
 
+::: {.course-hero-card}
+[![](assets/images/course-motifs/statistical-inference-hero.png){.course-hero-card-img fig-alt="Course identity hero for Statistical Inference — a deep-blue crystal cluster surrounded by inference graphics including the inferential problem, a likelihood curve, a confidence interval, a hypothesis test, a sampling distribution, a Bayesian update, the bootstrap, and a randomization test, with the course title."}](/statistical-inference/)
+
+::: {.course-hero-card-caption}
+[**Statistical Inference**](/statistical-inference/) — sampling
+distributions, likelihood and maximum likelihood, confidence intervals,
+hypothesis tests, the bootstrap, and Bayesian inference.
+:::
+:::
+
+::: {.course-hero-card}
+[![](assets/images/course-motifs/statistical-modeling-hero.png){.course-hero-card-img fig-alt="Course identity hero for Statistical Modeling — a crimson crystalline cube cluster surrounded by regression graphics including the linear model equation, a residuals-versus-fitted plot, a normal Q-Q plot, a logistic-regression curve, prediction and RMSE panels, and an AIC model-comparison chart, with the course title."}](/statistical-modeling/)
+
+::: {.course-hero-card-caption}
+[**Statistical Modeling**](/statistical-modeling/) — regression,
+diagnostics, multiple predictors and adjustment, interactions,
+prediction and validation, and logistic regression.
+:::
+:::
+
 :::
 
 ## Teaching approach

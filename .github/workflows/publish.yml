@@ -25,14 +25,15 @@ jobs:
         # No `path:` → checks out at the workflow's working directory.
 
       # --- 2. Course repos --------------------------------------------
-      # All four course repos are PUBLIC; the default GITHUB_TOKEN is
+      # All six course repos are PUBLIC; the default GITHUB_TOKEN is
       # enough for `actions/checkout` to read them. If any repo
       # becomes private, add `token: ${{ secrets.COURSE_REPOS_PAT }}`
       # to that step and create a PAT with `repo` (read) scope.
       #
-      # NOTE: bayesian-statistics and intro-probability must exist as
-      # public GitHub repos under matthewahester/ before this workflow
-      # can check them out (added Phase 3, 2026-06-16).
+      # NOTE: each course repo (bayesian-statistics, intro-probability,
+      # statistical-inference, statistical-modeling) must exist as a
+      # public GitHub repo under matthewahester/ before this workflow
+      # can check it out.
       - name: Checkout math-software (course)
         uses: actions/checkout@v5
         with:
@@ -60,6 +61,20 @@ jobs:
           repository: matthewahester/intro-probability
           ref: main
           path: course-intro-probability
+
+      - name: Checkout statistical-inference (course)
+        uses: actions/checkout@v5
+        with:
+          repository: matthewahester/statistical-inference
+          ref: main
+          path: course-statistical-inference
+
+      - name: Checkout statistical-modeling (course)
+        uses: actions/checkout@v5
+        with:
+          repository: matthewahester/statistical-modeling
+          ref: main
+          path: course-statistical-modeling
 
       # --- 3. Quarto --------------------------------------------------
       - name: Set up Quarto
@@ -139,6 +154,16 @@ jobs:
         run: quarto render
         working-directory: course-intro-probability
 
+      # statistical-inference and statistical-modeling use static (non-executed)
+      # ```r fences, so they render deterministically without R.
+      - name: Render statistical-inference
+        run: quarto render
+        working-directory: course-statistical-inference
+
+      - name: Render statistical-modeling
+        run: quarto render
+        working-directory: course-statistical-modeling
+
       # --- 5. Assemble combined artifact ------------------------------
       # Copy CONTENTS of each course _site/ into the matching
       # subdirectory under the hub _site/. The trailing `/.` is
@@ -146,11 +171,13 @@ jobs:
       # itself and produces `_site/math-software/_site/...`.
       - name: Assemble combined _site/
         run: |
-          mkdir -p _site/math-software _site/intro-stats _site/bayesian-statistics _site/intro-probability
+          mkdir -p _site/math-software _site/intro-stats _site/bayesian-statistics _site/intro-probability _site/statistical-inference _site/statistical-modeling
           cp -r course-math-software/_site/. _site/math-software/
           cp -r course-intro-stats/_site/. _site/intro-stats/
           cp -r course-bayesian-statistics/_site/. _site/bayesian-statistics/
           cp -r course-intro-probability/_site/. _site/intro-probability/
+          cp -r course-statistical-inference/_site/. _site/statistical-inference/
+          cp -r course-statistical-modeling/_site/. _site/statistical-modeling/
 
       # --- 6. Tidy ---------------------------------------------------
       # The hub CNAME is the only one that matters at the artifact
