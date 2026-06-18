@@ -89,6 +89,20 @@ jobs:
           ref: main
           path: course-statistical-design
 
+      - name: Checkout applied-statistics (course)
+        uses: actions/checkout@v5
+        with:
+          repository: matthewahester/applied-statistics
+          ref: main
+          path: course-applied-statistics
+
+      - name: Checkout nonparametrics (course)
+        uses: actions/checkout@v5
+        with:
+          repository: matthewahester/nonparametrics
+          ref: main
+          path: course-nonparametrics
+
       # --- 3. Quarto --------------------------------------------------
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -187,6 +201,16 @@ jobs:
         run: quarto render
         working-directory: course-statistical-design
 
+      # applied-statistics and nonparametrics use static (non-executed) ```r
+      # fences, so they render deterministically without R.
+      - name: Render applied-statistics
+        run: quarto render
+        working-directory: course-applied-statistics
+
+      - name: Render nonparametrics
+        run: quarto render
+        working-directory: course-nonparametrics
+
       # --- 5. Assemble combined artifact ------------------------------
       # Copy CONTENTS of each course _site/ into the matching
       # subdirectory under the hub _site/. The trailing `/.` is
@@ -194,7 +218,7 @@ jobs:
       # itself and produces `_site/math-software/_site/...`.
       - name: Assemble combined _site/
         run: |
-          mkdir -p _site/math-software _site/intro-stats _site/bayesian-statistics _site/intro-probability _site/statistical-inference _site/statistical-modeling _site/modern-sas _site/statistical-design
+          mkdir -p _site/math-software _site/intro-stats _site/bayesian-statistics _site/intro-probability _site/statistical-inference _site/statistical-modeling _site/modern-sas _site/statistical-design _site/applied-statistics _site/nonparametrics
           cp -r course-math-software/_site/. _site/math-software/
           cp -r course-intro-stats/_site/. _site/intro-stats/
           cp -r course-bayesian-statistics/_site/. _site/bayesian-statistics/
@@ -203,6 +227,8 @@ jobs:
           cp -r course-statistical-modeling/_site/. _site/statistical-modeling/
           cp -r course-modern-sas/_site/. _site/modern-sas/
           cp -r course-statistical-design/_site/. _site/statistical-design/
+          cp -r course-applied-statistics/_site/. _site/applied-statistics/
+          cp -r course-nonparametrics/_site/. _site/nonparametrics/
 
       # --- 6. Tidy ---------------------------------------------------
       # The hub CNAME is the only one that matters at the artifact

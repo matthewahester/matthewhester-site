@@ -118,6 +118,28 @@ factorial experiments, causal diagrams, sampling, and study critique.
 :::
 :::
 
+::: {.course-hero-card}
+[![](assets/images/course-motifs/applied-statistics-hero.png){.course-hero-card-img fig-alt="Course identity hero for Applied Statistical Methods — a pink-and-green watermelon-tourmaline crystal cluster surrounded by applied-statistics graphics including a linear-model equation, group comparisons and ANOVA, a two-way interaction, regression with diagnostics, a contingency table, and a logistic-regression curve, with the course title."}](/applied-statistics/)
+
+::: {.course-hero-card-caption}
+[**Applied Statistical Methods**](/applied-statistics/) — choosing and
+connecting methods across groups, factors, covariates, and categorical
+outcomes: paired and two-group comparisons, one- and two-way ANOVA,
+regression and ANCOVA, contingency tables, and logistic regression.
+:::
+:::
+
+::: {.course-hero-card}
+[![](assets/images/course-motifs/nonparametrics-hero.png){.course-hero-card-img fig-alt="Course identity hero for Resampling, Nonparametric and Robust Methods — a red-orange vanadinite crystal cluster surrounded by assumption-light graphics including a bootstrap percentile interval, permutation and randomization tests, rank-based methods, robust estimators with a breakdown-point chart, and a method-comparison simulation, with the course title."}](/nonparametrics/)
+
+::: {.course-hero-card-caption}
+[**Resampling, Nonparametric & Robust Methods**](/nonparametrics/) —
+assumption-light inference: permutation and randomization tests, the
+bootstrap, rank-based methods, robust summaries and regression, and
+simulation studies of how methods behave.
+:::
+:::
+
 :::
 
 ## Teaching approach
