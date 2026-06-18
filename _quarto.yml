@@ -4,6 +4,8 @@ project:
   render:
     - "*.qmd"
 
+  resources:
+    - assets/images/course-motifs/thumbs/*.webp
 website:
   title: "Matt Hester"
   site-url: https://matthewhester.com

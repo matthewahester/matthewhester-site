@@ -3,9 +3,13 @@
 
 The full hero PNGs in ``assets/images/course-motifs/<name>-hero.png`` are the
 preserved masters (~2.3 MB each, ~1450 px wide). The teaching hub only ever
-shows them as small course cards, so loading the masters wastes bandwidth.
-This script writes ~800 px WebP thumbnails to ``course-motifs/thumbs/`` which
-the cards in ``teaching.qmd`` / ``index.qmd`` reference instead.
+shows them as small course cards (measured max render ~385 px desktop, ~553 px
+on the home page, up to ~460 px on a 1-col mobile), so loading the masters —
+or even a single oversized thumbnail — wastes bandwidth. This script writes two
+WebP candidates per hero to ``course-motifs/thumbs/``: a 480 px 1x
+(``<name>-hero-480.webp``) and an 800 px 2x (``<name>-hero.webp``). The cards in
+``teaching.qmd`` / ``index.qmd`` reference both via ``srcset``/``sizes`` so the
+browser picks the right one for the viewport and pixel density.
 
 Deterministic and idempotent. Never upscales. Strips metadata (WebP save
 carries none). Run from the repo root:
@@ -20,7 +24,9 @@ import glob
 import os
 from PIL import Image
 
-THUMB_WIDTH = 800
+# (suffix, width): the 800px keeps the historical unsuffixed name as the 2x
+# candidate; the 480px is the 1x candidate. Never upscales.
+THUMB_VARIANTS = [("-480", 480), ("", 800)]
 QUALITY = 90
 METHOD = 6
 
@@ -36,17 +42,16 @@ def main():
         raise SystemExit(f"No *-hero.png masters found in {MOTIFS}")
     for src in masters:
         stem = os.path.splitext(os.path.basename(src))[0]
-        dst = os.path.join(THUMBS, stem + ".webp")
-        im = Image.open(src)
-        w, h = im.size
-        if THUMB_WIDTH < w:  # never upscale
-            im = im.resize((THUMB_WIDTH, round(h * THUMB_WIDTH / w)),
-                           Image.LANCZOS)
-        im.convert("RGB").save(dst, "WEBP", quality=QUALITY, method=METHOD)
-        kb_src = os.path.getsize(src) / 1024
-        kb_dst = os.path.getsize(dst) / 1024
-        print(f"{stem:34s} {im.size[0]}x{im.size[1]}  "
-              f"{kb_dst:6.0f} KB  (master {kb_src:6.0f} KB)")
+        master = Image.open(src)
+        w, h = master.size
+        for suffix, width in THUMB_VARIANTS:
+            dst = os.path.join(THUMBS, stem + suffix + ".webp")
+            im = master
+            if width < w:  # never upscale
+                im = master.resize((width, round(h * width / w)), Image.LANCZOS)
+            im.convert("RGB").save(dst, "WEBP", quality=QUALITY, method=METHOD)
+            print(f"{stem + suffix:38s} {im.size[0]}x{im.size[1]}  "
+                  f"{os.path.getsize(dst) / 1024:6.0f} KB")
 
 
 if __name__ == "__main__":

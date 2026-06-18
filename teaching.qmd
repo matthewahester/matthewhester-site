@@ -18,7 +18,7 @@ section-specific material lives in the LMS, not here.
 ::: {.course-hero-card-grid}
 
 ::: {.course-hero-card}
-[![](assets/images/course-motifs/thumbs/intro-math-software-hero.webp){.course-hero-card-img fig-alt="Course identity hero for Intro to Mathematical Software — a blue-violet crystal cluster surrounded by mathematical software, workflow, simulation, and version-control graphics, with the course title."}](/math-software/)
+[![](assets/images/course-motifs/thumbs/intro-math-software-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/intro-math-software-hero-480.webp 480w, assets/images/course-motifs/thumbs/intro-math-software-hero.webp 800w" sizes="(min-width: 576px) 390px, 90vw" fig-alt="Course identity hero for Intro to Mathematical Software — a blue-violet crystal cluster surrounded by mathematical software, workflow, simulation, and version-control graphics, with the course title."}](/math-software/)
 
 ::: {.course-hero-card-caption}
 [**Intro to Mathematical Software**](/math-software/) — LaTeX, R, Quarto,
@@ -27,7 +27,7 @@ reproducible workflow, and careful AI-assisted work.
 :::
 
 ::: {.course-hero-card}
-[![](assets/images/course-motifs/thumbs/intro-stats-hero.webp){.course-hero-card-img fig-alt="Course identity hero for Intro to Statistics — an amber crystal cluster surrounded by introductory statistics graphics including distributions, uncertainty, scatterplots, center and spread, and sampling distributions, with the course title."}](/intro-stats/)
+[![](assets/images/course-motifs/thumbs/intro-stats-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/intro-stats-hero-480.webp 480w, assets/images/course-motifs/thumbs/intro-stats-hero.webp 800w" sizes="(min-width: 576px) 390px, 90vw" fig-alt="Course identity hero for Intro to Statistics — an amber crystal cluster surrounded by introductory statistics graphics including distributions, uncertainty, scatterplots, center and spread, and sampling distributions, with the course title."}](/intro-stats/)
 
 ::: {.course-hero-card-caption}
 [**Intro to Statistics**](/intro-stats/) — data, evidence, models,
@@ -58,7 +58,7 @@ them as durable, public course resources rather than finished releases.
 ::: {.course-hero-card-grid}
 
 ::: {.course-hero-card}
-[![](assets/images/course-motifs/thumbs/bayesian-statistics-hero.webp){.course-hero-card-img fig-alt="Course identity hero for Bayesian Statistics — a teal crystal cluster surrounded by Bayesian graphics including Bayes' theorem, a prior-to-posterior update, a posterior predictive band, a 95% credible interval, and an MCMC trace, with the course title."}](/bayesian-statistics/)
+[![](assets/images/course-motifs/thumbs/bayesian-statistics-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/bayesian-statistics-hero-480.webp 480w, assets/images/course-motifs/thumbs/bayesian-statistics-hero.webp 800w" sizes="(min-width: 576px) 390px, 90vw" fig-alt="Course identity hero for Bayesian Statistics — a teal crystal cluster surrounded by Bayesian graphics including Bayes' theorem, a prior-to-posterior update, a posterior predictive band, a 95% credible interval, and an MCMC trace, with the course title."}](/bayesian-statistics/)
 
 ::: {.course-hero-card-caption}
 [**Bayesian Statistics**](/bayesian-statistics/) — priors, likelihoods,
@@ -68,7 +68,7 @@ hierarchical models.
 :::
 
 ::: {.course-hero-card}
-[![](assets/images/course-motifs/thumbs/intro-probability-hero.webp){.course-hero-card-img fig-alt="Course identity hero for Introduction to Probability — an iridescent opal crystal surrounded by probability graphics including sample spaces and events, the probability rules, Bayes' rule, a binomial distribution, the normal curve, expectation, a Monte Carlo simulation sketch, and the law of large numbers, with the course title."}](/intro-probability/)
+[![](assets/images/course-motifs/thumbs/intro-probability-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/intro-probability-hero-480.webp 480w, assets/images/course-motifs/thumbs/intro-probability-hero.webp 800w" sizes="(min-width: 576px) 390px, 90vw" fig-alt="Course identity hero for Introduction to Probability — an iridescent opal crystal surrounded by probability graphics including sample spaces and events, the probability rules, Bayes' rule, a binomial distribution, the normal curve, expectation, a Monte Carlo simulation sketch, and the law of large numbers, with the course title."}](/intro-probability/)
 
 ::: {.course-hero-card-caption}
 [**Introduction to Probability**](/intro-probability/) — sample spaces,
@@ -78,7 +78,7 @@ distributions, and simulation.
 :::
 
 ::: {.course-hero-card}
-[![](assets/images/course-motifs/thumbs/statistical-inference-hero.webp){.course-hero-card-img fig-alt="Course identity hero for Statistical Inference — a deep-blue crystal cluster surrounded by inference graphics including the inferential problem, a likelihood curve, a confidence interval, a hypothesis test, a sampling distribution, a Bayesian update, the bootstrap, and a randomization test, with the course title."}](/statistical-inference/)
+[![](assets/images/course-motifs/thumbs/statistical-inference-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/statistical-inference-hero-480.webp 480w, assets/images/course-motifs/thumbs/statistical-inference-hero.webp 800w" sizes="(min-width: 576px) 390px, 90vw" fig-alt="Course identity hero for Statistical Inference — a deep-blue crystal cluster surrounded by inference graphics including the inferential problem, a likelihood curve, a confidence interval, a hypothesis test, a sampling distribution, a Bayesian update, the bootstrap, and a randomization test, with the course title."}](/statistical-inference/)
 
 ::: {.course-hero-card-caption}
 [**Statistical Inference**](/statistical-inference/) — sampling
@@ -88,7 +88,7 @@ hypothesis tests, the bootstrap, and Bayesian inference.
 :::
 
 ::: {.course-hero-card}
-[![](assets/images/course-motifs/thumbs/statistical-modeling-hero.webp){.course-hero-card-img fig-alt="Course identity hero for Statistical Modeling — a crimson crystalline cube cluster surrounded by regression graphics including the linear model equation, a residuals-versus-fitted plot, a normal Q-Q plot, a logistic-regression curve, prediction and RMSE panels, and an AIC model-comparison chart, with the course title."}](/statistical-modeling/)
+[![](assets/images/course-motifs/thumbs/statistical-modeling-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/statistical-modeling-hero-480.webp 480w, assets/images/course-motifs/thumbs/statistical-modeling-hero.webp 800w" sizes="(min-width: 576px) 390px, 90vw" fig-alt="Course identity hero for Statistical Modeling — a crimson crystalline cube cluster surrounded by regression graphics including the linear model equation, a residuals-versus-fitted plot, a normal Q-Q plot, a logistic-regression curve, prediction and RMSE panels, and an AIC model-comparison chart, with the course title."}](/statistical-modeling/)
 
 ::: {.course-hero-card-caption}
 [**Statistical Modeling**](/statistical-modeling/) — regression,
@@ -98,7 +98,7 @@ prediction and validation, and logistic regression.
 :::
 
 ::: {.course-hero-card}
-[![](assets/images/course-motifs/thumbs/modern-sas-hero.webp){.course-hero-card-img fig-alt="Course identity hero for Modern SAS for Statistical Analytics — a banded green malachite crystal surrounded by SAS analytics-workflow graphics including an import-validate-analyze-report-decide pipeline, a DATA step example, a SAS project folder tree, a PROC MEANS table, and a PROC SGPLOT scatterplot, with the course title."}](/modern-sas/)
+[![](assets/images/course-motifs/thumbs/modern-sas-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/modern-sas-hero-480.webp 480w, assets/images/course-motifs/thumbs/modern-sas-hero.webp 800w" sizes="(min-width: 576px) 390px, 90vw" fig-alt="Course identity hero for Modern SAS for Statistical Analytics — a banded green malachite crystal surrounded by SAS analytics-workflow graphics including an import-validate-analyze-report-decide pipeline, a DATA step example, a SAS project folder tree, a PROC MEANS table, and a PROC SGPLOT scatterplot, with the course title."}](/modern-sas/)
 
 ::: {.course-hero-card-caption}
 [**Modern SAS for Statistical Analytics**](/modern-sas/) — the
@@ -109,7 +109,7 @@ reproducible reporting.
 :::
 
 ::: {.course-hero-card}
-[![](assets/images/course-motifs/thumbs/statistical-design-hero.webp){.course-hero-card-img fig-alt="Course identity hero for Design, Experiments and Causal Evidence — a tan desert-rose crystal cluster surrounded by study-design graphics including a design-to-evidence workflow, a causal diagram with a confounder and a backdoor path, and a blocking-improves-precision illustration, with the course title."}](/statistical-design/)
+[![](assets/images/course-motifs/thumbs/statistical-design-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/statistical-design-hero-480.webp 480w, assets/images/course-motifs/thumbs/statistical-design-hero.webp 800w" sizes="(min-width: 576px) 390px, 90vw" fig-alt="Course identity hero for Design, Experiments and Causal Evidence — a tan desert-rose crystal cluster surrounded by study-design graphics including a design-to-evidence workflow, a causal diagram with a confounder and a backdoor path, and a blocking-improves-precision illustration, with the course title."}](/statistical-design/)
 
 ::: {.course-hero-card-caption}
 [**Design, Experiments & Causal Evidence**](/statistical-design/) —
@@ -119,7 +119,7 @@ factorial experiments, causal diagrams, sampling, and study critique.
 :::
 
 ::: {.course-hero-card}
-[![](assets/images/course-motifs/thumbs/applied-statistics-hero.webp){.course-hero-card-img fig-alt="Course identity hero for Applied Statistical Methods — a pink-and-green watermelon-tourmaline crystal cluster surrounded by applied-statistics graphics including a linear-model equation, group comparisons and ANOVA, a two-way interaction, regression with diagnostics, a contingency table, and a logistic-regression curve, with the course title."}](/applied-statistics/)
+[![](assets/images/course-motifs/thumbs/applied-statistics-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/applied-statistics-hero-480.webp 480w, assets/images/course-motifs/thumbs/applied-statistics-hero.webp 800w" sizes="(min-width: 576px) 390px, 90vw" fig-alt="Course identity hero for Applied Statistical Methods — a pink-and-green watermelon-tourmaline crystal cluster surrounded by applied-statistics graphics including a linear-model equation, group comparisons and ANOVA, a two-way interaction, regression with diagnostics, a contingency table, and a logistic-regression curve, with the course title."}](/applied-statistics/)
 
 ::: {.course-hero-card-caption}
 [**Applied Statistical Methods**](/applied-statistics/) — choosing and
@@ -130,7 +130,7 @@ regression and ANCOVA, contingency tables, and logistic regression.
 :::
 
 ::: {.course-hero-card}
-[![](assets/images/course-motifs/thumbs/nonparametrics-hero.webp){.course-hero-card-img fig-alt="Course identity hero for Resampling, Nonparametric and Robust Methods — a red-orange vanadinite crystal cluster surrounded by assumption-light graphics including a bootstrap percentile interval, permutation and randomization tests, rank-based methods, robust estimators with a breakdown-point chart, and a method-comparison simulation, with the course title."}](/nonparametrics/)
+[![](assets/images/course-motifs/thumbs/nonparametrics-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/nonparametrics-hero-480.webp 480w, assets/images/course-motifs/thumbs/nonparametrics-hero.webp 800w" sizes="(min-width: 576px) 390px, 90vw" fig-alt="Course identity hero for Resampling, Nonparametric and Robust Methods — a red-orange vanadinite crystal cluster surrounded by assumption-light graphics including a bootstrap percentile interval, permutation and randomization tests, rank-based methods, robust estimators with a breakdown-point chart, and a method-comparison simulation, with the course title."}](/nonparametrics/)
 
 ::: {.course-hero-card-caption}
 [**Resampling, Nonparametric & Robust Methods**](/nonparametrics/) —
