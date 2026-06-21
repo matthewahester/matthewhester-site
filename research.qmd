@@ -1,22 +1,25 @@
 ---
 title: "Research"
-description-meta: "Research by Matt Hester — bias-robust Bayesian evidence synthesis, publication bias, and reproducible statistical workflows. Includes a public arXiv preprint and an archived companion repository."
+description-meta: "Research by Matt Hester — bias-robust Bayesian evidence synthesis, publication bias, corpus-scale evidential auditing, and human-governed AI infrastructure for curriculum-scale work. Includes a public arXiv preprint and the Course Builder course-design harness."
 toc: true
 toc-location: right
 ---
 
-My research focuses on **bias-robust Bayesian evidence synthesis** and
-reproducible statistical workflows for applied literatures where publication
-bias, small-study effects, and selective reporting make conventional summaries
-difficult to interpret.
+My research runs along two connected strands. The first is **bias-robust
+Bayesian evidence synthesis**: reproducible statistical workflows for applied
+literatures where publication bias, small-study effects, and selective
+reporting make conventional summaries difficult to interpret. The second is
+**human-governed AI infrastructure for curriculum-scale knowledge work**:
+systems that keep large, AI-assisted course production coherent, bounded,
+reproducible, and reviewable, with instructor judgment in control.
 
-## Current work
+## Bayesian evidence synthesis
 
 ::: {.research-highlight}
 ### Quantifying Evidential Rigor in Meta-Analytic Corpora
 
 ::: {.preprint-meta}
-Public preprint and archived companion repository · Matt Hester
+Public preprint and archived companion repository · 2026 · Matt Hester
 :::
 
 *A Simulation-Characterized, Bias-Robust Bayesian Workflow with a Nutrition
@@ -40,6 +43,30 @@ literatures.
 :::
 :::
 
+## Course Builder
+
+Course Builder is a developing course-design harness — a repo-native
+analytic exoskeleton for building course materials. Rather than improvising
+from an open-ended prompt, a run extends a course as an explicit analytic
+object under a set of controls: the course context, source boundaries,
+pedagogy references, durable state, diagnostic gates, and human review.
+
+It is **not** an autonomous "make me a course" generator. Instructor
+judgment and release authority remain central: the harness prepares and
+proposes work and records honest status, but a person verifies correctness,
+confirms source licenses, signs off on accessibility, and authorizes any
+release.
+
+The ten-site [teaching portfolio](teaching.qmd) is Course Builder's current
+public demonstration layer. The public course sites carry durable notes,
+labs, worked examples, and curated resources; roster-specific, graded,
+answer-key, and instructor-only materials stay in the LMS or in private
+workspaces, never on the public sites.
+
+Course Builder is still under active development. It has not been empirically
+validated, makes no claim about learning gains, and its working manuscript is
+a developing draft rather than a publication.
+
 ## Research interests
 
 - **Bias-robust Bayesian meta-analysis.**
@@ -62,6 +89,11 @@ literatures.
   R, Quarto, Git, simulation studies, public repositories, and transparent
   research pipelines.
 
-- **Statistics education and AI-supported learning.**
-  Introductory statistics, Bayesian intuition, reproducible work, and the
-  responsible use of AI assistants in mathematical and statistical learning.
+- **Human-governed AI and curriculum infrastructure.**
+  Context-governed systems for AI-assisted course production that keep
+  generation traceable, bounded, reproducible, and under instructor control.
+
+- **Statistics education and reproducible course systems.**
+  Introductory statistics, Bayesian intuition, durable public course
+  materials, and the responsible, transparent use of AI assistants in
+  mathematical and statistical learning.

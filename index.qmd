@@ -1,8 +1,8 @@
 ---
 title: "Matt Hester"
-subtitle: "Mathematician · Statistician · Teacher"
+subtitle: "Statistician · Teacher · Researcher"
 pagetitle: "Matt Hester"
-description-meta: "Teaching and research from Matt Hester — Bayesian methods, publication bias, and reproducible course materials at UA Little Rock."
+description-meta: "Matt Hester — statistician, teacher, and researcher at UA Little Rock. Bias-robust Bayesian evidence synthesis, public course materials, and human-governed systems for building reproducible courses."
 page-layout: full
 toc: false
 ---
@@ -11,21 +11,24 @@ toc: false
      YAML `title:`). The hero-split below holds the intro prose and
      portrait, without re-introducing a body-level H1.
 
-     Card-image policy: the category cards (Teaching / Research) stay
-     text-only with a subtle stone-400 left accent. The two course cards
-     carry the full course hero artwork (which already contains the
-     course title) with a small caption below, via `.course-hero-card`.
-     Hero images live under `assets/images/course-motifs/`. -->
+     Card-image policy: the category cards (Teaching / Research /
+     Course Builder) stay text-only with a subtle stone-400 left accent.
+     The two course cards carry the full course hero artwork (which
+     already contains the course title) with a small caption below, via
+     `.course-hero-card`. Hero images live under
+     `assets/images/course-motifs/`. -->
 
 ::: {.hero-split}
 
 ::: {.hero-split-text}
-I teach mathematics and statistics at the **University of Arkansas at
-Little Rock** and direct the **Math Assistance Center**. My work centers
-on Bayesian methods, publication bias, and building usable, reproducible
-course materials for students and instructors.
+I am a statistician and teacher at the **University of Arkansas at
+Little Rock**, where I teach mathematics and statistics and direct the
+**Math Assistance Center**. My work spans bias-robust Bayesian evidence
+synthesis, statistics education, and human-governed systems for building
+durable, reproducible course materials.
 
-This site is a hub for teaching, research, and applied mathematical work.
+This site brings together my research, teaching, and public
+course-material portfolio.
 
 - [About →](about.qmd)
 - [Research →](research.qmd)
@@ -44,22 +47,30 @@ This site is a hub for teaching, research, and applied mathematical work.
 
 ::: {.feature-card}
 ### [Teaching](teaching.qmd)
-Current courses, public course sites, and the Math Assistance Center.
-Concepts first, with reproducible workflows in R and LaTeX.
+Ten public course-material sites, my teaching approach, and the Math
+Assistance Center.
 :::
 
 ::: {.feature-card}
 ### [Research](research.qmd)
-Bias-robust Bayesian evidence synthesis, publication bias, and
-reproducible statistical workflows in applied literatures.
+Bias-robust Bayesian evidence synthesis, publication bias, corpus-scale
+evidential auditing, and human-governed AI infrastructure.
+:::
+
+::: {.feature-card}
+### [Course Builder](research.qmd#course-builder)
+A developing course-design harness for coherent, reproducible, and
+reviewable AI-assisted curriculum work.
 :::
 
 :::
 
 ## Featured course sites
 
-Public, durable resource sites for two of my current courses. Roster-
-and section-specific material lives in the LMS, not here.
+These are the two featured current-course sites. The
+[Teaching page](teaching.qmd) collects the full ten-site public
+course-material portfolio; roster- and section-specific material lives
+in the LMS, not here.
 
 ::: {.course-hero-card-grid}
 

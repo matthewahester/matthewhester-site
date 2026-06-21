@@ -25,7 +25,7 @@ jobs:
         # No `path:` → checks out at the workflow's working directory.
 
       # --- 2. Course repos --------------------------------------------
-      # All eight course repos are PUBLIC; the default GITHUB_TOKEN is
+      # All ten course repos are PUBLIC; the default GITHUB_TOKEN is
       # enough for `actions/checkout` to read them. If any repo
       # becomes private, add `token: ${{ secrets.COURSE_REPOS_PAT }}`
       # to that step and create a PAT with `repo` (read) scope.

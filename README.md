@@ -1,9 +1,11 @@
 # matthewhester.com
 
-Source for [matthewhester.com](https://matthewhester.com) — a Quarto
-website for teaching and research notes by Matt Hester. Eventually
-the public hub for two sibling course sites
-(`math-software`, `intro-stats`) under the same domain.
+Source for [matthewhester.com](https://matthewhester.com) — the public
+Quarto hub for Matt Hester's teaching and research, and the umbrella that
+assembles ten sibling course-material sites under the same domain.
+
+The site is **live** at [matthewhester.com](https://matthewhester.com),
+served from GitHub Pages over HTTPS with the custom domain set via `CNAME`.
 
 ## Stack
 
@@ -11,11 +13,11 @@ the public hub for two sibling course sites
 - Plain CSS in `styles.css` (no JS framework, no SCSS pipeline)
 - GitHub Pages for hosting, with the custom domain set via `CNAME`
 - GitHub Actions workflow at `.github/workflows/publish.yml`,
-  currently `workflow_dispatch` only — see "Deployment" below
+  `workflow_dispatch` (manual) only — see "Deployment" below
 
 ## Local development
 
-Render the whole site:
+Render the hub:
 
 ```bash
 quarto render
@@ -27,7 +29,9 @@ Or run a live preview server:
 quarto preview
 ```
 
-The rendered site is written to `_site/` (gitignored).
+The rendered hub is written to `_site/` (gitignored). A local hub render
+covers only the hub pages; the course sites live in their own repos and are
+combined at deploy time (see "Combined course-site deployment").
 
 ## Layout
 
@@ -36,58 +40,75 @@ The rendered site is written to `_site/` (gitignored).
 ├── _quarto.yml              # site config, navbar, theme, OG defaults
 ├── index.qmd                # homepage: title block + split hero + cards
 ├── about.qmd
-├── teaching.qmd
-├── research.qmd             # research interests + project descriptions
-├── resources.qmd            # index of public resources
+├── teaching.qmd             # ten-site course-material portfolio
+├── research.qmd             # research strands + Course Builder + preprint
 ├── cv.qmd
 ├── contact.qmd
-├── projects.qmd             # Phase 4A redirect stub → research.html
+├── projects.qmd             # redirect stub → research.html (404 insurance)
 ├── styles.css               # rock/crystal/climbing palette
 ├── assets/                  # images (raw/ is gitignored)
-├── tools/process_images.py  # Pillow-based EXIF strip + resize
+├── tools/                   # Pillow image helpers (process, hero thumbs)
 ├── CNAME                    # custom domain for GitHub Pages
-├── _site_planning/          # local-only planning notes
+├── _site_planning/          # local-only planning notes (not rendered)
 └── .github/workflows/
-    └── publish.yml          # workflow_dispatch only (no auto-deploy)
+    └── publish.yml          # workflow_dispatch only (manual deploy)
 ```
+
+## Course sites
+
+The hub links to and — at deploy time — assembles ten public course-material
+sites, each maintained in its own public repo under
+[`matthewahester/`](https://github.com/matthewahester) and served under this
+domain:
+
+| Path | Repo |
+|---|---|
+| `/math-software/`         | `matthewahester/math-software` |
+| `/intro-stats/`           | `matthewahester/intro-stats` |
+| `/bayesian-statistics/`   | `matthewahester/bayesian-statistics` |
+| `/intro-probability/`     | `matthewahester/intro-probability` |
+| `/statistical-inference/` | `matthewahester/statistical-inference` |
+| `/statistical-modeling/`  | `matthewahester/statistical-modeling` |
+| `/modern-sas/`            | `matthewahester/modern-sas` |
+| `/statistical-design/`    | `matthewahester/statistical-design` |
+| `/applied-statistics/`    | `matthewahester/applied-statistics` |
+| `/nonparametrics/`        | `matthewahester/nonparametrics` |
+
+Two are current courses (`math-software`, `intro-stats`); the other eight are
+assembled course-material sites. The course repos have no workflows of their
+own — the hub workflow checks them out and renders them at deploy time.
 
 ## Deployment
 
-**Nothing in this repo deploys automatically.** The workflow is set
-to `on: workflow_dispatch` only — it runs only when manually
-triggered from the GitHub Actions UI.
+**Nothing in this repo deploys automatically.** The workflow is
+`on: workflow_dispatch` only — it runs when manually triggered from the
+GitHub Actions UI (or via
+`gh workflow run publish.yml --repo matthewahester/matthewhester-site --ref main`).
 
-### Current state
+A single workflow run:
 
-- The repo is on GitHub at
-  [matthewahester/matthewhester-site](https://github.com/matthewahester/matthewhester-site).
-- The first deployment has not yet been run.
-- DNS for `matthewhester.com` still points at the previous Google
-  Site; switching is a separate, explicit step.
-- The two sibling course sites (`/math-software/`, `/intro-stats/`)
-  are linked from this site but **not yet served under this
-  domain**. They live in their own repos and will be combined into
-  one Pages artifact by a future workflow change.
+1. checks out the hub and all ten public course repos;
+2. sets up Quarto (and R only if a rendered repo ships executable `{r}`
+   chunks);
+3. renders the hub and each course site;
+4. copies each course `_site/.` into `_site/<course>/`;
+5. ensures the root `CNAME` and drops any nested ones;
+6. uploads one combined Pages artifact and deploys it.
 
-### When ready to publish
+### Combined course-site deployment
 
-1. Confirm `_quarto.yml`, content pages, and the `CNAME` file are
-   what you want to ship.
-2. Trigger the workflow manually from the Actions tab in GitHub.
-3. Inspect the Actions run logs and the deployed Pages URL before
-   touching DNS.
-4. Only after the deployed site looks correct, update DNS at the
-   registrar to point at GitHub Pages.
-5. In **Settings → Pages**, verify the custom domain is
-   `matthewhester.com` and "Enforce HTTPS" is enabled.
+The hub and the ten course sites are combined into a **single** Pages
+artifact by the steps above: the hub renders to `_site/`, and each course
+site's `_site/` output is copied into a matching `_site/<course>/`
+subdirectory before the artifact is uploaded. This is why a course site
+appears at `matthewhester.com/<course>/` even though it has no workflow of
+its own.
 
-### Combined course-site deployment (planned)
+### Notes
 
-The current workflow renders only the hub. A future change will
-also check out the course-site repos, render them, and copy their
-`_site/` outputs into `_site/math-software/` and `_site/intro-stats/`
-before uploading a single Pages artifact. See
-`_site_planning/DEPLOYMENT_ARCHITECTURE_PHASE5A.md` and
-`_site_planning/PUBLISH_WORKFLOW_DRAFT_PHASE5A.md` for the planned
-architecture and the proposed workflow YAML. Neither is wired up
-yet.
+- DNS for `matthewhester.com` points at GitHub Pages; the cutover from the
+  earlier landing page is complete and the apex serves this site.
+- Switching the workflow to deploy on push to `main` is a possible future
+  change. Until the workflow itself says otherwise, deploys stay manual.
+- After any deploy, confirm the Pages run is green and spot-check the live
+  hub and a course path before relying on it.

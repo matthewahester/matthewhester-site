@@ -10,8 +10,9 @@ website:
   title: "Matt Hester"
   site-url: https://matthewhester.com
   description: |
-    Matt Hester — mathematician, statistician, and teacher at UA Little Rock.
-    Bayesian methods, publication bias, and reproducible course materials.
+    Matt Hester — statistician, teacher, and researcher at UA Little Rock.
+    Bayesian evidence synthesis, public course materials, and human-governed
+    systems for building reproducible courses.
   image: assets/images/brand/og-default-og.jpg
   open-graph: true
   twitter-card: true

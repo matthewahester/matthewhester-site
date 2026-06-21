@@ -1,6 +1,6 @@
 ---
 title: "Teaching"
-description-meta: "Teaching by Matt Hester at UA Little Rock — public course sites for Intro to Mathematical Software and Intro to Statistics, a concepts-first and reproducible approach, and the Math Assistance Center."
+description-meta: "Teaching by Matt Hester at UA Little Rock — a ten-site public course-material portfolio in mathematics and statistics (two current, eight assembled), a concepts-first and reproducible approach, the Course Builder course-design harness, and the Math Assistance Center."
 toc: true
 toc-location: right
 ---
@@ -9,6 +9,9 @@ I teach mathematics and statistics at the **University of Arkansas at Little
 Rock** and direct the **Math Assistance Center**. My teaching emphasizes
 conceptual understanding, durable public course materials, reproducible work,
 and the careful use of computational and AI tools.
+
+This portfolio collects **ten public course-material sites** — two current
+courses and eight assembled course-material sites — described below.
 
 ## Current public course sites
 
@@ -141,6 +144,18 @@ simulation studies of how methods behave.
 :::
 
 :::
+
+## Course Builder
+
+These ten public sites are the current public demonstration layer for
+**Course Builder**, a developing course-design harness I build and use. A
+Course Builder run does not improvise a course from a prompt; it extends a
+course as an explicit analytic object under stated controls — course
+context, source boundaries, pedagogy references, durable state, diagnostic
+gates, and human review. It is not autonomous course design: instructor
+judgment and release authority stay central, and graded, answer-key, and
+roster-specific material stays in the LMS, not on these public sites. See
+the [research page](research.qmd#course-builder) for more.
 
 ## Teaching approach
 

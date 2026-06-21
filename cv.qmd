@@ -1,6 +1,6 @@
 ---
 title: "CV"
-description-meta: "Brief CV summary for Matt Hester — position, research interests, teaching, and selected work."
+description-meta: "Brief CV for Matt Hester — statistician, teacher, and researcher at UA Little Rock: Bayesian evidence synthesis, a ten-site public course-material portfolio, and the human-governed Course Builder course-design harness."
 toc: true
 toc-location: right
 ---
@@ -21,6 +21,8 @@ statistics; director of the Math Assistance Center.
 - Reproducible statistical workflows (R, Quarto, Git, simulation).
 - Statistics education, including Bayesian intuition at the introductory
   level and responsible use of AI tools.
+- Human-governed AI and curriculum infrastructure, including the
+  Course Builder course-design harness.
 
 See the [Research page](research.qmd) for current project descriptions.
 
@@ -28,9 +30,10 @@ See the [Research page](research.qmd) for current project descriptions.
 
 - Undergraduate and graduate teaching in mathematics and statistics.
 - Director of the Math Assistance Center (MAC) at UA Little Rock.
-- Maintainer of public course sites for
-  [Intro to Mathematical Software](/math-software/) and
-  [Intro to Statistics](/intro-stats/).
+- Maintainer of a ten-site public mathematics and statistics
+  course-material portfolio.
+- Developer of Course Builder, a human-governed course-design harness for
+  AI-assisted curriculum work.
 
 See the [Teaching page](teaching.qmd) for current courses.
 
@@ -47,6 +50,12 @@ Nutrition Case Study.* Public preprint, arXiv:2606.01428.
   <https://doi.org/10.5281/zenodo.20467258>
 
 See the [Research page](research.qmd) for a plain-language description.
+
+**System development.** *Course Builder* — a human-governed course-design
+harness (repo-native analytic exoskeleton) for AI-assisted curriculum work.
+Its current public demonstration layer is a ten-site course-material
+portfolio. See the [Research page](research.qmd#course-builder) and the
+[Teaching page](teaching.qmd).
 
 ## Identifiers
 

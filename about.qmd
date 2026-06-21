@@ -1,41 +1,40 @@
 ---
 title: "About"
-description-meta: "About Matt Hester — mathematician and statistician at UA Little Rock, director of the Math Assistance Center."
+description-meta: "About Matt Hester — statistician, teacher, and researcher at UA Little Rock; director of the Math Assistance Center. Bias-robust Bayesian evidence synthesis, a public course-material portfolio, and human-governed course-building."
 toc: false
 ---
 
-I teach mathematics and statistics at the **University of Arkansas at Little
-Rock**, and I direct the **Math Assistance Center**. Mathematician,
-statistician, teacher — most of what I do connects those three.
+I am a statistician and teacher at the **University of Arkansas at Little
+Rock**, where I teach mathematics and statistics and direct the
+**Math Assistance Center**.
 
-## What I work on
+## Work
 
-Most of my time goes to teaching and to building course materials that last. I
-care about courses that explain why something works instead of just which
-buttons to press, and I try to keep the materials public and reusable so they
-still help after the semester ends. The two course sites here —
-[Intro to Mathematical Software](/math-software/) and
-[Intro to Statistics](/intro-stats/) — are part of that.
+My research focuses on bias-robust Bayesian evidence synthesis: how to
+evaluate a body of studies when publication bias, small-study effects, and
+selective reporting complicate conventional summaries. My recent
+[preprint](research.qmd#bayesian-evidence-synthesis) develops a
+simulation-characterized evidential-audit workflow for meta-analytic
+corpora and demonstrates it with a nutrition intervention corpus.
 
-My research is in Bayesian statistics and evidence synthesis. I work on
-bias-robust Bayesian meta-analysis: how to make sense of a body of studies when
-publication bias, small-study effects, and selective reporting make the usual
-summaries hard to trust. Much of that work is also about reproducibility. I use
-R, Quarto, LaTeX, and Git as everyday tools, and I would rather an analysis be
-something someone else can rerun than a result that only worked once.
+I also build public course materials and the systems behind them. The
+[teaching portfolio](teaching.qmd) now includes ten course-material sites.
+It also provides a public demonstration layer for
+[Course Builder](research.qmd#course-builder), a developing course-design
+harness for coherent, reproducible, and reviewable AI-assisted curriculum
+work.
+
+Across both areas, I care about work that is transparent, reusable, and
+straightforward for someone else to inspect, rerun, or extend.
 
 ## Outside work
 
 ::: {.about-split}
 
 ::: {.about-split-text}
-I do a lot of bouldering. I also garden, take care of animals with my wife,
-Jenn, and spend a fair amount of time building and fixing things — woodworking
-and the steady stream of small projects that come with a house and a yard.
-
-I like work that holds up: a problem climbed cleanly, a garden bed that keeps
-producing, a repair I don't have to do twice. That carries over to the academic
-side, though I won't pretend it all reduces to one tidy idea.
+Outside work, I boulder, garden, care for animals with my wife, Jenn, and
+take on woodworking and home projects. I like making things that are useful,
+durable, and improved through revision.
 :::
 
 ::: {.about-split-img}
@@ -43,8 +42,6 @@ side, though I won't pretend it all reduces to one tidy idea.
 :::
 
 :::
-
-![](assets/images/about/about-bouldering-aerial.jpg){.about-wide-img fig-alt="Stylized painting of a bouldering area seen from above — a climber moving across large gray boulders surrounded by pine."}
 
 If you want to get in touch, the [contact page](contact.qmd) has the best ways
 to reach me.
