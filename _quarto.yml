@@ -36,6 +36,56 @@ website:
       - href: contact.qmd
         text: Contact
 
+  # Course directory sidebar — scoped to the teaching page only (no other
+  # page is listed in its contents, so no other page shows it). Course
+  # items link straight to the live course sites; section headers jump to
+  # the matching section of the teaching page.
+  sidebar:
+    - id: teaching
+      title: "Courses"
+      style: floating
+      collapse-level: 3
+      contents:
+        - text: "Teaching overview"
+          href: teaching.qmd
+        - section: "Current courses"
+          href: teaching.qmd#current-courses
+          contents:
+            - text: "Intro to Mathematical Software"
+              href: /math-software/
+            - text: "Intro to Statistics"
+              href: /intro-stats/
+        - section: "Undergraduate course sites"
+          href: teaching.qmd#undergraduate-course-sites
+          contents:
+            - text: "Bayesian Statistics"
+              href: /bayesian-statistics/
+            - text: "Introduction to Probability"
+              href: /intro-probability/
+            - text: "Statistical Inference"
+              href: /statistical-inference/
+            - text: "Statistical Modeling"
+              href: /statistical-modeling/
+            - text: "Modern SAS for Statistical Analytics"
+              href: /modern-sas/
+            - text: "Design, Experiments & Causal Evidence"
+              href: /statistical-design/
+            - text: "Applied Statistical Methods"
+              href: /applied-statistics/
+            - text: "Resampling, Nonparametric & Robust Methods"
+              href: /nonparametrics/
+        - section: "Graduate course sites"
+          href: teaching.qmd#graduate-course-sites
+          contents:
+            - text: "In development"
+              href: teaching.qmd#graduate-course-sites
+        - text: "Course Builder"
+          href: teaching.qmd#course-builder
+        - text: "Teaching approach"
+          href: teaching.qmd#teaching-approach
+        - text: "Math Assistance Center"
+          href: teaching.qmd#math-assistance-center
+
   page-footer:
     left: "© 2026 Matt Hester"
     right: "Built with [Quarto](https://quarto.org)"
