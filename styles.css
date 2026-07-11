@@ -348,7 +348,7 @@ a:hover {
 */
 .course-hero-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr));
   gap: 1.25rem;
   margin: 1.5rem 0 2.5rem 0;
 }
@@ -376,17 +376,21 @@ a:hover {
   height: auto;
 }
 .course-hero-card-caption {
-  padding: 0.85rem 1rem 1rem 1rem;
-  font-size: 0.95rem;
-  line-height: 1.45;
-  color: var(--stone-400);
+  padding: 0.95rem 1.15rem 1.1rem 1.15rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--stone-700);
 }
 .course-hero-card-caption p {
   margin: 0;
 }
+.course-hero-card-caption p + p {
+  margin-top: 0.3rem;
+}
 .course-hero-card-caption a {
   color: var(--stone-900);
   font-weight: 600;
+  font-size: 1.08rem;
   border-bottom: none;
 }
 .course-hero-card-caption a:hover {
