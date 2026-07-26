@@ -29,6 +29,12 @@ website:
         text: About
       - href: teaching.qmd
         text: Teaching
+      # The canonical course inventory earns a top-level slot: it is reachable
+      # from anywhere, not just the Teaching sidebar. See
+      # TEACHING_PORTFOLIO_ARCHITECTURE.md section 2. Seven items is the
+      # ceiling in BRAND_STYLE_BRIEF.md — no further teaching destinations.
+      - href: courses.qmd
+        text: Courses
       - href: research.qmd
         text: Research
       - href: cv.qmd
@@ -36,54 +42,26 @@ website:
       - href: contact.qmd
         text: Contact
 
-  # Course directory sidebar — scoped to the teaching pages (teaching.qmd
-  # and teaching-graduate.qmd are the only pages listed in its contents, so
-  # no other page shows it; both opt in via `sidebar: teaching` in their
-  # front matter). Course items link straight to the live course sites;
-  # section headers jump to the matching section or page. The graduate
-  # section points at its own page because no graduate course site exists
-  # yet — do not add a /slug/ link there until one does.
+  # Teaching sidebar — major pages and sections only. It deliberately does NOT
+  # enumerate individual courses: the portfolio is heading for roughly 25-30
+  # records, and a sidebar that grows with the course count is a defect
+  # (TEACHING_PORTFOLIO_ARCHITECTURE.md section 2). The complete inventory is
+  # the Course Library, reachable from the navbar on every page. Shown on
+  # teaching.qmd and courses.qmd, which opt in via `sidebar: teaching`.
   sidebar:
     - id: teaching
-      title: "Courses"
+      title: "Teaching"
       style: floating
-      collapse-level: 3
+      collapse-level: 2
       contents:
         - text: "Teaching overview"
           href: teaching.qmd
-        - section: "Current courses"
+        - text: "Current courses"
           href: teaching.qmd#current-courses
-          contents:
-            - text: "Intro to Mathematical Software"
-              href: /math-software/
-            - text: "Intro to Statistics"
-              href: /intro-stats/
-        - section: "Undergraduate course sites"
+        - text: "Undergraduate course sites"
           href: teaching.qmd#undergraduate-course-sites
-          contents:
-            - text: "Bayesian Statistics"
-              href: /bayesian-statistics/
-            - text: "Introduction to Probability"
-              href: /intro-probability/
-            - text: "Statistical Inference"
-              href: /statistical-inference/
-            - text: "Statistical Modeling"
-              href: /statistical-modeling/
-            - text: "Modern SAS for Statistical Analytics"
-              href: /modern-sas/
-            - text: "Design, Experiments & Causal Evidence"
-              href: /statistical-design/
-            - text: "Applied Statistical Methods"
-              href: /applied-statistics/
-            - text: "Resampling, Nonparametric & Robust Methods"
-              href: /nonparametrics/
-        - section: "Graduate course sites"
-          href: teaching-graduate.qmd
-          contents:
-            - text: "Mathematical Statistics I"
-              href: teaching-graduate.qmd#mathematical-statistics-i
-            - text: "Curriculum pathway"
-              href: teaching-graduate.qmd#curriculum-pathway
+        - text: "Course Library"
+          href: courses.qmd
         - text: "Course Builder"
           href: teaching.qmd#course-builder
         - text: "Teaching approach"

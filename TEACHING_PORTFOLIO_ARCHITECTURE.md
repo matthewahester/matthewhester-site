@@ -2,10 +2,10 @@
 
 Status: approved
 Owner: Matthew Hester
-Scope: matthewhester.com teaching portfolio and course-collection pages
+Scope: matthewhester.com teaching portfolio, Course Library, and course records
 
 _Approved control document. Local planning only; not rendered into `_site/`._
-_Saved: 2026-07-26._
+_Saved: 2026-07-26. Revised: 2026-07-26 (unified Course Library model)._
 
 ## 1. Purpose
 
@@ -21,171 +21,162 @@ public site.
 
 ## 2. Information architecture
 
-### Teaching overview
+The portfolio has exactly two teaching destinations. They do different jobs
+and must not drift into being two catalogs of the same thing.
 
-The main Teaching page remains the public overview.
+### Teaching
 
-It should contain:
+The Teaching page is the personal teaching overview and curated showcase. It
+carries the teaching introduction, the current courses, a showcase of course
+work worth seeing first, the Course Builder, teaching approach, and Math
+Assistance Center sections, and a clear link to the Course Library.
 
-- the teaching introduction;
-- current courses, regardless of undergraduate or graduate level;
-- a compact way to browse the public course collections;
-- the existing undergraduate course presentation for now;
-- a link and short introduction to the graduate collection;
-- the Course Builder, teaching approach, and Math Assistance Center sections.
+Teaching answers "who is this person as a teacher, and what are they teaching
+now." It is allowed to be selective. It is not required to list everything.
 
-Do not create a separate undergraduate landing page in this tranche.
+### Course Library
 
-The existing undergraduate arrangement should not be broadly redesigned merely
-for symmetry with the graduate collection.
+The Course Library is the canonical inventory of all public course materials.
+It holds undergraduate and graduate records together in one place, ordered by
+curriculum grouping rather than split by level.
 
-### Graduate collection
+The Library answers "what exists, and what state is it in." It is required to
+be complete. Every course record the site publishes lives here.
 
-Graduate courses receive a dedicated collection page within the same teaching
-ecosystem.
+Do not maintain a separate undergraduate landing page and a separate graduate
+landing page. Level is a property of a record, not a destination.
 
-The page should:
+### Navigation
 
-- explain the purpose and status of the graduate collection;
-- provide a restrained curriculum or sequence view;
-- use a single-column course presentation;
-- distinguish real course sites from planned or developing courses;
-- link back clearly to the Teaching overview.
+The complete inventory is reachable through a site-wide `Courses` navigation
+item, from anywhere on the site, not only through the Teaching sidebar.
 
-A course should receive a full course entry or hero only when a public course
-site exists or the course is in substantial development.
-
-Planned courses may appear in a compact curriculum map, but they must not look
-like published or currently offered courses.
-
-Current graduate courses may also appear in the Current courses section of the
-Teaching overview.
+Sidebars navigate major pages and sections. They must not enumerate every
+individual course. A sidebar that grows with the course count is a defect: the
+portfolio is expected to reach roughly 25 to 30 records, and the navigation
+must not grow with it.
 
 ## 3. Visual system
 
-Graduate courses belong to the same visual family as the undergraduate courses.
+All course presentation belongs to the same stone-and-crystal visual family.
 
-Retain:
+Full course heroes remain appropriate for:
 
-- full-width, single-column course entries;
-- the established hero proportions;
-- generous spacing;
-- the crystal or mineral-centered visual grammar;
-- course-specific mathematical panels;
+- individual public course sites;
+- current courses;
+- selected showcase entries on the Teaching page.
+
+The complete Library uses compact, single-column course records. It must stay
+readable and scannable at roughly 25 to 30 entries, which full heroes cannot
+do. Compact records may carry an existing hero thumbnail, but they must not
+require one.
+
+Retain throughout:
+
+- single-column course presentation, never a dense multi-column card grid;
+- generous spacing and the existing typography;
+- the crystal or mineral-centered visual grammar where artwork appears;
 - accessible, descriptive alternative text;
-- the existing typography and overall site restraint.
+- overall site restraint.
 
-Do not convert the course collection into a dense multi-column card grid.
+Placeholder records get a restrained text treatment. A placeholder must never
+look like a published course site or an announced offering, and must carry no
+hover or link affordance, because there is nothing to click.
 
-Graduate heroes should use a somewhat more formal mathematical register, but
-they should not become uniformly dark, grey, intimidating, or visually separate
-from the undergraduate collection.
+Do not reuse an unrelated existing hero as a placeholder. Do not generate
+graduate hero artwork during architecture work; heroes and course content are
+developed separately through the curriculum agent.
 
-Do not reuse an unrelated existing hero as a placeholder.
+## 4. Course records
 
-Do not generate the final Mathematical Statistics I hero during the initial
-architecture tranche unless Matt separately approves that visual work.
+Every record has a *kind* and a *status*. The two are independent and both
+must be truthful.
 
-## 4. Course status model
+### Record kind
 
-The public portfolio recognizes four course states:
+- **Course site** — a public course-material site exists at a real URL. The
+  record links to it.
+- **Course** — a real course that exists in the catalog, whose public
+  materials do not exist or are still being assembled. The record does not
+  link anywhere.
+- **Curriculum direction** — a planning-stage area of the curriculum. Not a
+  scheduled course, not an adopted requirement, not an in-development course
+  site. The record does not link anywhere.
 
-### Current offering
+Only a Course site record may be clickable.
 
-A course tied to a presently scheduled section.
+### Public-material status
 
-Display, where useful:
+Status describes the public materials, not the course's existence:
 
-- Current offering
-- academic term
-- last substantive review date
-
-Exact meetings, rooms, assignment dates, grades, announcements, and other
-operational information remain in Blackboard or the authoritative university
-system.
-
-### Maintained public reference
-
-A durable resource collection that is not currently representing a scheduled
-section.
-
-Display:
-
-- Maintained public reference
-- last substantive review date, when known
-
-### In development
-
-A course whose structure or materials are still being assembled.
-
-Display:
-
-- In development
-- a clear statement that dates, policies, assessments, and materials may remain
-  provisional
-
-### Archived resource
-
-A preserved course resource that is no longer actively maintained.
-
-Display:
-
-- Archived resource
-- the last maintained or reviewed date, when known
-- a warning that links, software instructions, or policies may be outdated
+- **Current offering** — tied to a presently scheduled section. May show the
+  academic term and last substantive review date.
+- **Maintained public reference** — a durable resource collection not
+  currently representing a scheduled section. May show a review date.
+- **In development** — materials are still being assembled. Must carry a clear
+  statement that dates, policies, assessments, and materials remain
+  provisional.
+- **No public materials yet** — the course is real, but nothing public exists.
+- **Curriculum direction** — the record describes direction only.
+- **Archived resource** — preserved but no longer maintained. Shows the last
+  maintained date when known, and a warning that links, software instructions,
+  or policies may be outdated.
 
 Status must be communicated in text, not by color alone.
 
+Exact meetings, rooms, assignment dates, grades, and announcements remain in
+Blackboard or the authoritative university system.
+
 ## 5. Freshness and dates
 
-Prefer the label:
+Prefer the label "Last substantively reviewed".
 
-> Last substantively reviewed
-
-Do not use a generic file-modification date as though it represented a complete
-content review.
-
-Do not invent review dates.
-
-Where review dates have not yet been curated, the site may show the truthful
-course status without displaying a date.
+Do not use a generic file-modification date as though it represented a
+complete content review. Do not invent review dates. Where review dates have
+not been curated, show the truthful status without a date.
 
 Individual pages need separate review dates only when their accuracy is
-especially time-sensitive, such as:
-
-- software installation instructions;
-- package or platform guidance;
-- external resource collections;
-- AI-use guidance;
-- policy links.
-
-Stable mathematical exposition does not require a conspicuous date on every
-page.
+especially time-sensitive: software installation instructions, package or
+platform guidance, external resource collections, AI-use guidance, policy
+links. Stable mathematical exposition does not require a conspicuous date.
 
 ## 6. Metadata
 
-Course title, level, status, subtitle, review date, current term, hero path,
-summary, and public URL should eventually have one authoritative metadata
-source.
+There is one authoritative course registry. Title, code, level, kind, status,
+curriculum grouping, summary, public URL, hero or thumbnail, and review date
+live there and nowhere else.
 
-Prefer a lightweight YAML or equivalent registry compatible with the existing
-Quarto structure.
+Pages read the registry. They do not restate its contents. If a course's
+title, status, summary, or URL appears in two files, that is a defect.
 
-Do not force a large rewrite of the current Teaching page solely to introduce
-the registry. A staged migration is acceptable, but newly introduced graduate
-metadata should not be duplicated across several files without necessity.
+The registry is a lightweight YAML file consumed by Quarto's native listing
+facility. Do not introduce a build step, a client-side framework, or a new
+dependency to read it.
 
-Generated counts are acceptable. Otherwise, avoid brittle prose such as an
-exact hard-coded number of course sites.
+Unknown values are omitted, never invented. A missing code, URL, prerequisite,
+date, or review date is simply absent from the record.
 
-## 7. Mathematical Statistics I
+Generated counts are acceptable. Avoid brittle prose such as an exact
+hard-coded number of course sites.
 
-Initial public metadata:
+The Teaching page keeps its own curated hero presentation for now. Migrating
+that presentation to registry-driven rendering is a later tranche, not a
+reason to redesign the page.
+
+## 7. Graduate seeding
+
+The graduate portion of the Library is seeded only from what the existing
+governing materials already support. Do not invent the eventual graduate
+curriculum to fill the page, and do not manufacture the remaining courses the
+curriculum may eventually contain.
+
+### Mathematical Statistics I
 
 - Course: Mathematical Statistics I
 - Code: MATH 75063
 - Subtitle: Probability, Likelihood, and Estimation
 - Level: Graduate
+- Kind: Course
 - Status: In development
 
 The public site must keep three things distinct.
@@ -209,64 +200,78 @@ and proposed pilots. Present them as curriculum direction only, and do not
 imply that they are scheduled offerings, that they have been adopted, or that
 Matt is assigned to teach them.
 
-It must not be presented as a current offering until the term, section, meeting,
-calendar, and release decisions are actually settled.
+It must not be presented as a current offering until the term, section,
+meeting, calendar, and release decisions are actually settled.
 
-Until a public course site exists, its graduate-page treatment should not
-contain a broken or misleading course-site link.
+### Mathematical Statistics II
+
+May be identified as the established second catalog course in the sequence. It
+must not appear to have public materials while none exist: kind Course, status
+No public materials yet, no link.
+
+### Curriculum directions
+
+Regression and generalized linear models, computational statistics, Bayesian
+modeling, and causal inference may appear as curriculum-direction records
+only. They are not scheduled courses, adopted requirements, or in-development
+course sites.
 
 ## 8. Public/private boundary
 
-The public site may contain:
+The public site may contain stable notes, reading and curriculum maps, open
+computational notebooks, non-sensitive demonstrations, and durable course
+descriptions and public references.
 
-- stable notes;
-- reading and curriculum maps;
-- open computational notebooks;
-- non-sensitive demonstrations;
-- durable course descriptions and public references.
-
-The public site must not expose:
-
-- rosters or student information;
-- grades or submissions;
-- private announcements;
-- answer keys;
-- protected assessment materials;
-- section-specific material that belongs in Blackboard;
-- provisional operational details presented as final.
+The public site must not expose rosters or student information, grades or
+submissions, private announcements, answer keys, protected assessment
+materials, section-specific material that belongs in Blackboard, or
+provisional operational details presented as final.
 
 ## 9. Design boundaries
 
-This work should remain professional, simple, and Quarto-friendly.
+This work remains professional, simple, and Quarto-friendly.
 
-Do not introduce:
+Do not introduce a site-wide redesign, heavy JavaScript, a client-side
+application framework, flashy animation, a dense dashboard treatment,
+unnecessary new dependencies, or broken links to course sites that do not yet
+exist.
 
-- a site-wide redesign;
-- heavy JavaScript;
-- flashy animation;
-- a larger top-level navbar merely to expose the graduate page;
-- an unrelated Resources page;
-- a dense dashboard treatment;
-- unnecessary new dependencies;
-- broken links to course sites that do not yet exist.
+Use Quarto's existing listing, search, and filter facilities before writing
+anything custom. Filter and search controls must be keyboard reachable and
+labeled.
 
-## 10. Initial implementation tranche
+The navbar stays concise. `Courses` earns a top-level slot because it is the
+canonical inventory; further teaching destinations do not.
 
-The first tranche should establish the architecture rather than complete the
-graduate portfolio.
+## 10. Compatibility routes
 
-It should:
+Published URLs are promises. When a page's role changes, its old URL keeps
+working.
 
-1. add a dedicated Graduate Course Sites page;
-2. link it naturally from the Teaching overview without expanding the main
-   navbar unnecessarily;
-3. replace the brittle exact portfolio count with durable wording or generated
-   metadata;
-4. replace the one-line graduate placeholder with a useful introduction and
-   link;
-5. present Mathematical Statistics I honestly as In development;
-6. include a restrained initial curriculum-pathway treatment;
-7. preserve the current undergraduate hero layout;
-8. establish the beginning of the status and metadata model;
-9. render and verify the site at desktop and narrow widths;
-10. avoid publishing until Matt has reviewed the rendered first pass.
+`teaching-graduate.html` was the separate graduate destination. It remains a
+valid public URL and resolves into the graduate portion of the Course Library.
+It must not survive as a competing second catalog.
+
+The ten existing public course-site URLs are fixed. Do not rename or retarget
+them.
+
+## 11. Tranches
+
+Architecture is established before content is filled in.
+
+Completed:
+
+1. a dedicated graduate page, the four-state status model, and the first
+   honest In development record;
+2. the unified Course Library: registry, canonical inventory page, site-wide
+   `Courses` navigation, reduced sidebar, and the graduate compatibility
+   route.
+
+Deferred, in no fixed order:
+
+- choosing which courses become the smaller featured selection on Teaching;
+- migrating the Teaching hero presentation to registry-driven rendering;
+- graduate course content, syllabi, and hero artwork, through the curriculum
+  agent;
+- curated substantive-review dates;
+- the remaining graduate records, as the curriculum is actually decided.

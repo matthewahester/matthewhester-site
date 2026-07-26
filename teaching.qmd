@@ -12,7 +12,9 @@ and the careful use of computational and AI tools.
 
 This portfolio collects my **public course-material sites** — the courses I
 am currently teaching, the assembled undergraduate collection, and the
-graduate collection now being built — described below.
+graduate collection now being built. This page is the overview; the
+[Course Library](courses.qmd) is the complete inventory, undergraduate and
+graduate together, with search and filtering.
 
 ## Current courses {#current-courses}
 
@@ -164,15 +166,16 @@ simulation studies of how methods behave.
 
 :::
 
-## Graduate course sites {#graduate-course-sites}
+## Graduate courses {#graduate-course-sites}
 
-The graduate collection is early, and it has its own page so it can grow
-without crowding the undergraduate sites above. **Mathematical Statistics I**
-(MATH 75063) is the first course being assembled there. It is in development
-and does not have a public course site yet.
+Graduate records live in the Course Library alongside the undergraduate ones,
+rather than in a separate catalog. The graduate portion is early: it covers
+the mathematical-statistics sequence and the directions the rest of the
+graduate curriculum is heading in, and each record carries the state its
+public materials are actually in.
 
-See the [graduate course sites](teaching-graduate.qmd) for the state of that
-collection and where the course sits in the graduate curriculum.
+See the [graduate records in the Course
+Library](courses.qmd#category=Graduate) for what exists today.
 
 ## Course Builder
 

@@ -1,0 +1,44 @@
+<%
+/* Course Library record template.
+   Governed by TEACHING_PORTFOLIO_ARCHITECTURE.md sections 3, 4 and 6.
+
+   Compiled by Quarto with lodash _.template. Custom templates receive only
+   { items, metadataAttrs, templateParams, utils } -- there is no `listing`
+   object, so none of the listing.utilities helpers exist here. Everything is
+   written out by hand below.
+
+   The rule this template exists to enforce: only a record with a real `path`
+   gets an anchor. Quarto's stock item templates emit an empty-href anchor
+   even when an item has no path, which makes a placeholder look clickable,
+   keyboard-focusable, and reloads the page when activated. Records without a
+   path render as plain text with no link affordance at all.
+
+   Two authoring constraints, both learned the hard way:
+     1. Emitted HTML must start at column 0 and carry no blank lines inside a
+        record. Indent it four spaces and Pandoc renders it as a code block.
+     2. Do not write the template delimiters literally in these comments; the
+        closing one ends the block early.
+
+   The wrapper needs class "list" and each searchable value needs class
+   "listing-<field>", or Quarto's List.js search/sort/pagination silently
+   no-ops. metadataAttrs(item) supplies data-index and data-categories, which
+   the category filter reads. */
+%>
+<div class="course-library-list list">
+<% for (const item of items) { %>
+<% const isSite = item.kind === 'site' && item.path; %>
+<% const statusClass = 'course-status-' + (item.status || '').toLowerCase().replace(/[^a-z]+/g, '-'); %>
+<div class="course-record course-record-<%= item.kind || 'course' %>" <%= metadataAttrs(item) %>>
+<div class="course-record-main">
+<p class="course-record-title listing-title"><% if (isSite) { %><a href="<%= item.path %>"><%- item.title %></a><% } else { %><%- item.title %><% } %></p>
+<p class="course-record-meta"><span class="course-record-level listing-level"><%- item.level %></span><% if (item.code) { %><span class="course-record-code listing-code"><%- item.code %></span><% } %><span class="course-record-group listing-group"><%- item.group %></span></p>
+<p class="course-record-summary listing-summary"><%- item.summary %></p>
+<% if (item.reviewed) { %><p class="course-record-reviewed">Last substantively reviewed <span class="listing-reviewed"><%- item.reviewed %></span></p><% } %>
+<p class="course-record-status"><span class="course-status <%= statusClass %>"><span class="visually-hidden">Course status:</span> <span class="listing-status"><%- item.status %></span></span><% if (!isSite) { %><span class="course-record-nolink">No public site yet</span><% } %></p>
+</div>
+<% if (item.image) { %>
+<div class="course-record-thumb"><% if (isSite) { %><a href="<%= item.path %>" tabindex="-1" aria-hidden="true"><img src="<%= item.image %>" alt="" loading="lazy" /></a><% } else { %><img src="<%= item.image %>" alt="" loading="lazy" /><% } %></div>
+<% } %>
+</div>
+<% } %>
+</div>

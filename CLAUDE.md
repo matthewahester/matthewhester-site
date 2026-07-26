@@ -54,18 +54,39 @@ Top-level pages (must stay in sync with the navbar in `_quarto.yml`):
 
 - `index.qmd` — split hero + three category cards + featured course sites
 - `about.qmd` — short professional bio
-- `teaching.qmd` — current courses, public vs LMS distinction, MAC
+- `teaching.qmd` — teaching overview and showcase: current courses,
+  public vs LMS distinction, Course Builder, MAC
+- `courses.qmd` — the Course Library, the canonical inventory of every
+  public course record. Renders `courses.yml` through Quarto's listing
+  and `_listings/course-record.ejs`
 - `research.qmd` — interests, projects, publications, talks, collaborators
 - `resources.qmd` — software guides, statistics notes, cross-links
 - `cv.qmd` — position summary, interests, PDF link
 - `contact.qmd` — professional contact only
 
-`teaching-graduate.qmd` — the graduate course collection — is a
-secondary page, deliberately **not** in the navbar. Per
-`TEACHING_PORTFOLIO_ARCHITECTURE.md` section 9, the navbar must not
-grow merely to expose it; it is reached from the Teaching page and
-from the Courses sidebar instead. Both teaching pages opt into that
-sidebar with `sidebar: teaching` in their front matter.
+The navbar now carries seven items, which `BRAND_STYLE_BRIEF.md` sets
+as the absolute ceiling. `Courses` earns its slot because the Library is
+the canonical inventory and must be reachable from anywhere. **Do not add
+an eighth item**, and do not add further teaching destinations —
+`TEACHING_PORTFOLIO_ARCHITECTURE.md` sections 2 and 9.
+
+`teaching-graduate.qmd` is a redirect stub. It was the separate graduate
+page before the unified Course Library; section 10 of the architecture
+control keeps the URL working and forbids it becoming a second catalog.
+It redirects to `courses.html#category=Graduate` — Quarto's listing
+deep-link hash, read by `quarto-listing.js` on load. Do not give it
+course records of its own.
+
+**One authoritative course source.** Course titles, codes, levels,
+statuses, summaries, groupings, URLs, and thumbnails live in
+`courses.yml` and nowhere else. If a course fact appears in two files,
+that is a defect. The Teaching page's hero collection is the one
+remaining hand-written exception, and migrating it is a later tranche.
+
+`teaching.qmd` and `courses.qmd` opt into the trimmed `teaching` sidebar
+with `sidebar: teaching`. That sidebar lists major pages and sections
+only — never individual courses, because the portfolio is heading for
+roughly 25-30 records.
 
 `projects.qmd` is a redirect stub left in place to preserve the old
 URL; its content has been folded into `research.qmd`. Do not revive

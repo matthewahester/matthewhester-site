@@ -328,11 +328,12 @@ a:hover {
    Future-courses note
    -------------------------------------------------------------
    A small caption-style note for courses that don't yet have a
-   public site. Used inside .course-entry to carry the "materials
-   are provisional" statement. Set in body ink rather than basalt:
-   stone-400 on white is only 3.6:1, and this note is exactly the
-   text a reader must not skim past. Same readability call that
-   the course-hero-card captions already made.
+   public site. Currently unused: the Course Library carries that
+   statement in each record's summary and status instead. Parked
+   here the same way .feature-card-with-image is (see CLAUDE.md),
+   for the next page that wants a quiet aside. Set in body ink
+   rather than basalt: stone-400 on white is only 3.6:1, and this
+   is exactly the text a reader must not skim past.
 */
 .future-courses-note {
   margin-top: 1rem;
@@ -411,66 +412,29 @@ a:hover {
    emergent, not stated, and widening the container would silently
    flip it to two. This modifier states the intent instead, so a
    collection cannot drift into a card wall as courses are added.
-   Carried by the undergraduate and graduate collections.
+   Carried by the undergraduate hero collection on teaching.qmd. The
+   Course Library uses .course-record instead — compact rows, not
+   heroes — because it has to stay scannable at 25-30 entries.
 */
 .course-hero-card-grid.course-collection-single {
   grid-template-columns: 1fr;
 }
 
 /* -------------------------------------------------------------
-   Course entry (a course with no public site yet)
-   -------------------------------------------------------------
-   The same stone skeleton as .course-hero-card, for a course that
-   is being assembled but has no hero artwork and no public site to
-   link to. Deliberately quieter than a hero card: a basalt left
-   edge instead of the crystal one, no hover lift, and nothing that
-   behaves like a link — so a course in development can never be
-   mistaken for a published course site.
-*/
-.course-entry {
-  background-color: #ffffff;
-  border: 1px solid var(--stone-200);
-  border-left: 3px solid var(--stone-400);
-  border-radius: var(--radius-card);
-  padding: 1.15rem 1.35rem 1.25rem 1.35rem;
-  box-shadow: var(--shadow-card);
-}
-.course-entry > *:first-child {
-  margin-top: 0;
-}
-.course-entry > *:last-child {
-  margin-bottom: 0;
-}
-/* Course name, then the code and subtitle line. Metrics match the
-   hero-card caption so the two treatments read as one family. */
-.course-entry-head {
-  margin: 0.85rem 0 0.6rem 0;
-}
-.course-entry-head p {
-  margin: 0;
-  color: var(--stone-900);
-  font-weight: 600;
-  font-size: 1.08rem;
-}
-.course-entry-head p + p {
-  margin-top: 0.15rem;
-  color: var(--stone-700);
-  font-weight: 400;
-  font-size: 0.92rem;
-}
-
-/* -------------------------------------------------------------
    Course status labels
    -------------------------------------------------------------
-   The four course states from TEACHING_PORTFOLIO_ARCHITECTURE.md
+   The six course states from TEACHING_PORTFOLIO_ARCHITECTURE.md
    section 4. The status *word* carries the meaning; the pill is
    only a frame. So the label still reads correctly in greyscale,
    in forced-colors mode, and to a screen reader — and the markup
    pairs it with a visually-hidden "Course status:" prefix. The
    shape is borrowed from .artifact-pills so the site keeps one
-   pill vocabulary. One modifier per state, named after the state,
-   so a metadata registry can emit the class mechanically later
-   without needing new CSS.
+   pill vocabulary.
+
+   Modifier names are the status string slugified, because the
+   Course Library template emits them mechanically from courses.yml:
+   "In development" -> .course-status-in-development. Adding a status
+   to the registry needs a rule here and nothing else.
 */
 .course-status {
   display: inline-block;
@@ -482,60 +446,282 @@ a:hover {
   border: 1px solid var(--stone-200);
   border-radius: 999px;
 }
-.course-status p {
-  margin: 0;
-}
 /* Current offering — the only state that earns the crystal edge. */
-.course-status-current {
+.course-status-current-offering {
   color: var(--crystal-blue);
   border-color: var(--crystal-blue);
   background-color: #ffffff;
 }
 /* Maintained public reference — the base pill, named explicitly so
    every state has a class of its own. */
-.course-status-reference {
+.course-status-maintained-public-reference {
   color: var(--stone-700);
 }
 /* In development — a dashed edge reads as "provisional" without
    asking color to carry that meaning. */
-.course-status-development {
+.course-status-in-development {
   border-style: dashed;
   border-color: var(--stone-400);
   background-color: #ffffff;
+}
+/* No public materials yet — the course is real, nothing public
+   exists. Quiet, and deliberately not dashed: nothing is underway. */
+.course-status-no-public-materials-yet {
+  color: var(--stone-700);
+  background-color: var(--stone-50);
+}
+/* Curriculum direction — planning-stage only. Dotted edge separates
+   it from In development's dashed one without using color. */
+.course-status-curriculum-direction {
+  border-style: dotted;
+  border-color: var(--stone-400);
+  background-color: var(--stone-50);
 }
 /* Archived resource — receded by its fill, not by faint text. The
    stone-50 plate drops to the page background while the word itself
    stays at body ink; stone-400 here would be 3.3:1, worse than the
    contrast .future-courses-note above just rejected. */
-.course-status-archived {
+.course-status-archived-resource {
   color: var(--stone-700);
   background-color: var(--stone-50);
 }
 
 /* -------------------------------------------------------------
-   Curriculum map
+   Course Library records
    -------------------------------------------------------------
-   A text-only view of where a course sits in a sequence. Kept
-   deliberately un-carded — no panel, no shadow, no hover — so that
-   planned or proposed work cannot read as a published course site.
-   Just a quiet stone rule down the left, like .future-courses-note.
+   The canonical inventory (courses.qmd), rendered by Quarto's
+   listing from courses.yml through _listings/course-record.ejs.
+   These are deliberately NOT hero cards: the library has to stay
+   scannable at roughly 25-30 records, which full heroes cannot do.
+   One record per row at every width, a small thumbnail on the
+   right where one exists, and a hairline rule between rows instead
+   of a panel — closer to an index than to a gallery.
+
+   Only kind: site records carry a link. .course-record-course and
+   .course-record-direction have no anchor at all (enforced in the
+   template), and get no hover treatment here, so nothing about
+   them invites a click.
 */
-.curriculum-map {
-  margin: 1.25rem 0;
-  padding: 0.15rem 0 0.15rem 1.1rem;
+.course-library-list {
+  margin: 1.5rem 0 2rem 0;
+  border-top: 1px solid var(--stone-200);
+}
+.course-record {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.1rem;
+  align-items: start;
+  padding: 1.1rem 0.2rem;
+  border-bottom: 1px solid var(--stone-200);
+}
+.course-record-main > p {
+  margin: 0;
+}
+.course-record-title {
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--stone-900);
+  line-height: 1.35;
+}
+.course-record-title a {
+  color: var(--stone-900);
+  border-bottom: none;
+}
+.course-record-title a:hover {
+  color: var(--iron-accent);
+  border-bottom: none;
+}
+/* Level, code, and curriculum group, separated by hairline dividers
+   rather than punctuation so the row stays quiet. */
+.course-record-meta {
+  margin-top: 0.2rem !important;
+  font-size: 0.88rem;
+  color: var(--stone-700);
+}
+.course-record-meta > span + span {
+  margin-left: 0.55rem;
+  padding-left: 0.55rem;
+  border-left: 1px solid var(--stone-200);
+}
+.course-record-code {
+  font-family: "JetBrains Mono", Consolas, Menlo, monospace;
+  font-size: 0.82rem;
+}
+.course-record-summary {
+  margin-top: 0.45rem !important;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.course-record-reviewed {
+  margin-top: 0.35rem !important;
+  font-size: 0.85rem;
+  color: var(--stone-700);
+}
+.course-record-status {
+  margin-top: 0.6rem !important;
+}
+/* Says out loud what the missing link already implies. */
+.course-record-nolink {
+  margin-left: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--stone-700);
+}
+.course-record-thumb {
+  width: 132px;
+}
+.course-record-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--stone-200);
+  border-radius: var(--radius-card);
+}
+/* Every record that is NOT a course site — a real course whose
+   materials do not exist yet, and a planning-stage direction —
+   gets an indented left rule. That is the one cue that separates
+   "nothing to click here" from a published site at a glance,
+   alongside the status pill and the "No public site yet" note.
+   Keyed off :not(.course-record-site) rather than per-kind so a
+   new non-linking kind inherits it automatically. */
+.course-record:not(.course-record-site) .course-record-main {
+  padding-left: 0.9rem;
   border-left: 2px solid var(--stone-200);
 }
-.curriculum-map ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
+/* Curriculum direction — the lightest record on the page: no
+   thumbnail, no link, and a lighter title than a real course. */
+.course-record-direction .course-record-title {
+  font-weight: 500;
 }
-.curriculum-map li {
+
+/* -------------------------------------------------------------
+   Course Library listing controls
+   -------------------------------------------------------------
+   Quarto emits the Filter box, Order By select, and category cloud.
+   We only tone them into the stone palette and give the category
+   chips a pill shape matching .course-status and .artifact-pills.
+   No JS is added: the search, sort, and category filtering are
+   Quarto's own listing behavior.
+*/
+.quarto-listing .listing-actions-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.25rem 0 0.25rem 0;
+}
+.quarto-listing .input-group-text {
+  background-color: var(--stone-100);
+  border-color: var(--stone-200);
+  color: var(--stone-700);
+}
+.quarto-listing .form-control,
+.quarto-listing .form-select {
+  border-color: var(--stone-200);
+  color: var(--stone-700);
+}
+.quarto-listing .form-control:focus,
+.quarto-listing .form-select:focus {
+  border-color: var(--crystal-blue);
+  box-shadow: 0 0 0 2px rgba(91, 122, 140, 0.25);
+}
+.quarto-listing-category {
+  margin: 0.5rem 0 0 0;
+}
+/* Selector doubled to (0,3,0) so it beats Quarto's own
+   `.quarto-listing-category.category-cloud .category{padding-right:5px}`,
+   which otherwise wins on specificity and renders the pills lopsided. */
+.quarto-listing-category.quarto-listing-category .category {
+  display: inline-block;
+  margin: 0 0.35rem 0.4rem 0;
+  padding: 0.18rem 0.65rem;
+  font-size: 0.82rem;
+  color: var(--stone-700);
+  background-color: var(--stone-100);
+  border: 1px solid var(--stone-200);
+  border-radius: 999px;
+}
+.quarto-listing-category .category:hover {
+  color: var(--iron-accent);
+  border-color: var(--iron-accent);
+}
+/* Active chip: Quarto only bolds it, which reads as noise next to
+   hover. Give it a filled state so the current facet is legible
+   from weight and fill, not from color alone. */
+.quarto-listing-category .category.active {
+  color: var(--stone-50);
+  background-color: var(--stone-700);
+  border-color: var(--stone-700);
+}
+/* Beats `#quarto-margin-sidebar .quarto-listing-category-title`, an
+   id selector, so the heading actually takes our size. */
+#quarto-margin-sidebar .quarto-listing-category-title,
+.quarto-listing-category-title {
+  font-size: 0.9rem;
+  color: var(--stone-700);
+  margin-bottom: 0.35rem;
+}
+/* Quarto's cloud style scales chip size by frequency; the library
+   reads better at one size. Doubled selector rather than !important. */
+.quarto-listing-category.category-cloud.category-cloud .category,
+.quarto-listing-category.category-cloud.category-cloud .category .quarto-category-count {
+  font-size: 0.82rem;
+}
+
+/* -------------------------------------------------------------
+   Course Library facet links
+   -------------------------------------------------------------
+   Real anchors onto Quarto's listing deep-link hash
+   (#category=Name), which quarto-listing.js re-reads on hashchange.
+   They exist because Quarto's own category chips are unfocusable
+   divs with an onclick, so they cannot be reached by keyboard, and
+   they are not rendered at all on narrow screens. These links give
+   the same filtering to keyboard and phone users with no JS of our
+   own. "All courses" points at the bare page URL, because an empty
+   category in the hash is falsy and does not clear the filter.
+
+   Level in particular has no text-search equivalent: List.js matches
+   substrings, so typing "Graduate" also matches "Undergraduate".
+*/
+.course-facets {
+  margin: 1.25rem 0 0.5rem 0;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.9rem;
+  line-height: 2;
+  background-color: var(--stone-100);
+  border-radius: var(--radius-card);
+}
+.course-facets p {
   margin: 0;
-  font-size: 0.97rem;
+}
+.course-facets a {
+  padding: 0.12rem 0.2rem;
+  border-bottom: 1px solid var(--stone-200);
+  /* Multi-word facet names must not break across lines — a split
+     "In / development" reads as two separate filters. */
+  white-space: nowrap;
+}
+.course-facets a:hover,
+.course-facets a:focus-visible {
+  border-bottom-color: var(--iron-accent);
+}
+.course-facets strong {
+  color: var(--stone-700);
+  font-weight: 600;
+}
+.listing-no-matching {
+  margin: 1.5rem 0;
+  color: var(--stone-700);
+}
+
+/* Narrow screens: thumbnail below the text rather than beside it. */
+@media (max-width: 720px) {
+  .course-record {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  .course-record-thumb {
+    width: 100%;
+    max-width: 260px;
+  }
 }
 
 /* -------------------------------------------------------------

@@ -1,0 +1,73 @@
+---
+title: "Course Library"
+description-meta: "The complete public course-material library of Matt Hester at UA Little Rock — undergraduate and graduate mathematics and statistics courses in one inventory, each labeled with its level, curriculum grouping, and public-material status."
+toc: false
+sidebar: teaching
+listing:
+  - id: course-library
+    contents: courses.yml
+    template: _listings/course-record.ejs
+    categories: cloud
+    fields: [title, code, level, status, group, summary]
+    filter-ui: [title, code, level, status, group, summary]
+    sort-ui: [title, level, status, group]
+    field-display-names:
+      title: "Title"
+      level: "Level"
+      status: "Status"
+      group: "Curriculum grouping"
+    # Group, then published undergraduate sites before graduate courses and
+    # planning-stage directions, so a placeholder never heads a group.
+    sort: ["group asc", "level desc", "title asc"]
+    page-size: 40
+---
+
+Every public course-material site I maintain, together with the graduate
+courses whose materials are still being built. Undergraduate and graduate
+records sit in one inventory rather than in separate catalogs, grouped by what
+the courses are about.
+
+Only records that link out have a public course site. A course whose materials
+are in development, and a planning-stage curriculum direction, are shown as
+plain text with nothing to click — see [what the statuses
+mean](#what-the-statuses-mean) below.
+
+::: {.course-facets}
+[All courses](courses.qmd) · **Level:**
+[Undergraduate](courses.qmd#category=Undergraduate) ·
+[Graduate](courses.qmd#category=Graduate) · **Status:**
+[Current offering](courses.qmd#category=Current%20offering) ·
+[Maintained reference](courses.qmd#category=Maintained%20public%20reference) ·
+[In development](courses.qmd#category=In%20development) ·
+[No public materials](courses.qmd#category=No%20public%20materials%20yet) ·
+[Curriculum direction](courses.qmd#category=Curriculum%20direction)
+:::
+
+The **Filter** box below searches titles, codes, summaries, and curriculum
+groupings, and the **Order By** menu re-sorts. On wider screens the category
+chips in the margin narrow the list the same way the links above do.
+
+::: {#course-library}
+:::
+
+## What the statuses mean {#what-the-statuses-mean}
+
+Status describes the **public materials**, not whether a course exists.
+
+- **Current offering** — tied to a presently scheduled section.
+- **Maintained public reference** — a durable, public resource collection that
+  is not currently representing a scheduled section. Dates, weights, and final
+  policies are not set here.
+- **In development** — materials are still being assembled, so dates,
+  policies, assessments, and readings remain provisional.
+- **No public materials yet** — the course is real and established, but
+  nothing public exists for it.
+- **Curriculum direction** — a planning-stage area of the curriculum. Not a
+  scheduled course, not an adopted requirement, and not an in-development
+  course site.
+
+Anything operational for a live section — meetings, dates, assessments,
+grades, and announcements — belongs in the LMS, not here.
+
+See the [Teaching overview](teaching.qmd) for current courses, the teaching
+approach, the Course Builder harness, and the Math Assistance Center.
