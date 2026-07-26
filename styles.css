@@ -623,49 +623,6 @@ a:hover {
   border-color: var(--crystal-blue);
   box-shadow: 0 0 0 2px rgba(91, 122, 140, 0.25);
 }
-.quarto-listing-category {
-  margin: 0.5rem 0 0 0;
-}
-/* Selector doubled to (0,3,0) so it beats Quarto's own
-   `.quarto-listing-category.category-cloud .category{padding-right:5px}`,
-   which otherwise wins on specificity and renders the pills lopsided. */
-.quarto-listing-category.quarto-listing-category .category {
-  display: inline-block;
-  margin: 0 0.35rem 0.4rem 0;
-  padding: 0.18rem 0.65rem;
-  font-size: 0.82rem;
-  color: var(--stone-700);
-  background-color: var(--stone-100);
-  border: 1px solid var(--stone-200);
-  border-radius: 999px;
-}
-.quarto-listing-category .category:hover {
-  color: var(--iron-accent);
-  border-color: var(--iron-accent);
-}
-/* Active chip: Quarto only bolds it, which reads as noise next to
-   hover. Give it a filled state so the current facet is legible
-   from weight and fill, not from color alone. */
-.quarto-listing-category .category.active {
-  color: var(--stone-50);
-  background-color: var(--stone-700);
-  border-color: var(--stone-700);
-}
-/* Beats `#quarto-margin-sidebar .quarto-listing-category-title`, an
-   id selector, so the heading actually takes our size. */
-#quarto-margin-sidebar .quarto-listing-category-title,
-.quarto-listing-category-title {
-  font-size: 0.9rem;
-  color: var(--stone-700);
-  margin-bottom: 0.35rem;
-}
-/* Quarto's cloud style scales chip size by frequency; the library
-   reads better at one size. Doubled selector rather than !important. */
-.quarto-listing-category.category-cloud.category-cloud .category,
-.quarto-listing-category.category-cloud.category-cloud .category .quarto-category-count {
-  font-size: 0.82rem;
-}
-
 /* -------------------------------------------------------------
    Course Library facet links
    -------------------------------------------------------------
@@ -691,6 +648,13 @@ a:hover {
 }
 .course-facets p {
   margin: 0;
+}
+/* One row per facet axis, so the axis label stays attached to its own
+   links when the row wraps. */
+.course-facets-row + .course-facets-row {
+  margin-top: 0.3rem;
+  padding-top: 0.3rem;
+  border-top: 1px solid var(--stone-200);
 }
 .course-facets a {
   padding: 0.12rem 0.2rem;

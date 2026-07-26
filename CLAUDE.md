@@ -79,9 +79,22 @@ course records of its own.
 
 **One authoritative course source.** Course titles, codes, levels,
 statuses, summaries, groupings, URLs, and thumbnails live in
-`courses.yml` and nowhere else. If a course fact appears in two files,
-that is a defect. The Teaching page's hero collection is the one
-remaining hand-written exception, and migrating it is a later tranche.
+`courses.yml`. `tools/validate_courses.py` runs as a Quarto pre-render
+step and fails the render on a registry violation.
+
+Two hand-written **presentation** exceptions still restate registry
+facts, both predating the registry and both scheduled for a later
+migration tranche — do not add a third:
+
+- `teaching.qmd` — the undergraduate hero collection: 10 titles, 10
+  course URLs, 10 thumbnails, and re-worded summaries.
+- `index.qmd` — the two featured course cards: 2 titles, 2 URLs, 2
+  thumbnails.
+
+`README.md` and this file also name course URLs, but as deployment and
+repo-layout documentation rather than course presentation. No **graduate**
+course fact appears outside `courses.yml`; every graduate record is
+registry-driven.
 
 `teaching.qmd` and `courses.qmd` opt into the trimmed `teaching` sidebar
 with `sidebar: teaching`. That sidebar lists major pages and sections

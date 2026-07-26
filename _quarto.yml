@@ -4,6 +4,13 @@ project:
   render:
     - "*.qmd"
 
+  # Registry gate. courses.yml is the authoritative course source, so a
+  # violation must stop the render rather than reach the Course Library.
+  # Skips itself with a warning if PyYAML is absent, so a missing dev
+  # dependency can never break the CI deploy.
+  pre-render:
+    - tools/validate_courses.py
+
   resources:
     - assets/images/course-motifs/thumbs/*.webp
 website:

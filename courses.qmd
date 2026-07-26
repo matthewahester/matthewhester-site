@@ -3,11 +3,17 @@ title: "Course Library"
 description-meta: "The complete public course-material library of Matt Hester at UA Little Rock — undergraduate and graduate mathematics and statistics courses in one inventory, each labeled with its level, curriculum grouping, and public-material status."
 toc: false
 sidebar: teaching
+format:
+  html:
+    # Labels Quarto's generated Filter input, which ships with no id,
+    # no label and no aria-label. See the file for why this cannot be
+    # done in the listing template or a Lua filter.
+    include-after-body: _listings/listing-a11y.html
 listing:
   - id: course-library
     contents: courses.yml
     template: _listings/course-record.ejs
-    categories: cloud
+    categories: false
     fields: [title, code, level, status, group, summary]
     filter-ui: [title, code, level, status, group, summary]
     sort-ui: [title, level, status, group]
@@ -32,20 +38,39 @@ are in development, and a planning-stage curriculum direction, are shown as
 plain text with nothing to click — see [what the statuses
 mean](#what-the-statuses-mean) below.
 
-::: {.course-facets}
-[All courses](courses.qmd) · **Level:**
-[Undergraduate](courses.qmd#category=Undergraduate) ·
-[Graduate](courses.qmd#category=Graduate) · **Status:**
-[Current offering](courses.qmd#category=Current%20offering) ·
+:::: {.course-facets}
+::: {.course-facets-row}
+**Browse:** [All courses](courses.qmd)
+:::
+
+::: {.course-facets-row}
+**Level:** [Undergraduate](courses.qmd#category=Undergraduate) ·
+[Graduate](courses.qmd#category=Graduate)
+:::
+
+::: {.course-facets-row}
+**Status:** [Current offering](courses.qmd#category=Current%20offering) ·
 [Maintained reference](courses.qmd#category=Maintained%20public%20reference) ·
 [In development](courses.qmd#category=In%20development) ·
 [No public materials](courses.qmd#category=No%20public%20materials%20yet) ·
 [Curriculum direction](courses.qmd#category=Curriculum%20direction)
 :::
 
-The **Filter** box below searches titles, codes, summaries, and curriculum
-groupings, and the **Order By** menu re-sorts. On wider screens the category
-chips in the margin narrow the list the same way the links above do.
+::: {.course-facets-row}
+**Curriculum grouping:**
+[Bayesian methods](courses.qmd#category=Bayesian%20methods) ·
+[Computing and workflow](courses.qmd#category=Computing%20and%20workflow) ·
+[Design and causal evidence](courses.qmd#category=Design%20and%20causal%20evidence) ·
+[Introductory statistics](courses.qmd#category=Introductory%20statistics) ·
+[Mathematical statistics](courses.qmd#category=Mathematical%20statistics) ·
+[Modeling and regression](courses.qmd#category=Modeling%20and%20regression) ·
+[Probability and inference](courses.qmd#category=Probability%20and%20inference) ·
+[Resampling and robust methods](courses.qmd#category=Resampling%20and%20robust%20methods)
+:::
+::::
+
+The **Filter** box below also searches titles, codes, summaries, and
+curriculum groupings, and the **Order By** menu re-sorts.
 
 ::: {#course-library}
 :::

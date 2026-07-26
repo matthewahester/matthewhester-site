@@ -1,0 +1,45 @@
+<!-- Course Library accessibility shim.
+
+     Quarto generates the listing's Filter box as a bare
+     `<input type="text" class="search form-control" placeholder="Filter">`
+     with no id, no <label> and no aria-label. Placeholder is the last
+     resort in the accessible-name computation and disappears the moment
+     the user types, so the control is effectively unlabelled — WCAG 3.3.2.
+     That markup comes from Quarto's own _filter.ejs.md, injected during
+     post-render, so there is no template hook and no Lua filter that can
+     reach it. This is the smallest fix that works.
+
+     It attaches a real <label for=...>, not an ARIA patch, per the
+     repository's preference for native semantics. It also hides the two
+     decorative Bootstrap glyphs from assistive technology, since they
+     carry no text and duplicate the adjacent control's meaning.
+
+     Quarto's mouse-only category chips are suppressed in courses.qmd
+     (`categories: false`); the facet links in the page body are real
+     anchors and cover every facet at every width, so nothing here needs
+     to rebuild them. -->
+<script>
+  (function () {
+    function labelListingControls() {
+      document.querySelectorAll(".quarto-listing").forEach(function (listing, i) {
+        var input = listing.querySelector(".quarto-listing-filter input.search");
+        if (input && !input.id) {
+          input.id = "listing-filter-" + (listing.id || i);
+          var label = document.createElement("label");
+          label.setAttribute("for", input.id);
+          label.className = "visually-hidden";
+          label.textContent = "Filter courses by title, code, level, status, or curriculum grouping";
+          input.parentNode.insertBefore(label, input);
+        }
+        listing.querySelectorAll(".input-group-text > i.bi").forEach(function (icon) {
+          icon.setAttribute("aria-hidden", "true");
+        });
+      });
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", labelListingControls);
+    } else {
+      labelListingControls();
+    }
+  })();
+</script>

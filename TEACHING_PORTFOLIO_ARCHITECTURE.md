@@ -153,15 +153,28 @@ The registry is a lightweight YAML file consumed by Quarto's native listing
 facility. Do not introduce a build step, a client-side framework, or a new
 dependency to read it.
 
+The registry's invariants are enforced, not merely documented. A validator
+runs as a pre-render step and fails the render before publication on: an
+out-of-enum level, kind, or status; a `categories` list that does not exactly
+equal `[level, status, group]`; a duplicate title or public path; a `site`
+record with no path; a non-site record exposing a public course path; a
+kind/status pair that cannot both be true; or a malformed image path or review
+date.
+
 Unknown values are omitted, never invented. A missing code, URL, prerequisite,
 date, or review date is simply absent from the record.
 
 Generated counts are acceptable. Avoid brittle prose such as an exact
 hard-coded number of course sites.
 
-The Teaching page keeps its own curated hero presentation for now. Migrating
-that presentation to registry-driven rendering is a later tranche, not a
-reason to redesign the page.
+Two hand-written presentation exceptions remain, both predating the registry:
+the undergraduate hero collection on the Teaching page, and the two featured
+course cards on the home page. Both restate titles, course URLs, and
+thumbnails. They are grandfathered, not licensed: no new page may restate
+registry facts, and migrating these two to registry-driven rendering is a
+later tranche rather than a reason to redesign either page.
+
+No graduate course fact may live outside the registry.
 
 ## 7. Graduate seeding
 
