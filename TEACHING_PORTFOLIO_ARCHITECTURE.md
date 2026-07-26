@@ -188,10 +188,26 @@ Initial public metadata:
 - Level: Graduate
 - Status: In development
 
-The course is the first course in the planned graduate
-mathematical-statistics sequence and a foundation for later work in
-mathematical statistics, regression and generalized linear models,
-computational statistics, Bayesian modeling, and causal inference.
+The public site must keep three things distinct.
+
+First, the sequence itself exists. Mathematical Statistics I is the first
+course in the existing graduate mathematical-statistics sequence and the
+common theoretical foundation for the graduate curriculum around it.
+Mathematical Statistics II is the second course in that sequence. Both are
+established catalog courses and may be described as such.
+
+Second, the public materials do not yet exist. What is in development is the
+public course-material collection for MATH 75063, not the course. The status
+label therefore stays In development, and the treatment must say plainly that
+dates, policies, assessments, and readings remain provisional.
+
+Third, the broader curriculum is direction rather than adopted curriculum.
+Later work in regression and generalized linear models, computational
+statistics, Bayesian modeling, and causal inference rests on the estimation
+and likelihood theory this course builds. Those are planning-stage rebuilds
+and proposed pilots. Present them as curriculum direction only, and do not
+imply that they are scheduled offerings, that they have been adopted, or that
+Matt is assigned to teach them.
 
 It must not be presented as a current offering until the term, section, meeting,
 calendar, and release decisions are actually settled.

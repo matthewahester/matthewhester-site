@@ -63,7 +63,7 @@ sections.** Dates, weights, and final policies are not set here, and
 anything operational for a live offering would live in the LMS. Treat
 them as durable, public course resources rather than finished releases.
 
-::: {.course-hero-card-grid .column-page-right}
+::: {.course-hero-card-grid .course-collection-single .column-page-right}
 
 ::: {.course-hero-card}
 [![](assets/images/course-motifs/thumbs/bayesian-statistics-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/bayesian-statistics-hero-480.webp 480w, assets/images/course-motifs/thumbs/bayesian-statistics-hero.webp 800w" sizes="(min-width: 576px) 585px, 90vw" fig-alt="Course identity hero for Bayesian Statistics — a teal crystal cluster surrounded by Bayesian graphics including Bayes' theorem, a prior-to-posterior update, a posterior predictive band, a 95% credible interval, and an MCMC trace, with the course title."}](/bayesian-statistics/)

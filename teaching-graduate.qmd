@@ -10,9 +10,10 @@ graduate mathematics and statistics course materials I am assembling, in the
 same style as the undergraduate collection.
 
 The graduate collection is early. The undergraduate course sites came first,
-and the graduate courses are being built one at a time rather than announced
-as a set. Each entry below is labeled with the state it is actually in, so a
-course still being assembled is never presented as a finished public site.
+and the graduate materials are being built one course at a time rather than
+announced as a set. Each entry below is labeled with the state it is actually
+in, so a course whose materials are still being assembled is never presented
+as a finished public site.
 
 Anything operational for a live section — meetings, dates, assessments,
 grades, and announcements — belongs in the LMS, not here.

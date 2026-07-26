@@ -405,11 +405,13 @@ a:hover {
 /* -------------------------------------------------------------
    Course collection — single column
    -------------------------------------------------------------
-   The graduate collection shows one course per row at every width.
-   The undergraduate grid above already resolves to a single column,
-   but only because its container is narrower than two 430px tracks —
-   that is emergent, not stated. This modifier states it, so the
+   A course collection shows one course per row at every width. The
+   auto-fit grid above already resolves to a single column, but only
+   because its container is narrower than two 430px tracks — that is
+   emergent, not stated, and widening the container would silently
+   flip it to two. This modifier states the intent instead, so a
    collection cannot drift into a card wall as courses are added.
+   Carried by the undergraduate and graduate collections.
 */
 .course-hero-card-grid.course-collection-single {
   grid-template-columns: 1fr;
