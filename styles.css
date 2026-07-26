@@ -327,14 +327,18 @@ a:hover {
 /* -------------------------------------------------------------
    Future-courses note
    -------------------------------------------------------------
-   A small caption-style note under the Featured Course Sites
-   block, for courses that don't yet have a public site.
+   A small caption-style note for courses that don't yet have a
+   public site. Used inside .course-entry to carry the "materials
+   are provisional" statement. Set in body ink rather than basalt:
+   stone-400 on white is only 3.6:1, and this note is exactly the
+   text a reader must not skim past. Same readability call that
+   the course-hero-card captions already made.
 */
 .future-courses-note {
   margin-top: 1rem;
   padding: 0.7rem 1rem;
   font-size: 0.92rem;
-  color: var(--stone-400);
+  color: var(--stone-700);
   border-left: 2px solid var(--stone-200);
 }
 
@@ -396,6 +400,140 @@ a:hover {
 .course-hero-card-caption a:hover {
   color: var(--iron-accent);
   border-bottom: none;
+}
+
+/* -------------------------------------------------------------
+   Course collection — single column
+   -------------------------------------------------------------
+   The graduate collection shows one course per row at every width.
+   The undergraduate grid above already resolves to a single column,
+   but only because its container is narrower than two 430px tracks —
+   that is emergent, not stated. This modifier states it, so the
+   collection cannot drift into a card wall as courses are added.
+*/
+.course-hero-card-grid.course-collection-single {
+  grid-template-columns: 1fr;
+}
+
+/* -------------------------------------------------------------
+   Course entry (a course with no public site yet)
+   -------------------------------------------------------------
+   The same stone skeleton as .course-hero-card, for a course that
+   is being assembled but has no hero artwork and no public site to
+   link to. Deliberately quieter than a hero card: a basalt left
+   edge instead of the crystal one, no hover lift, and nothing that
+   behaves like a link — so a course in development can never be
+   mistaken for a published course site.
+*/
+.course-entry {
+  background-color: #ffffff;
+  border: 1px solid var(--stone-200);
+  border-left: 3px solid var(--stone-400);
+  border-radius: var(--radius-card);
+  padding: 1.15rem 1.35rem 1.25rem 1.35rem;
+  box-shadow: var(--shadow-card);
+}
+.course-entry > *:first-child {
+  margin-top: 0;
+}
+.course-entry > *:last-child {
+  margin-bottom: 0;
+}
+/* Course name, then the code and subtitle line. Metrics match the
+   hero-card caption so the two treatments read as one family. */
+.course-entry-head {
+  margin: 0.85rem 0 0.6rem 0;
+}
+.course-entry-head p {
+  margin: 0;
+  color: var(--stone-900);
+  font-weight: 600;
+  font-size: 1.08rem;
+}
+.course-entry-head p + p {
+  margin-top: 0.15rem;
+  color: var(--stone-700);
+  font-weight: 400;
+  font-size: 0.92rem;
+}
+
+/* -------------------------------------------------------------
+   Course status labels
+   -------------------------------------------------------------
+   The four course states from TEACHING_PORTFOLIO_ARCHITECTURE.md
+   section 4. The status *word* carries the meaning; the pill is
+   only a frame. So the label still reads correctly in greyscale,
+   in forced-colors mode, and to a screen reader — and the markup
+   pairs it with a visually-hidden "Course status:" prefix. The
+   shape is borrowed from .artifact-pills so the site keeps one
+   pill vocabulary. One modifier per state, named after the state,
+   so a metadata registry can emit the class mechanically later
+   without needing new CSS.
+*/
+.course-status {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  color: var(--stone-700);
+  background-color: var(--stone-100);
+  border: 1px solid var(--stone-200);
+  border-radius: 999px;
+}
+.course-status p {
+  margin: 0;
+}
+/* Current offering — the only state that earns the crystal edge. */
+.course-status-current {
+  color: var(--crystal-blue);
+  border-color: var(--crystal-blue);
+  background-color: #ffffff;
+}
+/* Maintained public reference — the base pill, named explicitly so
+   every state has a class of its own. */
+.course-status-reference {
+  color: var(--stone-700);
+}
+/* In development — a dashed edge reads as "provisional" without
+   asking color to carry that meaning. */
+.course-status-development {
+  border-style: dashed;
+  border-color: var(--stone-400);
+  background-color: #ffffff;
+}
+/* Archived resource — receded by its fill, not by faint text. The
+   stone-50 plate drops to the page background while the word itself
+   stays at body ink; stone-400 here would be 3.3:1, worse than the
+   contrast .future-courses-note above just rejected. */
+.course-status-archived {
+  color: var(--stone-700);
+  background-color: var(--stone-50);
+}
+
+/* -------------------------------------------------------------
+   Curriculum map
+   -------------------------------------------------------------
+   A text-only view of where a course sits in a sequence. Kept
+   deliberately un-carded — no panel, no shadow, no hover — so that
+   planned or proposed work cannot read as a published course site.
+   Just a quiet stone rule down the left, like .future-courses-note.
+*/
+.curriculum-map {
+  margin: 1.25rem 0;
+  padding: 0.15rem 0 0.15rem 1.1rem;
+  border-left: 2px solid var(--stone-200);
+}
+.curriculum-map ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.curriculum-map li {
+  margin: 0;
+  font-size: 0.97rem;
 }
 
 /* -------------------------------------------------------------

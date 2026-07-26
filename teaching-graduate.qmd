@@ -1,0 +1,92 @@
+---
+title: "Graduate Course Sites"
+description-meta: "Graduate mathematics and statistics course materials by Matt Hester at UA Little Rock — the state of the graduate collection, Mathematical Statistics I (MATH 75063) in development, and where it sits in the graduate curriculum."
+toc: false
+sidebar: teaching
+---
+
+Part of the [teaching portfolio](teaching.qmd). This page collects the
+graduate mathematics and statistics course materials I am assembling, in the
+same style as the undergraduate collection.
+
+The graduate collection is early. The undergraduate course sites came first,
+and the graduate courses are being built one at a time rather than announced
+as a set. Each entry below is labeled with the state it is actually in, so a
+course still being assembled is never presented as a finished public site.
+
+Anything operational for a live section — meetings, dates, assessments,
+grades, and announcements — belongs in the LMS, not here.
+
+## Graduate courses {#graduate-courses}
+
+::: {.course-hero-card-grid .course-collection-single .column-page-right}
+
+<!-- Course metadata (status, title, code, subtitle, summary, site
+     availability) is written out in the field order described in
+     TEACHING_PORTFOLIO_ARCHITECTURE.md section 6. The authoritative
+     registry that would generate it is deliberately deferred: with one
+     graduate course, a registry no page reads would be duplication, not a
+     source of truth. TODO(graduate tranche 2): introduce the registry when
+     the second graduate course lands. -->
+
+::: {#mathematical-statistics-i .course-entry}
+
+::: {.course-status .course-status-development}
+[Course status:]{.visually-hidden} In development
+:::
+
+::: {.course-entry-head}
+Mathematical Statistics I
+
+MATH 75063 — Probability, Likelihood, and Estimation
+:::
+
+The first course in the graduate mathematical-statistics sequence, and the
+common theoretical foundation for the graduate curriculum around it:
+statistical experiments and what a parameter is meant to stand for, a focused
+probability bridge, sampling distributions and convergence, likelihood,
+estimation, sufficiency and information, and an introduction to Bayesian
+decision ideas. Simulation in R is used throughout as a way to reason about
+the theory rather than as a substitute for it.
+
+It is a theory course by design, not a survey of applied methods. Regression,
+causal estimation, and computational methods appear only far enough to mark
+the bridges to the courses that take them up properly.
+
+::: {.future-courses-note}
+Materials are still being assembled, so dates, policies, assessments, and
+readings all remain provisional. There is no public course site for this
+course yet, and nothing here links to one until it exists.
+:::
+
+:::
+
+:::
+
+## Where this course leads {#curriculum-pathway}
+
+Mathematical Statistics I is the course the rest of the graduate statistics
+curriculum leans on, so it is worth saying where that leads. The map below
+describes direction, not a schedule.
+
+::: {.curriculum-map}
+- **Mathematical Statistics I** — in development, described above.
+- **Mathematical Statistics II** — the second course in the sequence, taking
+  up hypothesis testing, interval procedures, decision theory, asymptotics,
+  and resampling.
+- **Later graduate work** — regression and generalized linear models,
+  computational statistics, Bayesian modeling, and causal inference, each
+  resting on the estimation and likelihood theory built here.
+:::
+
+Only the first entry has materials underway. The rest describe how the
+curriculum fits together; they are not announced offerings, and none of them
+has a public course site.
+
+## The rest of the portfolio
+
+The [Teaching overview](teaching.qmd) has the current courses and the
+[undergraduate course sites](teaching.qmd#undergraduate-course-sites) —
+assembled, public course-material sites in probability, inference, modeling,
+design, and computing. The graduate collection is built in the same style,
+and will link out to its own course sites the same way once they exist.

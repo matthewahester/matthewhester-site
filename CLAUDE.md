@@ -23,6 +23,10 @@ When starting work in this repo, skim:
 - `IMAGE_ASSET_PLAN.md` — image folder structure, EXIF/privacy rules,
   alt-text style, processing helper.
 - `SITE_LINKING_PLAN.md` — relationship to the course-site repos.
+- `TEACHING_PORTFOLIO_ARCHITECTURE.md` — approved control for the
+  teaching pages: information architecture, the four-state course
+  status model, freshness/date rules, metadata, and the
+  public/private boundary. Governs any teaching-page change.
 - `_site_planning/main_site_status.md` — current state, render notes,
   deployment safety.
 
@@ -55,6 +59,13 @@ Top-level pages (must stay in sync with the navbar in `_quarto.yml`):
 - `resources.qmd` — software guides, statistics notes, cross-links
 - `cv.qmd` — position summary, interests, PDF link
 - `contact.qmd` — professional contact only
+
+`teaching-graduate.qmd` — the graduate course collection — is a
+secondary page, deliberately **not** in the navbar. Per
+`TEACHING_PORTFOLIO_ARCHITECTURE.md` section 9, the navbar must not
+grow merely to expose it; it is reached from the Teaching page and
+from the Courses sidebar instead. Both teaching pages opt into that
+sidebar with `sidebar: teaching` in their front matter.
 
 `projects.qmd` is a redirect stub left in place to preserve the old
 URL; its content has been folded into `research.qmd`. Do not revive

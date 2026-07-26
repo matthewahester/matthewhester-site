@@ -36,10 +36,13 @@ website:
       - href: contact.qmd
         text: Contact
 
-  # Course directory sidebar — scoped to the teaching page only (no other
-  # page is listed in its contents, so no other page shows it). Course
-  # items link straight to the live course sites; section headers jump to
-  # the matching section of the teaching page.
+  # Course directory sidebar — scoped to the teaching pages (teaching.qmd
+  # and teaching-graduate.qmd are the only pages listed in its contents, so
+  # no other page shows it; both opt in via `sidebar: teaching` in their
+  # front matter). Course items link straight to the live course sites;
+  # section headers jump to the matching section or page. The graduate
+  # section points at its own page because no graduate course site exists
+  # yet — do not add a /slug/ link there until one does.
   sidebar:
     - id: teaching
       title: "Courses"
@@ -75,10 +78,12 @@ website:
             - text: "Resampling, Nonparametric & Robust Methods"
               href: /nonparametrics/
         - section: "Graduate course sites"
-          href: teaching.qmd#graduate-course-sites
+          href: teaching-graduate.qmd
           contents:
-            - text: "In development"
-              href: teaching.qmd#graduate-course-sites
+            - text: "Mathematical Statistics I"
+              href: teaching-graduate.qmd#mathematical-statistics-i
+            - text: "Curriculum pathway"
+              href: teaching-graduate.qmd#curriculum-pathway
         - text: "Course Builder"
           href: teaching.qmd#course-builder
         - text: "Teaching approach"
