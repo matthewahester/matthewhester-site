@@ -6,8 +6,10 @@ project:
 
   # Registry gate. courses.yml is the authoritative course source, so a
   # violation must stop the render rather than reach the Course Library.
-  # Skips itself with a warning if PyYAML is absent, so a missing dev
-  # dependency can never break the CI deploy.
+  # Fails closed: a violated invariant, malformed YAML, a missing registry,
+  # or a missing PyYAML all exit nonzero and abort the render. PyYAML is
+  # installed explicitly in .github/workflows/publish.yml so the Pages build
+  # runs the same gate. Requires PyYAML locally too: python -m pip install PyYAML
   pre-render:
     - tools/validate_courses.py
 

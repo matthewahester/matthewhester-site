@@ -7,9 +7,12 @@ published. Run it directly too:
 
     python tools/validate_courses.py
 
-Exit codes: 0 clean, 1 violations found, 0 with a loud warning if PyYAML is
-missing (CI must never fail for a missing dev dependency -- the gate that
-matters is the local render, which is where publication is prepared from).
+This gate FAILS CLOSED. Exit codes: 0 only when the registry parsed and every
+invariant held; 1 for a violated invariant, a malformed registry, a missing
+registry, or a missing parser. There is deliberately no "skip because PyYAML
+is unavailable" path: a validator that passes when it could not run is worse
+than no validator, because it reports a gate that is not there. PyYAML is
+installed explicitly in the Pages workflow for exactly this reason.
 
 The rules below enforce what TEACHING_PORTFOLIO_ARCHITECTURE.md sections 4
 and 6 already say in prose: kind and status are independent and both must be
@@ -148,16 +151,24 @@ def main():
         import yaml
     except ImportError:
         sys.stderr.write(
-            "WARNING: PyYAML is not installed, so %s was NOT validated.\n"
-            "         Install it (pip install PyYAML) to enable the registry gate.\n" % REGISTRY)
-        return 0
-
-    if not os.path.isfile(registry):
-        sys.stderr.write("ERROR: %s not found.\n" % REGISTRY)
+            "ERROR: PyYAML is required to validate %s and is not installed.\n"
+            "       The registry gate fails closed rather than passing unchecked.\n"
+            "       Fix: python -m pip install PyYAML\n" % REGISTRY)
         return 1
 
-    with open(registry, encoding="utf-8") as fh:
-        records = yaml.safe_load(fh)
+    if not os.path.isfile(registry):
+        sys.stderr.write("ERROR: %s not found (expected at %s).\n" % (REGISTRY, registry))
+        return 1
+
+    try:
+        with open(registry, encoding="utf-8") as fh:
+            records = yaml.safe_load(fh)
+    except yaml.YAMLError as exc:
+        sys.stderr.write("ERROR: %s is not valid YAML.\n\n%s\n" % (REGISTRY, exc))
+        return 1
+    except OSError as exc:
+        sys.stderr.write("ERROR: could not read %s: %s\n" % (REGISTRY, exc))
+        return 1
 
     problems = validate(records, root)
     if problems:

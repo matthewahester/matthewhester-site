@@ -100,6 +100,25 @@ a:hover {
   border-bottom: 2px solid var(--crystal-blue);
   margin-bottom: -2px;
 }
+/* Narrow-width navigation toggles: focus visibility.
+   Bootstrap zeroes the outline on .navbar-toggler:focus and falls back to a
+   box-shadow that computes to nothing against the stone navbar; Quarto's
+   sidebar toggle ships with no focus style at all. Below 992px those two
+   buttons are the only routes into the navbar and the course sidebar, and
+   neither showed a keyboard focus state. Scoped to :focus-visible, so
+   pointer users see no change and only keyboard focus draws the ring.
+   The navbar sits on obsidian, the sidebar toggle on the page, so each
+   takes the ring color that actually contrasts with what is behind it. */
+.navbar-toggler:focus-visible {
+  outline: 3px solid var(--stone-50);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+.quarto-btn-toggle:focus-visible {
+  outline: 3px solid var(--crystal-blue);
+  outline-offset: 2px;
+  box-shadow: none;
+}
 
 /* -------------------------------------------------------------
    Hero block (legacy single-column)
@@ -657,8 +676,9 @@ a:hover {
   border-top: 1px solid var(--stone-200);
 }
 .course-facets a {
-  padding: 0.12rem 0.2rem;
+  padding: 0.12rem 0.5rem;
   border-bottom: 1px solid var(--stone-200);
+  border-radius: 999px;
   /* Multi-word facet names must not break across lines — a split
      "In / development" reads as two separate filters. */
   white-space: nowrap;
@@ -666,6 +686,20 @@ a:hover {
 .course-facets a:hover,
 .course-facets a:focus-visible {
   border-bottom-color: var(--iron-accent);
+}
+/* The applied filter. The page is static and the filter lives in the URL
+   hash, so listing-a11y.html sets this class and aria-current on load and
+   on hashchange. Weight carries the state alongside the fill, so it does
+   not rest on color, and aria-current carries it programmatically. */
+.course-facets a.is-active {
+  color: var(--stone-50);
+  background-color: var(--stone-700);
+  border-bottom-color: var(--stone-700);
+  font-weight: 600;
+}
+.course-facets a.is-active:hover {
+  color: var(--stone-50);
+  border-bottom-color: var(--stone-700);
 }
 .course-facets strong {
   color: var(--stone-700);

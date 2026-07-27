@@ -157,6 +157,28 @@ jobs:
         with:
           python-version: "3.x"
 
+      # --- 3c. Course registry gate (UNCONDITIONAL) -------------------
+      # courses.yml is the authoritative course source. _quarto.yml runs
+      # tools/validate_courses.py as a Quarto pre-render step, so "Render hub"
+      # below already gates on it — but that gate is only real if the parser is
+      # present, and the Python setup above is conditional on executable code
+      # chunks the hub does not have. So install PyYAML explicitly and run the
+      # validator once directly, before anything renders.
+      #
+      # The validator fails closed: a missing parser, malformed YAML, or a
+      # violated invariant all exit nonzero. Both this step and the pre-render
+      # print the same marker line, e.g.
+      #     courses.yml: 16 records OK (10 course sites, 6 without a public site).
+      # Its absence from this job's log means the gate did not run.
+      - name: Install course-registry validator dependency
+        run: |
+          set -euo pipefail
+          python3 -m pip install --disable-pip-version-check --quiet PyYAML
+          python3 -c "import yaml, sys; print('PyYAML', yaml.__version__, 'on Python', sys.version.split()[0])"
+
+      - name: Validate course registry (fail closed before any render)
+        run: python3 tools/validate_courses.py
+
       # --- 4. Render --------------------------------------------------
       - name: Render hub
         run: quarto render

@@ -17,9 +17,45 @@
      Quarto's mouse-only category chips are suppressed in courses.qmd
      (`categories: false`); the facet links in the page body are real
      anchors and cover every facet at every width, so nothing here needs
-     to rebuild them. -->
+     to rebuild them. What those links cannot do on their own is show
+     which filter is currently applied — the page is a static document
+     and the filter lives in the URL hash — so the second block below
+     marks the matching link with a class and aria-current, on first
+     load and on every hash change, including the unfiltered All state. -->
 <script>
   (function () {
+    // Quarto's listing hash is query-shaped: "#category=Name&other=x".
+    function categoryFromHash(hash) {
+      var h = (hash || "").replace(/^#/, "");
+      if (!h) return null;
+      var found = null;
+      h.split("&").forEach(function (pair) {
+        var i = pair.indexOf("=");
+        if (i < 0) return;
+        if (pair.slice(0, i) !== "category") return;
+        var raw = pair.slice(i + 1);
+        try { found = decodeURIComponent(raw); } catch (e) { found = raw; }
+      });
+      // An empty category does not filter, so it is the All state.
+      return found ? found : null;
+    }
+
+    function markActiveFacet() {
+      var links = document.querySelectorAll(".course-facets a");
+      if (!links.length) return;
+      var current = categoryFromHash(window.location.hash);
+      links.forEach(function (a) {
+        var mine = categoryFromHash(a.hash);
+        var active = mine === current;
+        a.classList.toggle("is-active", active);
+        if (active) {
+          a.setAttribute("aria-current", "true");
+        } else {
+          a.removeAttribute("aria-current");
+        }
+      });
+    }
+
     function labelListingControls() {
       document.querySelectorAll(".quarto-listing").forEach(function (listing, i) {
         var input = listing.querySelector(".quarto-listing-filter input.search");
@@ -36,10 +72,18 @@
         });
       });
     }
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", labelListingControls);
-    } else {
+    function init() {
       labelListingControls();
+      markActiveFacet();
     }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+    // Activating a facet link is a same-document fragment navigation, so the
+    // page does not re-run init; hashchange is what keeps the marker honest.
+    window.addEventListener("hashchange", markActiveFacet);
   })();
 </script>
