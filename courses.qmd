@@ -1,55 +1,54 @@
 ---
 title: "Course Library"
-description-meta: "The complete public course-material library of Matt Hester at UA Little Rock — undergraduate and graduate mathematics and statistics courses in one inventory, each labeled with its level, curriculum grouping, and public-material status."
+description-meta: "The complete public course-material library of Matt Hester at UA Little Rock — undergraduate course sites and the graduate statistics curriculum in one catalog, each record labeled with its level, curriculum grouping, and public-material status."
 toc: false
+page-layout: full
 sidebar: teaching
 format:
   html:
-    # Labels Quarto's generated Filter input, which ships with no id,
-    # no label and no aria-label. See the file for why this cannot be
-    # done in the listing template or a Lua filter.
+    # Labels Quarto's generated Filter input, which ships with no id, no
+    # label and no aria-label, and marks the active facet link. See the file
+    # for why neither can be done in the listing template or a Lua filter.
     include-after-body: _listings/listing-a11y.html
 listing:
   - id: course-library
     contents: courses.yml
     template: _listings/course-record.ejs
+    # Sections and sequence are the template's job: it groups by level and
+    # kind and orders by the registry's curated `order` field. No sort-ui —
+    # course order is curated, not delegated to the visitor.
     categories: false
     fields: [title, code, level, status, group, summary]
     filter-ui: [title, code, level, status, group, summary]
-    sort-ui: [title, level, status, group]
-    field-display-names:
-      title: "Title"
-      level: "Level"
-      status: "Status"
-      group: "Curriculum grouping"
-    # Group, then published undergraduate sites before graduate courses and
-    # planning-stage directions, so a placeholder never heads a group.
-    sort: ["group asc", "level desc", "title asc"]
-    page-size: 40
+    page-size: 100
 ---
+
+::: {.course-library-intro}
 
 Every public course-material site I maintain, together with the graduate
 courses whose materials are still being built. Undergraduate and graduate
-records sit in one inventory rather than in separate catalogs, grouped by what
-the courses are about.
+records sit in one catalog rather than in separate destinations, ordered by
+curriculum rather than alphabetically.
 
-Only records that link out have a public course site. A course whose materials
-are in development, and a planning-stage curriculum direction, are shown as
-plain text with nothing to click — see [what the statuses
-mean](#what-the-statuses-mean) below.
+Records that link out have a public course site. A course whose materials are
+in development, and a planning-stage curriculum direction, are shown as plain
+text with nothing to click.
 
-:::: {.course-facets}
+::: {.course-facets}
 ::: {.course-facets-row}
-**Browse:** [All courses](courses.qmd)
+**Browse:** [All](courses.qmd) ·
+[Undergraduate](courses.qmd#category=Undergraduate) ·
+[Graduate](courses.qmd#category=Graduate) ·
+[Current](courses.qmd#category=Current%20offering)
+:::
 :::
 
-::: {.course-facets-row}
-**Level:** [Undergraduate](courses.qmd#category=Undergraduate) ·
-[Graduate](courses.qmd#category=Graduate)
-:::
+<details class="course-more-filters">
+<summary>More ways to filter</summary>
 
+::: {.course-facets .course-facets-secondary}
 ::: {.course-facets-row}
-**Status:** [Current offering](courses.qmd#category=Current%20offering) ·
+**Material status:**
 [Maintained reference](courses.qmd#category=Maintained%20public%20reference) ·
 [In development](courses.qmd#category=In%20development) ·
 [No public materials](courses.qmd#category=No%20public%20materials%20yet) ·
@@ -58,24 +57,28 @@ mean](#what-the-statuses-mean) below.
 
 ::: {.course-facets-row}
 **Curriculum grouping:**
-[Bayesian methods](courses.qmd#category=Bayesian%20methods) ·
-[Computing and workflow](courses.qmd#category=Computing%20and%20workflow) ·
-[Design and causal evidence](courses.qmd#category=Design%20and%20causal%20evidence) ·
 [Introductory statistics](courses.qmd#category=Introductory%20statistics) ·
-[Mathematical statistics](courses.qmd#category=Mathematical%20statistics) ·
-[Modeling and regression](courses.qmd#category=Modeling%20and%20regression) ·
 [Probability and inference](courses.qmd#category=Probability%20and%20inference) ·
-[Resampling and robust methods](courses.qmd#category=Resampling%20and%20robust%20methods)
+[Modeling and regression](courses.qmd#category=Modeling%20and%20regression) ·
+[Design and causal evidence](courses.qmd#category=Design%20and%20causal%20evidence) ·
+[Bayesian methods](courses.qmd#category=Bayesian%20methods) ·
+[Resampling and robust methods](courses.qmd#category=Resampling%20and%20robust%20methods) ·
+[Computing and workflow](courses.qmd#category=Computing%20and%20workflow) ·
+[Mathematical statistics](courses.qmd#category=Mathematical%20statistics)
 :::
-::::
+:::
 
-The **Filter** box below also searches titles, codes, summaries, and
-curriculum groupings, and the **Order By** menu re-sorts.
+</details>
+
+:::
 
 ::: {#course-library}
 :::
 
-## What the statuses mean {#what-the-statuses-mean}
+::: {.course-library-outro}
+
+<details class="course-status-key">
+<summary>About course statuses</summary>
 
 Status describes the **public materials**, not whether a course exists.
 
@@ -94,5 +97,9 @@ Status describes the **public materials**, not whether a course exists.
 Anything operational for a live section — meetings, dates, assessments,
 grades, and announcements — belongs in the LMS, not here.
 
+</details>
+
 See the [Teaching overview](teaching.qmd) for current courses, the teaching
 approach, the Course Builder harness, and the Math Assistance Center.
+
+:::

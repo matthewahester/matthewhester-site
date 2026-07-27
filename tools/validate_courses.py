@@ -45,7 +45,7 @@ KIND_STATUS = {
     "direction": {"Curriculum direction"},
 }
 
-REQUIRED = ("title", "level", "kind", "status", "group", "summary", "categories")
+REQUIRED = ("order", "title", "level", "kind", "status", "group", "summary", "categories")
 OPTIONAL = ("code", "path", "image", "reviewed")
 KNOWN = set(REQUIRED) | set(OPTIONAL)
 
@@ -60,7 +60,7 @@ def fail(problems, idx, title, msg):
 
 def validate(records, root):
     problems = []
-    seen_titles, seen_paths = {}, {}
+    seen_titles, seen_paths, seen_orders = {}, {}, {}
 
     if not isinstance(records, list) or not records:
         return ["  courses.yml must be a non-empty YAML list of course records."]
@@ -129,6 +129,21 @@ def validate(records, root):
             fail(problems, idx, title, "reviewed %r must be an ISO date (YYYY-MM-DD)" % rec["reviewed"])
         if rec.get("code") is not None and not str(rec["code"]).strip():
             fail(problems, idx, title, "code is present but empty: omit it instead")
+
+        # -- curated order ---------------------------------------------------
+        # The Library is never alphabetical and has no visitor-facing sort, so
+        # `order` is the only thing deciding sequence. It has to be an integer
+        # and unique, or the displayed order stops being deterministic.
+        order = rec.get("order")
+        if order is not None:
+            if isinstance(order, bool) or not isinstance(order, int):
+                fail(problems, idx, title, "order %r must be an integer" % (order,))
+            elif order < 1:
+                fail(problems, idx, title, "order %r must be a positive integer" % (order,))
+            elif order in seen_orders:
+                fail(problems, idx, title, "duplicate order %d (also record %d)" % (order, seen_orders[order]))
+            else:
+                seen_orders[order] = idx
 
         # -- uniqueness ------------------------------------------------------
         if title:

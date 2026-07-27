@@ -1,44 +1,100 @@
 <%
-/* Course Library record template.
+/* Course Library catalog template.
    Governed by TEACHING_PORTFOLIO_ARCHITECTURE.md sections 3, 4 and 6.
 
    Compiled by Quarto with lodash _.template. Custom templates receive only
    { items, metadataAttrs, templateParams, utils } -- there is no `listing`
-   object, so none of the listing.utilities helpers exist here. Everything is
-   written out by hand below.
+   object, so none of the listing.utilities helpers exist here.
 
-   The rule this template exists to enforce: only a record with a real `path`
-   gets an anchor. Quarto's stock item templates emit an empty-href anchor
-   even when an item has no path, which makes a placeholder look clickable,
-   keyboard-focusable, and reloads the page when activated. Records without a
-   path render as plain text with no link affordance at all.
+   WHAT THIS TEMPLATE IS FOR
 
-   Two authoring constraints, both learned the hard way:
-     1. Emitted HTML must start at column 0 and carry no blank lines inside a
-        record. Indent it four spaces and Pandoc renders it as a code block.
-     2. Do not write the template delimiters literally in these comments; the
-        closing one ends the block early.
+   1. Sections. The default view must read as a curriculum, not a flat
+      inventory, so records are emitted under real headings: undergraduate
+      public sites first, then the graduate sequence, then graduate
+      curriculum directions. Directions are never interleaved with published
+      sites.
 
-   The wrapper needs class "list" and each searchable value needs class
-   "listing-<field>", or Quarto's List.js search/sort/pagination silently
-   no-ops. metadataAttrs(item) supplies data-index and data-categories, which
-   the category filter reads. */
+   2. Curated order. Sequence comes from the registry's `order` field and
+      nothing else -- there is no visitor-facing sort menu. Sorted here with
+      Number() rather than trusting the listing's own sort, which compares
+      formatted strings and would put 100 before 20.
+
+   3. Honest affordances. Only a record with a real `path` gets an anchor.
+      Quarto's stock item templates emit an empty-href anchor even when an
+      item has no path, which makes a placeholder focusable and reloads the
+      page when activated. kind: course and kind: direction render as plain
+      text with no anchor, no thumbnail frame, and nothing focusable.
+
+   AUTHORING CONSTRAINTS, ALL LEARNED THE HARD WAY
+
+   - Emitted HTML must start at column 0 with no blank lines inside a record.
+     Indent it four spaces and Pandoc renders it as a code block.
+   - Do not write the template delimiters literally in these comments; the
+     closing one ends the block early.
+   - List.js parses `list.childNodes` -- DIRECT CHILDREN ONLY. Records and
+     section headings therefore have to be siblings inside .list. Headings
+     carry no data-categories and no searchable values, so they hide of their
+     own accord whenever a search or category filter is active, which is the
+     behaviour we want: filtered views are result lists, not catalogues.
+   - Each searchable value needs class "listing-<field>", and every record
+     needs metadataAttrs(item) for data-index and data-categories, or the
+     search and category filters silently no-op. */
+%>
+<%
+const ordered = items.slice().sort(function (a, b) { return Number(a.order) - Number(b.order); });
+/* Predicates are EXACT on both level and kind. A loose predicate would file a
+   record under a heading whose blurb asserts something else — an undergraduate
+   record that is not a published site does not belong under "Undergraduate
+   course sites". Anything matching none of them falls through to the last
+   section rather than vanishing: a record silently missing from the catalog is
+   the worst failure this template could have, and the registry's level/kind
+   enums live in a different file from these predicates. */
+const sections = [
+  { id: 'undergraduate-course-sites', title: 'Undergraduate course sites',
+    blurb: 'Public course-material sites, each a self-contained collection of notes, labs, and references.',
+    match: function (i) { return i.level === 'Undergraduate' && i.kind === 'site'; } },
+  { id: 'graduate-statistics-curriculum', title: 'Graduate statistics curriculum',
+    blurb: 'The mathematical-statistics sequence. These are established catalog courses; what is still being assembled is their public material.',
+    match: function (i) { return i.level === 'Graduate' && i.kind === 'course'; } },
+  { id: 'graduate-curriculum-directions', title: 'Graduate curriculum directions',
+    blurb: 'Planning-stage areas of the curriculum. Not scheduled courses, not adopted requirements, and not in-development course sites.',
+    match: function (i) { return i.level === 'Graduate' && i.kind === 'direction'; } },
+];
+const placed = [];
+sections.forEach(function (s) {
+  s.items = ordered.filter(function (i) { return s.match(i) && placed.indexOf(i) === -1; });
+  s.items.forEach(function (i) { placed.push(i); });
+});
+const leftover = ordered.filter(function (i) { return placed.indexOf(i) === -1; });
+if (leftover.length) {
+  sections.push({ id: 'other-course-records', title: 'Other course records',
+    blurb: 'Records whose level and kind do not match a section above.',
+    items: leftover });
+}
 %>
 <div class="course-library-list list">
-<% for (const item of items) { %>
+<% sections.forEach(function (section) { %>
+<% if (!section.items.length) { return; } %>
+<div class="course-section-head" id="<%= section.id %>">
+<h2 class="course-section-title"><%- section.title %></h2>
+<p class="course-section-blurb"><%- section.blurb %></p>
+</div>
+<% section.items.forEach(function (item) { %>
 <% const isSite = item.kind === 'site' && item.path; %>
 <% const statusClass = 'course-status-' + (item.status || '').toLowerCase().replace(/[^a-z]+/g, '-'); %>
-<div class="course-record course-record-<%= item.kind || 'course' %>" <%= metadataAttrs(item) %>>
+<% const hasThumb = isSite && item.image; %>
+<div class="course-record course-record-<%= item.kind || 'course' %><%= hasThumb ? ' course-record-has-thumb' : '' %>" <%= metadataAttrs(item) %>>
+<% if (hasThumb) { %>
+<div class="course-record-thumb"><a href="<%= item.path %>" tabindex="-1" aria-hidden="true"><img src="<%= item.image %>" alt="" loading="lazy" /></a></div>
+<% } %>
 <div class="course-record-main">
 <p class="course-record-title listing-title"><% if (isSite) { %><a href="<%= item.path %>"><%- item.title %></a><% } else { %><%- item.title %><% } %></p>
-<p class="course-record-meta"><span class="course-record-level listing-level"><%- item.level %></span><% if (item.code) { %><span class="course-record-code listing-code"><%- item.code %></span><% } %><span class="course-record-group listing-group"><%- item.group %></span></p>
+<p class="course-record-meta"><span class="course-record-level listing-level"><%- item.level %></span><% if (item.code) { %><span class="course-record-code listing-code"><%- item.code %></span><% } %><span class="course-record-group listing-group"><%- item.group %></span><span class="course-status <%= statusClass %>"><span class="visually-hidden">Course status:</span> <span class="listing-status"><%- item.status %></span></span></p>
 <p class="course-record-summary listing-summary"><%- item.summary %></p>
 <% if (item.reviewed) { %><p class="course-record-reviewed">Last substantively reviewed <span class="listing-reviewed"><%- item.reviewed %></span></p><% } %>
-<p class="course-record-status"><span class="course-status <%= statusClass %>"><span class="visually-hidden">Course status:</span> <span class="listing-status"><%- item.status %></span></span><% if (!isSite) { %><span class="course-record-nolink">No public site yet</span><% } %></p>
+<% if (isSite) { %><p class="course-record-cta"><a href="<%= item.path %>">Open the course site</a></p><% } else if (item.kind === 'direction') { %><p class="course-record-nolink">Not a scheduled course</p><% } else { %><p class="course-record-nolink">No public course site yet</p><% } %>
 </div>
-<% if (item.image) { %>
-<div class="course-record-thumb"><% if (isSite) { %><a href="<%= item.path %>" tabindex="-1" aria-hidden="true"><img src="<%= item.image %>" alt="" loading="lazy" /></a><% } else { %><img src="<%= item.image %>" alt="" loading="lazy" /><% } %></div>
-<% } %>
 </div>
-<% } %>
+<% }); %>
+<% }); %>
 </div>

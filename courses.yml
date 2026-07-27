@@ -1,11 +1,16 @@
 # Course registry — the authoritative source for every public course record.
 #
-# Governed by TEACHING_PORTFOLIO_ARCHITECTURE.md section 6. Read by the
-# Course Library (courses.qmd) through Quarto's native listing facility.
+# Governed by TEACHING_PORTFOLIO_ARCHITECTURE.md sections 3, 4 and 6. Read by
+# the Course Library (courses.qmd) through Quarto's native listing facility.
 # Nothing else on the site should restate a course title, status, summary,
 # or URL: change it here and the Library follows.
+# tools/validate_courses.py enforces every rule below and fails the render.
 #
 # Fields
+#   order      required. Curated display position, a unique positive integer.
+#              The Library is ordered by curriculum, never alphabetically and
+#              never by a visitor-facing sort menu, so this is the only thing
+#              that decides sequence. Leave gaps when inserting is likely.
 #   title      required. Course name as the public site shows it.
 #   code       optional. University catalog number. Omit when not known.
 #   level      required. Undergraduate | Graduate.
@@ -17,7 +22,7 @@
 #                Current offering | Maintained public reference | In development
 #                | No public materials yet | Curriculum direction | Archived resource
 #   group      required. Curriculum grouping, shared across levels.
-#   summary    required. One sentence on what the course covers.
+#   summary    required. One concise catalog sentence. Not curriculum content.
 #   path       ONLY for kind: site. The public URL. Absent means non-clickable.
 #   image      optional. Existing hero thumbnail. Absent is fine.
 #   reviewed   optional. Last substantive review date. NEVER invent one; omit
@@ -28,17 +33,12 @@
 #
 # Unknown values are omitted, never guessed. See section 6 of the control.
 
-- title: "Intro to Mathematical Software"
-  level: Undergraduate
-  kind: site
-  status: "Current offering"
-  group: "Computing and workflow"
-  summary: "LaTeX, R, Quarto, reproducible workflow, and careful AI-assisted work."
-  path: "/math-software/"
-  image: "assets/images/course-motifs/thumbs/intro-math-software-hero-480.webp"
-  categories: ["Undergraduate", "Current offering", "Computing and workflow"]
+# ---------------------------------------------------------------------------
+# Undergraduate public course sites — curriculum order, not alphabetical.
+# ---------------------------------------------------------------------------
 
-- title: "Intro to Statistics"
+- order: 10
+  title: "Intro to Statistics"
   level: Undergraduate
   kind: site
   status: "Current offering"
@@ -48,7 +48,19 @@
   image: "assets/images/course-motifs/thumbs/intro-stats-hero-480.webp"
   categories: ["Undergraduate", "Current offering", "Introductory statistics"]
 
-- title: "Introduction to Probability"
+- order: 20
+  title: "Intro to Mathematical Software"
+  level: Undergraduate
+  kind: site
+  status: "Current offering"
+  group: "Computing and workflow"
+  summary: "LaTeX, R, Quarto, reproducible workflow, and careful AI-assisted work."
+  path: "/math-software/"
+  image: "assets/images/course-motifs/thumbs/intro-math-software-hero-480.webp"
+  categories: ["Undergraduate", "Current offering", "Computing and workflow"]
+
+- order: 30
+  title: "Introduction to Probability"
   level: Undergraduate
   kind: site
   status: "Maintained public reference"
@@ -58,102 +70,118 @@
   image: "assets/images/course-motifs/thumbs/intro-probability-hero-480.webp"
   categories: ["Undergraduate", "Maintained public reference", "Probability and inference"]
 
-- title: "Statistical Inference"
+- order: 40
+  title: "Statistical Inference"
   level: Undergraduate
   kind: site
   status: "Maintained public reference"
   group: "Probability and inference"
-  summary: "Sampling distributions, likelihood and maximum likelihood, confidence intervals, hypothesis tests, the bootstrap, and Bayesian inference."
+  summary: "Sampling distributions, likelihood, confidence intervals, hypothesis tests, the bootstrap, and Bayesian inference."
   path: "/statistical-inference/"
   image: "assets/images/course-motifs/thumbs/statistical-inference-hero-480.webp"
   categories: ["Undergraduate", "Maintained public reference", "Probability and inference"]
 
-- title: "Statistical Modeling"
+- order: 50
+  title: "Statistical Modeling"
   level: Undergraduate
   kind: site
   status: "Maintained public reference"
   group: "Modeling and regression"
-  summary: "Regression, diagnostics, multiple predictors and adjustment, interactions, prediction and validation, and logistic regression."
+  summary: "Regression, diagnostics, adjustment and interactions, prediction and validation, and logistic regression."
   path: "/statistical-modeling/"
   image: "assets/images/course-motifs/thumbs/statistical-modeling-hero-480.webp"
   categories: ["Undergraduate", "Maintained public reference", "Modeling and regression"]
 
-- title: "Applied Statistical Methods"
+- order: 60
+  title: "Applied Statistical Methods"
   level: Undergraduate
   kind: site
   status: "Maintained public reference"
   group: "Modeling and regression"
-  summary: "Choosing and connecting methods across groups, factors, covariates, and categorical outcomes, from two-group comparisons and ANOVA through regression, ANCOVA, and logistic regression."
+  summary: "Group comparisons and ANOVA, regression and ANCOVA, contingency tables, and logistic regression."
   path: "/applied-statistics/"
   image: "assets/images/course-motifs/thumbs/applied-statistics-hero-480.webp"
   categories: ["Undergraduate", "Maintained public reference", "Modeling and regression"]
 
-- title: "Bayesian Statistics"
-  level: Undergraduate
-  kind: site
-  status: "Maintained public reference"
-  group: "Bayesian methods"
-  summary: "Priors, likelihoods, and posteriors; Bayesian regression; simulation, model checking, and hierarchical models."
-  path: "/bayesian-statistics/"
-  image: "assets/images/course-motifs/thumbs/bayesian-statistics-hero-480.webp"
-  categories: ["Undergraduate", "Maintained public reference", "Bayesian methods"]
-
-- title: "Design, Experiments & Causal Evidence"
+- order: 70
+  title: "Design, Experiments & Causal Evidence"
   level: Undergraduate
   kind: site
   status: "Maintained public reference"
   group: "Design and causal evidence"
-  summary: "Random sampling versus random assignment, bias and confounding, blocked and factorial experiments, causal diagrams, sampling, and study critique."
+  summary: "Sampling versus assignment, bias and confounding, blocked and factorial experiments, causal diagrams, and study critique."
   path: "/statistical-design/"
   image: "assets/images/course-motifs/thumbs/statistical-design-hero-480.webp"
   categories: ["Undergraduate", "Maintained public reference", "Design and causal evidence"]
 
-- title: "Resampling, Nonparametric & Robust Methods"
+- order: 80
+  title: "Bayesian Statistics"
+  level: Undergraduate
+  kind: site
+  status: "Maintained public reference"
+  group: "Bayesian methods"
+  summary: "Priors, likelihoods, and posteriors; Bayesian regression, model checking, and hierarchical models."
+  path: "/bayesian-statistics/"
+  image: "assets/images/course-motifs/thumbs/bayesian-statistics-hero-480.webp"
+  categories: ["Undergraduate", "Maintained public reference", "Bayesian methods"]
+
+- order: 90
+  title: "Resampling, Nonparametric & Robust Methods"
   level: Undergraduate
   kind: site
   status: "Maintained public reference"
   group: "Resampling and robust methods"
-  summary: "Assumption-light inference: permutation and randomization tests, the bootstrap, rank-based methods, robust summaries and regression, and simulation studies of how methods behave."
+  summary: "Permutation and randomization tests, the bootstrap, rank-based methods, and robust estimation."
   path: "/nonparametrics/"
   image: "assets/images/course-motifs/thumbs/nonparametrics-hero-480.webp"
   categories: ["Undergraduate", "Maintained public reference", "Resampling and robust methods"]
 
-- title: "Modern SAS for Statistical Analytics"
+- order: 100
+  title: "Modern SAS for Statistical Analytics"
   level: Undergraduate
   kind: site
   status: "Maintained public reference"
   group: "Computing and workflow"
-  summary: "The professional SAS workflow: DATA steps, PROC SQL, cleaning and validation, the core procedures, ODS output, simulation, and reproducible reporting."
+  summary: "DATA steps, PROC SQL, cleaning and validation, the core procedures, ODS output, and reproducible reporting."
   path: "/modern-sas/"
   image: "assets/images/course-motifs/thumbs/modern-sas-hero-480.webp"
   categories: ["Undergraduate", "Maintained public reference", "Computing and workflow"]
 
-- title: "Mathematical Statistics I"
+# ---------------------------------------------------------------------------
+# Graduate — the mathematical-statistics sequence, then curriculum directions.
+# Seeded only from what the governing materials support. See control section 7.
+# ---------------------------------------------------------------------------
+
+- order: 200
+  title: "Mathematical Statistics I"
   code: "MATH 75063"
   level: Graduate
   kind: course
   status: "In development"
   group: "Mathematical statistics"
-  summary: "Probability, Likelihood, and Estimation. The first course in the graduate mathematical-statistics sequence: statistical experiments and estimands, a focused probability bridge, sampling distributions and convergence, likelihood, estimation, sufficiency and information, and an introduction to Bayesian decision ideas. Public materials are still being assembled, so dates, policies, assessments, and readings remain provisional."
+  summary: "Probability, likelihood, and estimation: sampling distributions, convergence, sufficiency, and information. Public materials are still being assembled, so dates, policies, and assessments remain provisional."
   categories: ["Graduate", "In development", "Mathematical statistics"]
 
-- title: "Mathematical Statistics II"
+- order: 210
+  title: "Mathematical Statistics II"
   level: Graduate
   kind: course
   status: "No public materials yet"
   group: "Mathematical statistics"
-  summary: "The established second course in the graduate mathematical-statistics sequence, taking up hypothesis testing, interval procedures, decision theory, asymptotics, and resampling. No public materials exist for it yet."
+  summary: "The established second course in the sequence: hypothesis testing, interval procedures, decision theory, asymptotics, and resampling."
   categories: ["Graduate", "No public materials yet", "Mathematical statistics"]
 
-- title: "Regression and Generalized Linear Models"
+- order: 300
+  title: "Regression and Generalized Linear Models"
   level: Graduate
   kind: direction
   status: "Curriculum direction"
   group: "Modeling and regression"
-  summary: "Graduate regression built on the estimation and likelihood theory of the mathematical-statistics sequence. A planning-stage direction, not a scheduled course."
+  summary: "Graduate regression resting on the estimation and likelihood theory of the mathematical-statistics sequence. A planning-stage direction, not a scheduled course."
   categories: ["Graduate", "Curriculum direction", "Modeling and regression"]
 
-- title: "Computational Statistics"
+- order: 310
+  title: "Computational Statistics"
   level: Graduate
   kind: direction
   status: "Curriculum direction"
@@ -161,15 +189,17 @@
   summary: "Computation as a tool for statistical reasoning, with reproducible analysis as the working standard. A planning-stage direction, not a scheduled course."
   categories: ["Graduate", "Curriculum direction", "Computing and workflow"]
 
-- title: "Bayesian Modeling"
+- order: 320
+  title: "Bayesian Modeling"
   level: Graduate
   kind: direction
   status: "Curriculum direction"
   group: "Bayesian methods"
-  summary: "Graduate Bayesian modeling and workflow, following the conditional-probability and likelihood foundations built earlier in the sequence. A planning-stage direction, not a scheduled course."
+  summary: "Graduate Bayesian modeling and workflow, following the conditional-probability and likelihood foundations of the mathematical-statistics sequence. A planning-stage direction, not a scheduled course."
   categories: ["Graduate", "Curriculum direction", "Bayesian methods"]
 
-- title: "Causal Inference"
+- order: 330
+  title: "Causal Inference"
   level: Graduate
   kind: direction
   status: "Curriculum direction"

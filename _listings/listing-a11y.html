@@ -50,6 +50,15 @@
         a.classList.toggle("is-active", active);
         if (active) {
           a.setAttribute("aria-current", "true");
+          // Most facets live inside the "More ways to filter" disclosure,
+          // which renders closed. Content in a closed <details> is painted
+          // for nobody and is dropped from the accessibility tree, so
+          // deep-linking to a secondary facet would otherwise show a
+          // filtered catalog with every visible control reading inactive
+          // and nothing on the page saying why. Open the disclosure so the
+          // applied filter is actually on screen and in the a11y tree.
+          var box = a.closest("details");
+          if (box && !box.open) box.open = true;
         } else {
           a.removeAttribute("aria-current");
         }

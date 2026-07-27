@@ -46,6 +46,33 @@ be complete. Every course record the site publishes lives here.
 Do not maintain a separate undergraduate landing page and a separate graduate
 landing page. Level is a property of a record, not a destination.
 
+### Course Library display invariants
+
+The Library is a catalog, not an administrative inventory. These hold whatever
+the record count is:
+
+1. **One page, both levels.** Undergraduate and graduate materials live on the
+   same page.
+2. **Structure before filtering.** The default presentation communicates
+   curriculum structure. A visitor who never touches a control still sees an
+   organized collection, not one flat alphabetical list.
+3. **Sections, not destinations.** Undergraduate and graduate collections are
+   visible as sections of that page.
+4. **Two treatments, one registry.** Published course sites and non-published
+   curriculum records share the registry but not their visual treatment.
+5. **Discovery without dominance.** Search and filtering are available without
+   taking over the page. The opening viewport, at any width, belongs to the
+   catalog rather than to a filter matrix.
+6. **Curated order.** Sequence is an editorial decision recorded in the
+   registry. It is never alphabetical by accident and never delegated to a
+   visitor-facing sort menu.
+7. **Controls that survive growth.** Sidebars and filter controls must still
+   be useful at 25 to 30 courses. A control whose size grows with the course
+   count is a defect.
+
+Curriculum directions are never interleaved among published course sites in
+the default presentation.
+
 ### Navigation
 
 The complete inventory is reachable through a site-wide `Courses` navigation
@@ -68,8 +95,23 @@ Full course heroes remain appropriate for:
 
 The complete Library uses compact, single-column course records. It must stay
 readable and scannable at roughly 25 to 30 entries, which full heroes cannot
-do. Compact records may carry an existing hero thumbnail, but they must not
-require one.
+do. The Library gets more horizontal room than the prose column so records do
+not sit in a narrow strip beside unused whitespace.
+
+Two record treatments, driven by kind:
+
+- **A published course site** is a media row: a legible hero thumbnail, the
+  title and optional code, one line of level, grouping, and status, one
+  sentence of summary, and an unambiguous link. Thumbnails stay compact at
+  narrow widths rather than expanding into full heroes, which would triple the
+  page height for no gain.
+- **A course without public materials, and a curriculum direction**, are
+  text-only rows. No reserved blank image area, no hover or link affordance,
+  no focusable wrapper, a concise description, and a clear material status.
+
+Library summaries are concise catalog descriptions. They may only restate
+claims already in the registry; the Library is not where curriculum content
+gets written.
 
 Retain throughout:
 
@@ -153,13 +195,17 @@ The registry is a lightweight YAML file consumed by Quarto's native listing
 facility. Do not introduce a build step, a client-side framework, or a new
 dependency to read it.
 
+Display order is part of the metadata. Each record carries a unique positive
+integer `order`, and that field alone decides sequence. Leave gaps between
+values so a course can be inserted without renumbering.
+
 The registry's invariants are enforced, not merely documented. A validator
-runs as a pre-render step and fails the render before publication on: an
-out-of-enum level, kind, or status; a `categories` list that does not exactly
-equal `[level, status, group]`; a duplicate title or public path; a `site`
-record with no path; a non-site record exposing a public course path; a
-kind/status pair that cannot both be true; or a malformed image path or review
-date.
+runs as a pre-render step and fails the render before publication on: a
+missing, non-integer, non-positive, or duplicated `order`; an out-of-enum
+level, kind, or status; a `categories` list that does not exactly equal
+`[level, status, group]`; a duplicate title or public path; a `site` record
+with no path; a non-site record exposing a public course path; a kind/status
+pair that cannot both be true; or a malformed image path or review date.
 
 Unknown values are omitted, never invented. A missing code, URL, prerequisite,
 date, or review date is simply absent from the record.

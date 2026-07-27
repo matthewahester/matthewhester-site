@@ -78,9 +78,15 @@ deep-link hash, read by `quarto-listing.js` on load. Do not give it
 course records of its own.
 
 **One authoritative course source.** Course titles, codes, levels,
-statuses, summaries, groupings, URLs, and thumbnails live in
-`courses.yml`. `tools/validate_courses.py` runs as a Quarto pre-render
-step and fails the render on a registry violation.
+statuses, groupings, summaries, URLs, thumbnails, and **display order**
+live in `courses.yml`. `tools/validate_courses.py` runs as a Quarto
+pre-render step and fails the render on a registry violation.
+
+The Library is a curriculum catalog, not an alphabetical inventory:
+`courses.qmd` has no sort control, and sequence comes only from each
+record's unique `order` integer. `_listings/course-record.ejs` groups
+records into sections by level and kind. Leave gaps between `order`
+values so a course can be inserted without renumbering.
 
 Two hand-written **presentation** exceptions still restate registry
 facts, both predating the registry and both scheduled for a later

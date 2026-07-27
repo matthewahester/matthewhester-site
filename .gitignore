@@ -4,6 +4,10 @@
 .DS_Store
 Thumbs.db
 
+# Byte-cache from the tools/ scripts. tools/validate_courses.py runs on
+# every render as a Quarto pre-render step, so this reappears constantly.
+__pycache__/
+
 # Raw image originals are staged here for processing; never committed.
 # See IMAGE_ASSET_PLAN.md.
 /assets/images/raw/*
