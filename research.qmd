@@ -57,8 +57,8 @@ proposes work and records honest status, but a person verifies correctness,
 confirms source licenses, signs off on accessibility, and authorizes any
 release.
 
-The ten-site [teaching portfolio](teaching.qmd) is Course Builder's current
-public demonstration layer. The public course sites carry durable notes,
+The public [Course Library](courses.qmd) is Course Builder's current
+demonstration layer. The public course sites carry durable notes,
 labs, worked examples, and curated resources; roster-specific, graded,
 answer-key, and instructor-only materials stay in the LMS or in private
 workspaces, never on the public sites.
