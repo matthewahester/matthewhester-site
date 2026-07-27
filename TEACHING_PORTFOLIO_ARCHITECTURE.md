@@ -21,18 +21,31 @@ public site.
 
 ## 2. Information architecture
 
-The portfolio has exactly two teaching destinations. They do different jobs
-and must not drift into being two catalogs of the same thing.
+The portfolio has exactly two teaching destinations, and they are separate
+top-level surfaces, each with its own navbar entry. They do different jobs and
+must not drift into being two catalogs of the same thing.
 
 ### Teaching
 
-The Teaching page is the personal teaching overview and curated showcase. It
-carries the teaching introduction, the current courses, a showcase of course
-work worth seeing first, the Course Builder, teaching approach, and Math
-Assistance Center sections, and a clear link to the Course Library.
+The Teaching page is the personal teaching overview. It carries the teaching
+introduction, the current courses, the teaching approach, and the Math
+Assistance Center — and nothing else.
 
 Teaching answers "who is this person as a teacher, and what are they teaching
-now." It is allowed to be selective. It is not required to list everything.
+now." It is allowed to be selective. It is not required to list anything.
+
+Specifically:
+
+- The complete undergraduate collection is **not** duplicated on Teaching. The
+  Library is the only place the full collection lives.
+- Current-course heroes **may** remain on Teaching even though those same
+  courses also appear as compact records in the Library. That is a curated
+  showcase of what is being taught now, not a second directory, and the
+  duplication is bounded by the number of current courses.
+- Course Builder does **not** live on Teaching. It belongs with the materials
+  it produces.
+- At most one restrained link or sentence points at the Library. A second
+  course-directory section on Teaching is a defect.
 
 ### Course Library
 
@@ -42,6 +55,15 @@ curriculum grouping rather than split by level.
 
 The Library answers "what exists, and what state is it in." It is required to
 be complete. Every course record the site publishes lives here.
+
+It is a standalone page, not a member of the Teaching sidebar.
+
+Course Builder lives here too, in a clearly separated section **after** the
+library, framed as the system used to develop and maintain the public course
+materials. The library is the subject of the page; the builder is the
+machinery behind it, so the opening of the page is never about the builder.
+That material has exactly one authoritative presentation location — it must
+not also appear on Teaching.
 
 Do not maintain a separate undergraduate landing page and a separate graduate
 landing page. Level is a property of a record, not a destination.
@@ -69,19 +91,32 @@ the record count is:
 7. **Controls that survive growth.** Sidebars and filter controls must still
    be useful at 25 to 30 courses. A control whose size grows with the course
    count is a defect.
+8. **Deliberately minimal filters.** The browse shortcuts stay few and stay
+   visible: all courses, the two levels, and the two statuses a visitor
+   actually acts on. Every record keeps its true status whether or not that
+   status has a filter link — the filter set is an editorial shortlist, not
+   the status vocabulary. Do not reintroduce a facet matrix, a disclosure full
+   of extra facets, or a sort menu.
+
+Because Quarto's listing hash filters on one category at a time, the browse
+links must never be presented as combinable facets.
 
 Curriculum directions are never interleaved among published course sites in
 the default presentation.
 
 ### Navigation
 
-The complete inventory is reachable through a site-wide `Courses` navigation
-item, from anywhere on the site, not only through the Teaching sidebar.
+The global `Courses` navbar item is the persistent route to the Library, from
+anywhere on the site. It is the only route the site guarantees.
 
-Sidebars navigate major pages and sections. They must not enumerate every
-individual course. A sidebar that grows with the course count is a defect: the
-portfolio is expected to reach roughly 25 to 30 records, and the navigation
-must not grow with it.
+The Teaching sidebar navigates **within the Teaching page only**. Every entry
+is an anchor to a section that actually lives on Teaching. It does not list
+other destinations, and it does not enumerate individual courses. A sidebar
+entry pointing at another page, or a sidebar that grows with the course count,
+is a defect: the portfolio is expected to reach roughly 25 to 30 records, and
+the navigation must not grow with it.
+
+The Library carries no sidebar at all.
 
 ## 3. Visual system
 

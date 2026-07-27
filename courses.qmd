@@ -3,7 +3,6 @@ title: "Course Library"
 description-meta: "The complete public course-material library of Matt Hester at UA Little Rock — undergraduate course sites and the graduate statistics curriculum in one catalog, each record labeled with its level, curriculum grouping, and public-material status."
 toc: false
 page-layout: full
-sidebar: teaching
 format:
   html:
     # Labels Quarto's generated Filter input, which ships with no id, no
@@ -36,39 +35,25 @@ text with nothing to click.
 
 ::: {.course-facets}
 ::: {.course-facets-row}
-**Browse:** [All](courses.qmd) ·
-[Undergraduate](courses.qmd#category=Undergraduate) ·
-[Graduate](courses.qmd#category=Graduate) ·
-[Current](courses.qmd#category=Current%20offering)
-:::
-:::
-
-<details class="course-more-filters">
-<summary>More ways to filter</summary>
-
-::: {.course-facets .course-facets-secondary}
-::: {.course-facets-row}
-**Material status:**
-[Maintained reference](courses.qmd#category=Maintained%20public%20reference) ·
-[In development](courses.qmd#category=In%20development) ·
-[No public materials](courses.qmd#category=No%20public%20materials%20yet) ·
-[Curriculum direction](courses.qmd#category=Curriculum%20direction)
+**Browse:** [All courses](courses.qmd)
 :::
 
 ::: {.course-facets-row}
-**Curriculum grouping:**
-[Introductory statistics](courses.qmd#category=Introductory%20statistics) ·
-[Probability and inference](courses.qmd#category=Probability%20and%20inference) ·
-[Modeling and regression](courses.qmd#category=Modeling%20and%20regression) ·
-[Design and causal evidence](courses.qmd#category=Design%20and%20causal%20evidence) ·
-[Bayesian methods](courses.qmd#category=Bayesian%20methods) ·
-[Resampling and robust methods](courses.qmd#category=Resampling%20and%20robust%20methods) ·
-[Computing and workflow](courses.qmd#category=Computing%20and%20workflow) ·
-[Mathematical statistics](courses.qmd#category=Mathematical%20statistics)
+**Level:** [Undergraduate](courses.qmd#category=Undergraduate) ·
+[Graduate](courses.qmd#category=Graduate)
+:::
+
+::: {.course-facets-row}
+**Status:** [Current offering](courses.qmd#category=Current%20offering) ·
+[In development](courses.qmd#category=In%20development)
 :::
 :::
 
-</details>
+These are shortcuts, not combinable filters: each one narrows the catalog on
+its own. The **Filter** box below searches every part of a record — title,
+code, level, status, summary, and curriculum grouping — so a status without a
+shortcut here, such as `Maintained public reference`, is still one search
+away.
 
 :::
 
@@ -99,7 +84,19 @@ grades, and announcements — belongs in the LMS, not here.
 
 </details>
 
-See the [Teaching overview](teaching.qmd) for current courses, the teaching
-approach, the Course Builder harness, and the Math Assistance Center.
-
 :::
+
+## How these materials are built {#course-builder .course-builder-note}
+
+The sites above are the current public demonstration layer for **Course
+Builder**, a developing course-design harness I build and use. A Course
+Builder run does not improvise a course from a prompt; it extends a course as
+an explicit analytic object under stated controls — course context, source
+boundaries, pedagogy references, durable state, diagnostic gates, and human
+review. It is not autonomous course design: instructor judgment and release
+authority stay central, and graded, answer-key, and roster-specific material
+stays in the LMS, not on these public sites. See the
+[research page](research.qmd#course-builder) for more.
+
+See the [Teaching overview](teaching.qmd) for current courses, the teaching
+approach, and the Math Assistance Center.

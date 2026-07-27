@@ -51,12 +51,13 @@ website:
       - href: contact.qmd
         text: Contact
 
-  # Teaching sidebar — major pages and sections only. It deliberately does NOT
-  # enumerate individual courses: the portfolio is heading for roughly 25-30
-  # records, and a sidebar that grows with the course count is a defect
-  # (TEACHING_PORTFOLIO_ARCHITECTURE.md section 2). The complete inventory is
-  # the Course Library, reachable from the navbar on every page. Shown on
-  # teaching.qmd and courses.qmd, which opt in via `sidebar: teaching`.
+  # Teaching sidebar — navigation WITHIN teaching.qmd and nothing else. Every
+  # entry is an anchor to a section that actually lives on that page: an entry
+  # pointing at another destination, or one that enumerates individual courses,
+  # is a defect (TEACHING_PORTFOLIO_ARCHITECTURE.md section 2). The Course
+  # Library is a standalone page reached from the navbar, carries no sidebar,
+  # and is where Course Builder now lives. teaching.qmd is the only page that
+  # opts in, via `sidebar: teaching`.
   sidebar:
     - id: teaching
       title: "Teaching"
@@ -67,12 +68,6 @@ website:
           href: teaching.qmd
         - text: "Current courses"
           href: teaching.qmd#current-courses
-        - text: "Undergraduate course sites"
-          href: teaching.qmd#undergraduate-course-sites
-        - text: "Course Library"
-          href: courses.qmd
-        - text: "Course Builder"
-          href: teaching.qmd#course-builder
         - text: "Teaching approach"
           href: teaching.qmd#teaching-approach
         - text: "Math Assistance Center"

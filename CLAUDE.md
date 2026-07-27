@@ -54,11 +54,12 @@ Top-level pages (must stay in sync with the navbar in `_quarto.yml`):
 
 - `index.qmd` — split hero + three category cards + featured course sites
 - `about.qmd` — short professional bio
-- `teaching.qmd` — teaching overview and showcase: current courses,
-  public vs LMS distinction, Course Builder, MAC
+- `teaching.qmd` — teaching overview: current courses, public vs LMS
+  distinction, teaching approach, MAC. **Not** a course directory
 - `courses.qmd` — the Course Library, the canonical inventory of every
-  public course record. Renders `courses.yml` through Quarto's listing
-  and `_listings/course-record.ejs`
+  public course record, plus Course Builder. Standalone full-width page,
+  no sidebar. Renders `courses.yml` through Quarto's listing and
+  `_listings/course-record.ejs`
 - `research.qmd` — interests, projects, publications, talks, collaborators
 - `resources.qmd` — software guides, statistics notes, cross-links
 - `cv.qmd` — position summary, interests, PDF link
@@ -92,8 +93,10 @@ Two hand-written **presentation** exceptions still restate registry
 facts, both predating the registry and both scheduled for a later
 migration tranche — do not add a third:
 
-- `teaching.qmd` — the undergraduate hero collection: 10 titles, 10
-  course URLs, 10 thumbnails, and re-worded summaries.
+- `teaching.qmd` — the two current-course hero cards: 2 titles, 2 URLs,
+  2 thumbnails, and re-worded summaries. The undergraduate hero
+  collection that used to sit below them was deleted when Teaching and
+  Courses were separated; the full collection lives only in the Library.
 - `index.qmd` — the two featured course cards: 2 titles, 2 URLs, 2
   thumbnails.
 
@@ -102,10 +105,13 @@ repo-layout documentation rather than course presentation. No **graduate**
 course fact appears outside `courses.yml`; every graduate record is
 registry-driven.
 
-`teaching.qmd` and `courses.qmd` opt into the trimmed `teaching` sidebar
-with `sidebar: teaching`. That sidebar lists major pages and sections
-only — never individual courses, because the portfolio is heading for
-roughly 25-30 records.
+**Teaching and Courses are separate surfaces.** `teaching.qmd` is the
+only page with `sidebar: teaching`, and every sidebar entry is an anchor
+to a section that actually lives on that page — never another
+destination, never individual courses. `courses.qmd` is standalone and
+carries no sidebar. The full course collection appears only in the
+Library, and Course Builder has exactly one home, on `courses.qmd`.
+Do not re-add a course directory or a Course Builder section to Teaching.
 
 `projects.qmd` is a redirect stub left in place to preserve the old
 URL; its content has been folded into `research.qmd`. Do not revive

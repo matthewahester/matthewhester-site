@@ -15,9 +15,12 @@
      carry no text and duplicate the adjacent control's meaning.
 
      Quarto's mouse-only category chips are suppressed in courses.qmd
-     (`categories: false`); the facet links in the page body are real
-     anchors and cover every facet at every width, so nothing here needs
-     to rebuild them. What those links cannot do on their own is show
+     (`categories: false`). The browse links in the page body are real
+     anchors, keyboard-operable at every width, and deliberately a short
+     shortlist rather than a chip for every category — statuses and
+     groupings without a link stay reachable through the search box,
+     which matches on those fields. So nothing here rebuilds the chips.
+     What those links cannot do on their own is show
      which filter is currently applied — the page is a static document
      and the filter lives in the URL hash — so the second block below
      marks the matching link with a class and aria-current, on first
@@ -50,13 +53,13 @@
         a.classList.toggle("is-active", active);
         if (active) {
           a.setAttribute("aria-current", "true");
-          // Most facets live inside the "More ways to filter" disclosure,
-          // which renders closed. Content in a closed <details> is painted
-          // for nobody and is dropped from the accessibility tree, so
-          // deep-linking to a secondary facet would otherwise show a
+          // Defensive: no browse link currently sits inside a <details>,
+          // so this branch does not fire today. It stays because content
+          // in a closed <details> is painted for nobody and is dropped
+          // from the accessibility tree — if a link ever moves back into
+          // a disclosure, deep-linking to it would otherwise show a
           // filtered catalog with every visible control reading inactive
-          // and nothing on the page saying why. Open the disclosure so the
-          // applied filter is actually on screen and in the a11y tree.
+          // and nothing on the page saying why.
           var box = a.closest("details");
           if (box && !box.open) box.open = true;
         } else {

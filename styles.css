@@ -423,23 +423,6 @@ a:hover {
 }
 
 /* -------------------------------------------------------------
-   Course collection — single column
-   -------------------------------------------------------------
-   A course collection shows one course per row at every width. The
-   auto-fit grid above already resolves to a single column, but only
-   because its container is narrower than two 430px tracks — that is
-   emergent, not stated, and widening the container would silently
-   flip it to two. This modifier states the intent instead, so a
-   collection cannot drift into a card wall as courses are added.
-   Carried by the undergraduate hero collection on teaching.qmd. The
-   Course Library uses .course-record instead — compact rows, not
-   heroes — because it has to stay scannable at 25-30 entries.
-*/
-.course-hero-card-grid.course-collection-single {
-  grid-template-columns: 1fr;
-}
-
-/* -------------------------------------------------------------
    Course status labels
    -------------------------------------------------------------
    The six course states from TEACHING_PORTFOLIO_ARCHITECTURE.md
@@ -508,15 +491,22 @@ a:hover {
 /* -------------------------------------------------------------
    Course Library — page frame
    -------------------------------------------------------------
-   courses.qmd uses page-layout: full so the catalog is not squeezed
-   into the ~750px prose column with the whole right margin empty;
-   Quarto's grid then gives the main column ~1025px from 1440px up.
-   That is the catalog's real measure — records are meant to use it.
-   Only the prose gets a reading-width cap, because a 1025px-wide
-   paragraph is not readable while a 1025px-wide record row is fine.
+   courses.qmd uses page-layout: full and carries no sidebar, so the
+   catalog is not squeezed into the ~750px prose column. Quarto's grid
+   then gives the main column ~1135px from 1280px up (it was ~1025px
+   while the page still had the Teaching sidebar). That is the
+   catalog's real measure — records are meant to use it. Only the prose
+   gets a reading-width cap, because a 1135px-wide paragraph is not
+   readable while a 1135px-wide record row is fine.
+
+   .course-builder-note is a CLASS, not the #course-builder id: that id
+   also exists on research.html and index.html, and styling through it
+   would silently re-lay-out a section of a page this stylesheet has no
+   business reflowing.
 */
 .course-library-intro > p,
-.course-library-outro > p {
+.course-library-outro > p,
+.course-builder-note p {
   max-width: 66ch;
 }
 
@@ -567,7 +557,7 @@ a:hover {
 /* One column is the default and the media grid is keyed off the
    thumbnail actually being there, not off the record's kind. `image` is
    optional in the registry, so a published site with no thumbnail is a
-   legal record; keying the 200px track off .course-record-site would
+   legal record; keying the thumbnail track off .course-record-site would
    drop that record's whole text block into the empty image column. */
 .course-record {
   display: grid;
@@ -577,8 +567,10 @@ a:hover {
   padding: 1.25rem 0.2rem;
   border-bottom: 1px solid var(--stone-200);
 }
+/* One visual step up from 200px (+12%). Enough that the hero art reads at a
+   glance; not enough to compete with the title and summary beside it. */
 .course-record-has-thumb {
-  grid-template-columns: 200px minmax(0, 1fr);
+  grid-template-columns: 224px minmax(0, 1fr);
 }
 /* Text-only rows get an indented rule. Keyed off :not(.course-record-site)
    so a new non-linking kind inherits the treatment automatically, and so a
@@ -669,14 +661,20 @@ a:hover {
 /* -------------------------------------------------------------
    Course Library browse controls
    -------------------------------------------------------------
-   Four primary browse links, permanently visible; everything else
-   lives in a native <details> so the opening viewport is a catalog
-   rather than a filter matrix. The links are real anchors onto
-   Quarto's listing deep-link hash (#category=Name), which
-   quarto-listing.js re-reads on hashchange, so filtering needs no
-   JavaScript of ours and works by keyboard at every width. "All"
-   points at the bare page URL, because an empty category in the hash
-   is falsy and does not clear the filter.
+   Five browse links, permanently visible, on three labelled rows:
+   all courses, the two levels, and the two statuses a visitor acts on.
+   There is no facet disclosure and no sort menu — the shortlist is the
+   whole control, so the opening viewport is a catalog rather than a
+   filter matrix. Statuses without a shortcut stay reachable through the
+   search box, which matches on the status field.
+
+   The links are real anchors onto Quarto's listing deep-link hash
+   (#category=Name), which quarto-listing.js re-reads on hashchange, so
+   filtering needs no JavaScript of ours and works by keyboard at every
+   width. "All courses" points at the bare page URL, because an empty
+   category in the hash is falsy and does not clear the filter. Quarto
+   filters one category at a time, so these are shortcuts rather than
+   combinable facets — the page copy says so.
 
    Level has no text-search equivalent — List.js matches substrings, so
    typing "Graduate" also matches "Undergraduate" — which is why these
@@ -717,28 +715,15 @@ a:hover {
   color: var(--stone-700);
   font-weight: 600;
 }
-.course-facets-secondary {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-}
-.course-facets-secondary .course-facets-row + .course-facets-row {
-  margin-top: 0.3rem;
-}
-
-/* Native disclosures: secondary filters and the status key. Quiet
-   until opened, and keyboard-operable without any scripting. */
-.course-more-filters,
-.course-status-key {
-  font-size: 0.94rem;
-}
-.course-more-filters {
-  margin: 0.5rem 0 0 0;
-}
+/* The status key: the page's one native disclosure. Quiet until
+   opened, and keyboard-operable without any scripting. The secondary
+   facet disclosure that used to sit beside it is gone -- the browse
+   shortcuts are a deliberately short visible list now. */
 .course-status-key {
   margin: 1.5rem 0;
   max-width: 66ch;
+  font-size: 0.94rem;
 }
-.course-more-filters > summary,
 .course-status-key > summary {
   cursor: pointer;
   display: inline-block;
@@ -746,7 +731,6 @@ a:hover {
   color: var(--iron-accent);
   font-size: 0.92rem;
 }
-.course-more-filters > summary:focus-visible,
 .course-status-key > summary:focus-visible {
   outline: 2px solid var(--crystal-blue);
   outline-offset: 2px;
@@ -808,7 +792,7 @@ a:hover {
     padding: 1rem 0.1rem;
   }
   .course-record-has-thumb {
-    grid-template-columns: 96px minmax(0, 1fr);
+    grid-template-columns: 108px minmax(0, 1fr);
   }
   .course-record-title {
     font-size: 1.02rem;
