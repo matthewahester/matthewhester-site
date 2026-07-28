@@ -491,23 +491,40 @@ a:hover {
 /* -------------------------------------------------------------
    Course Library — page frame
    -------------------------------------------------------------
-   courses.qmd uses page-layout: full and carries no sidebar, so the
-   catalog is not squeezed into the ~750px prose column. Quarto's grid
-   then gives the main column ~1135px from 1280px up (it was ~1025px
-   while the page still had the Teaching sidebar). That is the
-   catalog's real measure — records are meant to use it. Only the prose
-   gets a reading-width cap, because a 1135px-wide paragraph is not
-   readable while a 1135px-wide record row is fine.
+   courses.qmd uses page-layout: full and carries no sidebar, which
+   hands the main column ~1135px at 1280px and up. Left to itself that
+   is wider than anything on the page wants to be: prose caps at a
+   reading measure, so the section rules and record separators ran on
+   for another 300-500px past the last word on every line. Rules that
+   advertise a column the content never reaches read as a layout bug.
+
+   So the catalog gets an explicit measure instead. 880px is derived,
+   not picked: a record row is a 224px thumbnail + a 1.35rem gap + its
+   text, and 880 leaves that text column ~634px — about 70 characters,
+   which is a sentence measure rather than a banner. The structural
+   edge (rules, rows, record text) therefore lands in one place, and
+   prose sits at its own narrower measure inside it. Two intentional
+   edges instead of five accidental ones.
 
    .course-builder-note is a CLASS, not the #course-builder id: that id
    also exists on research.html and index.html, and styling through it
    would silently re-lay-out a section of a page this stylesheet has no
    business reflowing.
 */
+.course-library-intro,
+.course-library-list,
+.course-library-outro,
+.course-builder-note,
+.quarto-listing .listing-actions-group {
+  max-width: 880px;
+}
+/* One prose measure, shared, so the paragraphs all break on the same
+   right edge instead of three that are 30px apart. */
 .course-library-intro > p,
 .course-library-outro > p,
-.course-builder-note p {
-  max-width: 66ch;
+.course-builder-note p,
+.course-section-blurb {
+  max-width: 40rem;
 }
 
 /* -------------------------------------------------------------
@@ -536,7 +553,6 @@ a:hover {
 }
 .course-section-blurb {
   margin: 0.35rem 0 0 0;
-  max-width: 66ch;
   font-size: 0.95rem;
   color: var(--stone-700);
 }
@@ -631,11 +647,13 @@ a:hover {
   font-family: "JetBrains Mono", Consolas, Menlo, monospace;
   font-size: 0.82rem;
 }
+/* No cap: the record's text column is already ~634px (about 70
+   characters) inside the 880px measure, so the summary fills it and
+   ends exactly where the row's separator rule does. */
 .course-record-summary {
   margin-top: 0.5rem;
   font-size: 0.97rem;
   line-height: 1.55;
-  max-width: 68ch;
 }
 .course-record-reviewed {
   margin-top: 0.35rem;
