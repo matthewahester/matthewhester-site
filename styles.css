@@ -518,14 +518,11 @@ a:hover {
 .quarto-listing .listing-actions-group {
   max-width: 880px;
 }
-/* One prose measure, shared, so the paragraphs all break on the same
-   right edge instead of three that are 30px apart. */
-.course-library-intro > p,
-.course-library-outro > p,
-.course-builder-note p,
-.course-section-blurb {
-  max-width: 40rem;
-}
+/* Prose gets no cap of its own: it fills the same 880px the section
+   rules and record rows use, so every line on the page breaks on one
+   right edge. A narrower reading measure here is the more orthodox
+   choice, but it leaves the paragraphs visibly short of the catalog
+   they introduce, which reads as a mistake rather than as restraint. */
 
 /* -------------------------------------------------------------
    Course Library sections
