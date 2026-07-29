@@ -511,6 +511,20 @@ a:hover {
    would silently re-lay-out a section of a page this stylesheet has no
    business reflowing.
 */
+/* Centre the whole column, title included. page-layout: full gives main
+   ~1135px while the catalog only wants 880, and a capped-but-left-aligned
+   block sits off-centre on a wide screen — 393px of margin on the left
+   against 654px on the right at 1920. Capping main itself moves the H1
+   with the content, so the page reads as one centred column.
+
+   :has() scopes this to the Library without needing a body class. Where
+   it is unsupported the rule is skipped and the per-block caps below
+   still apply, which is exactly the previous left-aligned behaviour —
+   a degradation, not a break. */
+main:has(.course-library-list) {
+  max-width: 880px;
+  margin-inline: auto;
+}
 .course-library-intro,
 .course-library-list,
 .course-library-outro,
