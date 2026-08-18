@@ -38,9 +38,26 @@ STATUSES = {
 }
 
 # A record's kind constrains which public-material statuses can be true of it.
-# A site has materials; a course does not yet; a direction is not a course.
+# Kind is about whether a public site EXISTS; status is about what state its
+# materials are in. A direction is not a course, so it can only be direction.
+#
+# "In development" is legal for BOTH site and course, and that is deliberate: a
+# public materials collection can be published while it is still being assembled,
+# which is what the graduate mathematical-statistics sites are. What the status
+# then obliges is stated in TEACHING_PORTFOLIO_ARCHITECTURE.md section 4 - the
+# site must say plainly that dates, policies, assessments, and readings remain
+# provisional. That obligation is prose on the course site, not a registry field,
+# so this validator cannot check it; section 7 names the two records it applies to.
+#
+# "No public materials yet" stays course-only, because a linked site is itself
+# proof that public materials exist.
 KIND_STATUS = {
-    "site": {"Current offering", "Maintained public reference", "Archived resource"},
+    "site": {
+        "Current offering",
+        "Maintained public reference",
+        "In development",
+        "Archived resource",
+    },
     "course": {"In development", "No public materials yet"},
     "direction": {"Curriculum direction"},
 }

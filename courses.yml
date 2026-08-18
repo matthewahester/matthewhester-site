@@ -21,6 +21,11 @@
 #   status     required. Public-material status, not the course's existence:
 #                Current offering | Maintained public reference | In development
 #                | No public materials yet | Curriculum direction | Archived resource
+#              `In development` is legal for a linked site as well as an unlinked
+#              course: a public collection may be published while it is still
+#              being assembled. The site must then say plainly that dates,
+#              policies, assessments, and readings remain provisional (control
+#              section 4). `No public materials yet` stays course-only.
 #   group      required. Curriculum grouping, shared across levels.
 #   summary    required. One concise catalog sentence. Not curriculum content.
 #   path       ONLY for kind: site. The public URL. Absent means non-clickable.
@@ -156,20 +161,23 @@
   title: "Mathematical Statistics I"
   code: "MATH 75063"
   level: Graduate
-  kind: course
+  kind: site
   status: "In development"
   group: "Mathematical statistics"
   summary: "Probability, likelihood, and estimation: sampling distributions, convergence, sufficiency, and information. Public materials are still being assembled, so dates, policies, and assessments remain provisional."
+  path: "/math-stats-1/"
   categories: ["Graduate", "In development", "Mathematical statistics"]
 
 - order: 210
   title: "Mathematical Statistics II"
+  code: "MATH 75163"
   level: Graduate
-  kind: course
-  status: "No public materials yet"
+  kind: site
+  status: "In development"
   group: "Mathematical statistics"
-  summary: "The established second course in the sequence: hypothesis testing, interval procedures, decision theory, asymptotics, and resampling."
-  categories: ["Graduate", "No public materials yet", "Mathematical statistics"]
+  summary: "The established second course in the sequence: hypothesis testing, interval procedures, decision theory, asymptotics, and resampling. Public materials are still being assembled, so dates, policies, and assessments remain provisional."
+  path: "/math-stats-2/"
+  categories: ["Graduate", "In development", "Mathematical statistics"]
 
 - order: 300
   title: "Regression and Generalized Linear Models"

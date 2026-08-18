@@ -48,14 +48,23 @@ const ordered = items.slice().sort(function (a, b) { return Number(a.order) - Nu
    course sites". Anything matching none of them falls through to the last
    section rather than vanishing: a record silently missing from the catalog is
    the worst failure this template could have, and the registry's level/kind
-   enums live in a different file from these predicates. */
+   enums live in a different file from these predicates.
+
+   The graduate-sequence predicate admits two kinds, and it is the only one
+   that does. Its blurb asserts a curriculum position — established catalog
+   courses whose public material is still being assembled — and that is equally
+   true of a sequence course with a published In-development site and of one
+   with no site at all. What separates them is carried where it belongs: the
+   record links or it does not, and the status line says which. Directions keep
+   their own section because their blurb asserts something a sequence record
+   would contradict. */
 const sections = [
   { id: 'undergraduate-course-sites', title: 'Undergraduate course sites',
     blurb: 'Public course-material sites, each a self-contained collection of notes, labs, and references.',
     match: function (i) { return i.level === 'Undergraduate' && i.kind === 'site'; } },
   { id: 'graduate-statistics-curriculum', title: 'Graduate statistics curriculum',
     blurb: 'The mathematical-statistics sequence. These are established catalog courses; what is still being assembled is their public material.',
-    match: function (i) { return i.level === 'Graduate' && i.kind === 'course'; } },
+    match: function (i) { return i.level === 'Graduate' && (i.kind === 'course' || i.kind === 'site'); } },
   { id: 'graduate-curriculum-directions', title: 'Graduate curriculum directions',
     blurb: 'Planning-stage areas of the curriculum. Not scheduled courses, not adopted requirements, and not in-development course sites.',
     match: function (i) { return i.level === 'Graduate' && i.kind === 'direction'; } },

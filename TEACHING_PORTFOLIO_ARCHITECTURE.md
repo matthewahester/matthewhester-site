@@ -5,7 +5,9 @@ Owner: Matthew Hester
 Scope: matthewhester.com teaching portfolio, Course Library, and course records
 
 _Approved control document. Local planning only; not rendered into `_site/`._
-_Saved: 2026-07-26. Revised: 2026-07-26 (unified Course Library model)._
+_Saved: 2026-07-26. Revised: 2026-07-26 (unified Course Library model);
+2026-08-18 (an In-development collection may be a linked course site; the two
+graduate mathematical-statistics sites promoted under section 7)._
 
 ## 1. Purpose
 
@@ -182,6 +184,11 @@ must be truthful.
 
 Only a Course site record may be clickable.
 
+Kind and status answer different questions. Kind asks whether a public site
+exists; status asks what state its materials are in. A site may therefore be In
+development, and an unlinked course may be In development too. What no site may
+claim is *No public materials yet* — a working link is itself proof otherwise.
+
 ### Public-material status
 
 Status describes the public materials, not the course's existence:
@@ -200,6 +207,14 @@ Status describes the public materials, not the course's existence:
   or policies may be outdated.
 
 Status must be communicated in text, not by color alone.
+
+**In development may apply to a linked course site**, not only to an unlinked
+course: a public collection may be published while it is still being assembled.
+The obligation then falls on the site itself. The provisional condition must be
+stated where a reader meets the materials — on the landing page and in the
+syllabus summary — and not only in the registry record. A published collection
+whose site does not say so is a defect, and the truthful repair is to add the
+statement, not to move the record to a friendlier status.
 
 Exact meetings, rooms, assignment dates, grades, and announcements remain in
 Blackboard or the authoritative university system.
@@ -270,8 +285,9 @@ curriculum may eventually contain.
 - Code: MATH 75063
 - Subtitle: Probability, Likelihood, and Estimation
 - Level: Graduate
-- Kind: Course
+- Kind: Course site (promoted from Course on 2026-08-18)
 - Status: In development
+- Public URL: `/math-stats-1/`
 
 The public site must keep three things distinct.
 
@@ -281,10 +297,15 @@ common theoretical foundation for the graduate curriculum around it.
 Mathematical Statistics II is the second course in that sequence. Both are
 established catalog courses and may be described as such.
 
-Second, the public materials do not yet exist. What is in development is the
-public course-material collection for MATH 75063, not the course. The status
-label therefore stays In development, and the treatment must say plainly that
-dates, policies, assessments, and readings remain provisional.
+Second, the public materials are in development. A first public collection was
+promoted on 2026-08-18: sixteen unit pages, a syllabus summary, a schedule, and
+a resource collection, produced in the private authoring workspace and
+independently reviewed there. What is in development is that collection, not the
+course. The status label therefore stays In development, the record now links to
+the site, and the site itself says plainly — on the landing page, in the
+syllabus summary, and in the footer — that dates, policies, assessments, and
+readings remain provisional, and that the term shown is a planning assumption
+rather than a scheduled section.
 
 Third, the broader curriculum is direction rather than adopted curriculum.
 Later work in regression and generalized linear models, computational
@@ -299,9 +320,21 @@ meeting, calendar, and release decisions are actually settled.
 
 ### Mathematical Statistics II
 
+- Course: Mathematical Statistics II
+- Code: MATH 75163
+- Level: Graduate
+- Kind: Course site (promoted from Course on 2026-08-18)
+- Status: In development
+- Public URL: `/math-stats-2/`
+
 May be identified as the established second catalog course in the sequence. It
-must not appear to have public materials while none exist: kind Course, status
-No public materials yet, no link.
+must not appear to have public materials while none exist — the rule that held
+it at kind Course, status No public materials yet, no link, until 2026-08-18.
+Public materials now exist: a collection built and reviewed alongside the
+Mathematical Statistics I one and promoted the same day. Everything said above
+about Mathematical Statistics I's provisional condition applies here, and applies
+harder, because the term recorded for this course is a planning assumption
+several terms out rather than a near-term offering.
 
 ### Curriculum directions
 
@@ -359,13 +392,16 @@ Completed:
    honest In development record;
 2. the unified Course Library: registry, canonical inventory page, site-wide
    `Courses` navigation, reduced sidebar, and the graduate compatibility
-   route.
+   route;
+3. the first graduate course content: the Mathematical Statistics I and II
+   sites, built through the curriculum agent and promoted 2026-08-18 as linked
+   In-development records.
 
 Deferred, in no fixed order:
 
 - choosing which courses become the smaller featured selection on Teaching;
 - migrating the Teaching hero presentation to registry-driven rendering;
-- graduate course content, syllabi, and hero artwork, through the curriculum
-  agent;
+- graduate hero artwork and thumbnails for the two mathematical-statistics
+  records, which currently carry no `image`;
 - curated substantive-review dates;
 - the remaining graduate records, as the curriculum is actually decided.

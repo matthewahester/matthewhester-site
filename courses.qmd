@@ -24,14 +24,16 @@ listing:
 
 ::: {.course-library-intro}
 
-Every public course-material site I maintain, together with the graduate
-courses whose materials are still being built. Undergraduate and graduate
-records sit in one catalog rather than in separate destinations, ordered by
-curriculum rather than alphabetically.
+Every public course-material site I maintain, together with the courses whose
+materials are still being built. Undergraduate and graduate records sit in one
+catalog rather than in separate destinations, ordered by curriculum rather than
+alphabetically.
 
-Records that link out have a public course site. A course whose materials are
-in development, and a planning-stage curriculum direction, are shown as plain
-text with nothing to click.
+Records that link out have a public course site. Some of those sites are still
+being assembled, and say so: an **In development** site is published while its
+dates, policies, assessments, and readings remain provisional. A course with no
+site at all, and a planning-stage curriculum direction, are shown as plain text
+with nothing to click.
 
 ::: {.course-facets}
 ::: {.course-facets-row}
