@@ -83,7 +83,14 @@ the record count is:
 3. **Sections, not destinations.** Undergraduate and graduate collections are
    visible as sections of that page.
 4. **Two treatments, one registry.** Published course sites and non-published
-   curriculum records share the registry but not their visual treatment.
+   curriculum records share the registry but not their visual treatment. What
+   separates the treatments is what a visitor can DO with the record: a
+   published site links from its title, its thumbnail, and a call to action; a
+   course or a direction links from nowhere, keeps the indented rail, and says
+   in words that there is nothing to open. Artwork is not part of that
+   separation — any record may carry a motif, and an unlinked one carries it
+   as a bare image rather than a linked one. A planning-stage record with a
+   motif must still be unmistakably unopenable.
 5. **Discovery without dominance.** Search and filtering are available without
    taking over the page. The opening viewport, at any width, belongs to the
    catalog rather than to a filter matrix.

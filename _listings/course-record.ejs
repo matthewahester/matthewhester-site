@@ -22,8 +22,16 @@
    3. Honest affordances. Only a record with a real `path` gets an anchor.
       Quarto's stock item templates emit an empty-href anchor even when an
       item has no path, which makes a placeholder focusable and reloads the
-      page when activated. kind: course and kind: direction render as plain
-      text with no anchor, no thumbnail frame, and nothing focusable.
+      page when activated. kind: course and kind: direction carry no anchor,
+      no call to action, and nothing focusable.
+
+      A thumbnail is NOT an affordance, so any kind may have one. Where a site's
+      thumbnail is wrapped in a link to the site, an unlinked record's is a bare
+      img: same picture, no anchor, nothing in the tab order. That keeps display
+      invariant 4 -- the treatments still differ, by what a visitor can DO with
+      the record rather than by whether it is allowed a picture. The wrapping
+      anchor stays aria-hidden and tabindex=-1 so it never becomes a second stop
+      announcing the same destination as the title.
 
    AUTHORING CONSTRAINTS, ALL LEARNED THE HARD WAY
 
@@ -91,10 +99,10 @@ if (leftover.length) {
 <% section.items.forEach(function (item) { %>
 <% const isSite = item.kind === 'site' && item.path; %>
 <% const statusClass = 'course-status-' + (item.status || '').toLowerCase().replace(/[^a-z]+/g, '-'); %>
-<% const hasThumb = isSite && item.image; %>
+<% const hasThumb = !!item.image; %>
 <div class="course-record course-record-<%= item.kind || 'course' %><%= hasThumb ? ' course-record-has-thumb' : '' %>" <%= metadataAttrs(item) %>>
 <% if (hasThumb) { %>
-<div class="course-record-thumb"><a href="<%= item.path %>" tabindex="-1" aria-hidden="true"><img src="<%= item.image %>" alt="" loading="lazy" /></a></div>
+<div class="course-record-thumb"><% if (isSite) { %><a href="<%= item.path %>" tabindex="-1" aria-hidden="true"><img src="<%= item.image %>" alt="" loading="lazy" /></a><% } else { %><img src="<%= item.image %>" alt="" loading="lazy" /><% } %></div>
 <% } %>
 <div class="course-record-main">
 <p class="course-record-title listing-title"><% if (isSite) { %><a href="<%= item.path %>"><%- item.title %></a><% } else { %><%- item.title %><% } %></p>

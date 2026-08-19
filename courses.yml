@@ -29,7 +29,10 @@
 #   group      required. Curriculum grouping, shared across levels.
 #   summary    required. One concise catalog sentence. Not curriculum content.
 #   path       ONLY for kind: site. The public URL. Absent means non-clickable.
-#   image      optional. Existing hero thumbnail. Absent is fine.
+#   image      optional. Hero thumbnail. Absent is fine. Any kind may carry one:
+#              artwork is not what separates a published site from a planning-stage
+#              direction (control section 2, display invariant 4) -- the link, the
+#              call to action, and the status line are.
 #   reviewed   optional. Last substantive review date. NEVER invent one; omit
 #              until a real review date is curated.
 #   categories derived index of [level, status, group] so Quarto's listing can
@@ -166,6 +169,7 @@
   group: "Mathematical statistics"
   summary: "Probability, likelihood, and estimation: sampling distributions, convergence, sufficiency, and information. Public materials are still being assembled, so dates, policies, and assessments remain provisional."
   path: "/math-stats-1/"
+  image: "assets/images/course-motifs/thumbs/math-stats-1-hero-480.webp"
   categories: ["Graduate", "In development", "Mathematical statistics"]
 
 - order: 210
@@ -177,6 +181,7 @@
   group: "Mathematical statistics"
   summary: "The established second course in the sequence: hypothesis testing, interval procedures, decision theory, asymptotics, and resampling. Public materials are still being assembled, so dates, policies, and assessments remain provisional."
   path: "/math-stats-2/"
+  image: "assets/images/course-motifs/thumbs/math-stats-2-hero-480.webp"
   categories: ["Graduate", "In development", "Mathematical statistics"]
 
 - order: 300
@@ -195,6 +200,7 @@
   status: "Curriculum direction"
   group: "Computing and workflow"
   summary: "Computation as a tool for statistical reasoning, with reproducible analysis as the working standard. A planning-stage direction, not a scheduled course."
+  image: "assets/images/course-motifs/thumbs/computational-statistics-hero-480.webp"
   categories: ["Graduate", "Curriculum direction", "Computing and workflow"]
 
 - order: 320
@@ -204,6 +210,7 @@
   status: "Curriculum direction"
   group: "Bayesian methods"
   summary: "Graduate Bayesian modeling and workflow, following the conditional-probability and likelihood foundations of the mathematical-statistics sequence. A planning-stage direction, not a scheduled course."
+  image: "assets/images/course-motifs/thumbs/bayesian-modeling-hero-480.webp"
   categories: ["Graduate", "Curriculum direction", "Bayesian methods"]
 
 - order: 330
@@ -213,4 +220,5 @@
   status: "Curriculum direction"
   group: "Design and causal evidence"
   summary: "Estimands, identification, and causal reasoning at the graduate level. A planning-stage direction, not a scheduled course."
+  image: "assets/images/course-motifs/thumbs/causal-inference-hero-480.webp"
   categories: ["Graduate", "Curriculum direction", "Design and causal evidence"]
