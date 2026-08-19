@@ -129,11 +129,22 @@ def ink_proximity(rgb, ink_level, radius):
 
 
 def build_matte(rgb, tol, seal, ink_level, ink_radius, min_area_frac, choke, soft,
-                wash_reach, wash_span, wash_max):
+                wash_reach, wash_span, wash_max, erase=(), keep=0):
     bg = background_colour(rgb)
     dist = np.linalg.norm(rgb.astype(np.float32) - bg, axis=2)
 
     solid = ~reachable_field(dist, tol, seal)
+
+    # Manual erasures, in crop-fraction coordinates. The flood and the gates are
+    # global rules, and some defects are local facts: a caption fragment lying
+    # against the subject, a wash lobe standing off one edge, a cut element like
+    # the plumb-bob whose suspension line cannot survive. Erasing them here --
+    # before components are counted and before the edge is feathered -- means
+    # the cut edge gets the same soft treatment as every natural edge, and any
+    # crumbs the cut strands are swept by the area rule.
+    h, w = solid.shape
+    for (el, et, er, eb) in erase:
+        solid[int(et * h):int(eb * h), int(el * w):int(er * w)] = False
 
     # --- the drawn object, always fully opaque ------------------------------
     core = solid & ink_proximity(rgb, ink_level, ink_radius) if ink_radius > 0 else solid
@@ -148,11 +159,16 @@ def build_matte(rgb, tol, seal, ink_level, ink_radius, min_area_frac, choke, sof
     labels, n = ndimage.label(core)
     if n:
         areas = ndimage.sum(core, labels, range(1, n + 1))
-        keep = np.zeros(n + 1, dtype=bool)
-        keep[1:] = areas >= min_area_frac * core.size
-        if not keep[1:].any():          # nothing cleared the bar; keep the largest
-            keep[int(np.argmax(areas)) + 1] = True
-        core = keep[labels]
+        mask = np.zeros(n + 1, dtype=bool)
+        if keep > 0:
+            # Keep exactly the N largest pieces, regardless of area threshold.
+            order = np.argsort(areas)[::-1][:keep]
+            mask[order + 1] = True
+        else:
+            mask[1:] = areas >= min_area_frac * core.size
+            if not mask[1:].any():      # nothing cleared the bar; keep the largest
+                mask[int(np.argmax(areas)) + 1] = True
+        core = mask[labels]
 
     # Choke, then feather. The choke drops the source's cream-blended edge pixel;
     # the feather turns the hard binary edge into a one-pixel ramp rather than a
@@ -237,6 +253,10 @@ def main():
                     help="most opaque the ground may get, 0-1")
     ap.add_argument("--soft", type=float, default=0.8, help="edge feather sigma, px")
     ap.add_argument("--pad", type=float, default=0.06, help="breathing room, fraction")
+    ap.add_argument("--erase", type=parse_bbox, action="append", default=[],
+                    help="fractional l,t,r,b rect (crop coords) to blank; repeatable")
+    ap.add_argument("--keep", type=int, default=0,
+                    help="keep exactly the N largest components; 0 uses --min-area")
     ap.add_argument("--outdir", default=".")
     args = ap.parse_args()
 
@@ -248,7 +268,8 @@ def main():
 
     alpha, ncomp = build_matte(rgb, args.tol, args.seal, args.ink, args.ink_radius,
                                args.min_area, args.choke, args.soft,
-                               args.wash_reach, args.wash_span, args.wash_max)
+                               args.wash_reach, args.wash_span, args.wash_max,
+                               args.erase, args.keep)
     rgba = np.dstack([rgb, (alpha * 255).astype(np.uint8)])
     squared, subject_wh = trim_and_square(rgba, args.pad)
 
