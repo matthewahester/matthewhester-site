@@ -123,6 +123,17 @@ jobs:
           ref: main
           path: course-math-stats-2
 
+      # math-7311 is a DRAFT PREVIEW and is deliberately NOT in courses.yml, so
+      # it never appears in the Course Library; it is reachable only at its own
+      # path. Building it here is what makes that path exist. Eval-free like the
+      # math-stats sites, so the detect step below leaves needs_r false.
+      - name: Checkout math-7311 (course)
+        uses: actions/checkout@v5
+        with:
+          repository: matthewahester/math-7311
+          ref: main
+          path: course-math-7311
+
       # --- 3. Quarto --------------------------------------------------
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
@@ -264,6 +275,10 @@ jobs:
         run: quarto render
         working-directory: course-math-stats-2
 
+      - name: Render math-7311
+        run: quarto render
+        working-directory: course-math-7311
+
       # --- 5. Assemble combined artifact ------------------------------
       # Copy CONTENTS of each course _site/ into the matching
       # subdirectory under the hub _site/. The trailing `/.` is
@@ -271,7 +286,7 @@ jobs:
       # itself and produces `_site/math-software/_site/...`.
       - name: Assemble combined _site/
         run: |
-          mkdir -p _site/math-software _site/intro-stats _site/bayesian-statistics _site/intro-probability _site/statistical-inference _site/statistical-modeling _site/modern-sas _site/statistical-design _site/applied-statistics _site/nonparametrics _site/math-stats-1 _site/math-stats-2
+          mkdir -p _site/math-software _site/intro-stats _site/bayesian-statistics _site/intro-probability _site/statistical-inference _site/statistical-modeling _site/modern-sas _site/statistical-design _site/applied-statistics _site/nonparametrics _site/math-stats-1 _site/math-stats-2 _site/math-7311
           cp -r course-math-software/_site/. _site/math-software/
           cp -r course-intro-stats/_site/. _site/intro-stats/
           cp -r course-bayesian-statistics/_site/. _site/bayesian-statistics/
@@ -284,6 +299,7 @@ jobs:
           cp -r course-nonparametrics/_site/. _site/nonparametrics/
           cp -r course-math-stats-1/_site/. _site/math-stats-1/
           cp -r course-math-stats-2/_site/. _site/math-stats-2/
+          cp -r course-math-7311/_site/. _site/math-7311/
 
       # --- 6. Tidy ---------------------------------------------------
       # The hub CNAME is the only one that matters at the artifact
