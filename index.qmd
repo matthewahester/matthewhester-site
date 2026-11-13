@@ -47,8 +47,7 @@ course-material portfolio.
 
 ::: {.feature-card}
 ### [Teaching](teaching.qmd)
-Ten public course-material sites, my teaching approach, and the Math
-Assistance Center.
+Current courses, my teaching approach, and the Math Assistance Center.
 :::
 
 ::: {.feature-card}
@@ -68,9 +67,9 @@ reviewable AI-assisted curriculum work.
 ## Featured course sites
 
 These are the two featured current-course sites. The
-[Teaching page](teaching.qmd) collects the full ten-site public
-course-material portfolio; roster- and section-specific material lives
-in the LMS, not here.
+[Course Library](courses.qmd) collects the full public course-material
+portfolio; roster- and section-specific material lives in the LMS, not
+here.
 
 ::: {.course-hero-card-grid}
 

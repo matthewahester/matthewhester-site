@@ -18,8 +18,8 @@ simulation-characterized evidential-audit workflow for meta-analytic
 corpora and demonstrates it with a nutrition intervention corpus.
 
 I also build public course materials and the systems behind them. The
-[teaching portfolio](teaching.qmd) now includes ten course-material sites.
-It also provides a public demonstration layer for
+[Course Library](courses.qmd) collects every public course-material site I
+maintain. It also provides a public demonstration layer for
 [Course Builder](research.qmd#course-builder), a developing course-design
 harness for coherent, reproducible, and reviewable AI-assisted curriculum
 work.
