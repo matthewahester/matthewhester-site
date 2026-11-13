@@ -1,0 +1,20 @@
+---
+title: "Page not found"
+description-meta: "There is no page at this address on matthewhester.com."
+toc: false
+search: false
+---
+
+There is no page at this address. It may have moved, or the link may be out
+of date.
+
+- [Home](index.qmd)
+- [Course Library](courses.qmd), which lists every public course site
+- [Research](research.qmd)
+- [Contact](contact.qmd)
+
+<!-- GitHub Pages serves this file for any missing path on the domain,
+     including paths under a course site such as /intro-stats/..., because
+     the course sites are folders of the same Pages site. Quarto writes this
+     page's links and assets as root-relative paths for that reason. Until
+     2026-11-13 the site had no 404 page and GitHub's default one showed. -->
