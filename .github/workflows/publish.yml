@@ -225,6 +225,24 @@ jobs:
       - name: Render hub
         run: quarto render
 
+      # The hub render must cover the hub's own pages only. _quarto.yml
+      # excludes the course-* checkouts from its render list; without that
+      # exclusion Quarto renders every course a second time under the hub
+      # theme, and the copies are published at /course-<name>/ and fill the
+      # hub's sitemap and search index (found on the live site 2026-11-12).
+      # A local render cannot show this, because the course folders exist
+      # only here. So fail closed, before any course renders.
+      - name: Guard hub render (no course checkout may reach _site/)
+        run: |
+          set -euo pipefail
+          leaked="$(find _site -mindepth 1 -maxdepth 1 -type d -name 'course-*' -print)"
+          if [ -n "$leaked" ]; then
+            echo "::error::The hub render published course checkouts: $leaked"
+            echo "Check the render list in _quarto.yml; it must exclude course-*/."
+            exit 1
+          fi
+          echo "hub render OK: no course-* folder in _site/"
+
       - name: Render math-software
         run: quarto render
         working-directory: course-math-software

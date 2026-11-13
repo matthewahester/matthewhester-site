@@ -1,8 +1,17 @@
 project:
   type: website
   output-dir: _site
+  # Render the hub's own pages and nothing else. A Quarto render glob with
+  # no leading slash matches at ANY depth, so "*.qmd" alone also renders
+  # every course repo that publish.yml checks out inside this folder as
+  # course-<name>/. That published a second, hub-themed copy of each course
+  # site at /course-<name>/ and put all of it in the hub's sitemap and
+  # search index. It never shows in a local render, where those folders do
+  # not exist. The exclusion keeps the hub render to the hub, and
+  # publish.yml fails the deploy if a course-* folder still reaches _site/.
   render:
     - "*.qmd"
+    - "!course-*/"
 
   # Registry gate. courses.yml is the authoritative course source, so a
   # violation must stop the render rather than reach the Course Library.
