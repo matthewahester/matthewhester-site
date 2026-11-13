@@ -1,8 +1,7 @@
 ---
 title: "Research"
 description-meta: "Research by Matt Hester — bias-robust Bayesian evidence synthesis, publication bias, corpus-scale evidential auditing, and human-governed AI infrastructure for curriculum-scale work. Includes a public arXiv preprint and the Course Builder course-design harness."
-toc: true
-toc-location: right
+toc: false
 ---
 
 My research runs along two connected strands. The first is **bias-robust

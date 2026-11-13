@@ -2,7 +2,6 @@
 title: "Course Library"
 description-meta: "The complete public course-material library of Matt Hester at UA Little Rock — undergraduate course sites and the graduate statistics curriculum in one catalog, each record labeled with its level, curriculum grouping, and public-material status."
 toc: false
-page-layout: full
 format:
   html:
     # Labels Quarto's generated Filter input, which ships with no id, no
@@ -29,12 +28,6 @@ materials are still being built. Undergraduate and graduate records sit in one
 catalog rather than in separate destinations, ordered by curriculum rather than
 alphabetically.
 
-Records that link out have a public course site. Some of those sites are still
-being assembled, and say so: an **In development** site is published while its
-dates, policies, assessments, and readings remain provisional. A course with no
-site at all, and a planning-stage curriculum direction, are shown as plain text
-with nothing to click.
-
 ::: {.course-facets}
 ::: {.course-facets-row}
 **Browse:** [All courses](courses.qmd)
@@ -50,12 +43,6 @@ with nothing to click.
 [In development](courses.qmd#category=In%20development)
 :::
 :::
-
-These are shortcuts, not combinable filters: each one narrows the catalog on
-its own. The **Filter** box below searches every part of a record — title,
-code, level, status, summary, and curriculum grouping — so a status without a
-shortcut here, such as `Maintained public reference`, is still one search
-away.
 
 :::
 

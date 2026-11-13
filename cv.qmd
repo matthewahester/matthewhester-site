@@ -1,8 +1,7 @@
 ---
 title: "CV"
 description-meta: "Brief CV for Matt Hester — statistician, teacher, and researcher at UA Little Rock: Bayesian evidence synthesis, a public course-material portfolio, and the human-governed Course Builder course-design harness."
-toc: true
-toc-location: right
+toc: false
 ---
 
 A short, public summary appears below.

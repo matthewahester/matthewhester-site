@@ -22,8 +22,13 @@ project:
   pre-render:
     - tools/validate_courses.py
 
+  # Images the Course Library template names. A listing template's <img>
+  # paths are not discovered by Quarto, so they are declared here: the
+  # course marks the Library rows show, and the hero thumbnails that
+  # index.qmd and teaching.qmd name in srcset.
   resources:
     - assets/images/course-motifs/thumbs/*.webp
+    - assets/images/course-motifs/marks/*.webp
 website:
   title: "Matt Hester"
   site-url: https://matthewhester.com
@@ -34,23 +39,23 @@ website:
   image: assets/images/brand/og-default-og.jpg
   open-graph: true
   twitter-card: true
-  # TODO(Phase 4C): favicon. Drop a 32x32 .ico and matching .svg into
-  # assets/images/brand/ and uncomment:
-  # favicon: assets/images/brand/favicon.ico
+  # A plain monogram in the navbar's own colors, written by
+  # tools/make_favicon.py. Until 2026-11-13 the site had no favicon and
+  # every browser tab showed the default icon.
+  favicon: assets/images/brand/favicon.png
 
   navbar:
     pinned: true
+    # No "Home" item: the name at the left of the bar is the home link.
     left:
-      - href: index.qmd
-        text: Home
       - href: about.qmd
         text: About
       - href: teaching.qmd
         text: Teaching
       # The canonical course inventory earns a top-level slot: it is reachable
-      # from anywhere, not just the Teaching sidebar. See
-      # TEACHING_PORTFOLIO_ARCHITECTURE.md section 2. Seven items is the
-      # ceiling in BRAND_STYLE_BRIEF.md — no further teaching destinations.
+      # from anywhere. See TEACHING_PORTFOLIO_ARCHITECTURE.md section 2. Seven
+      # items is the ceiling in BRAND_STYLE_BRIEF.md — no further teaching
+      # destinations.
       - href: courses.qmd
         text: Courses
       - href: research.qmd
@@ -60,27 +65,13 @@ website:
       - href: contact.qmd
         text: Contact
 
-  # Teaching sidebar — navigation WITHIN teaching.qmd and nothing else. Every
-  # entry is an anchor to a section that actually lives on that page: an entry
-  # pointing at another destination, or one that enumerates individual courses,
-  # is a defect (TEACHING_PORTFOLIO_ARCHITECTURE.md section 2). The Course
-  # Library is a standalone page reached from the navbar, carries no sidebar,
-  # and is where Course Builder now lives. teaching.qmd is the only page that
-  # opts in, via `sidebar: teaching`.
-  sidebar:
-    - id: teaching
-      title: "Teaching"
-      style: floating
-      collapse-level: 2
-      contents:
-        - text: "Teaching overview"
-          href: teaching.qmd
-        - text: "Current courses"
-          href: teaching.qmd#current-courses
-        - text: "Teaching approach"
-          href: teaching.qmd#teaching-approach
-        - text: "Math Assistance Center"
-          href: teaching.qmd#math-assistance-center
+  # No sidebar anywhere on the hub. Teaching had one until 2026-11-13: four
+  # anchors to sections of that one page. It was the reason Teaching's title
+  # sat 150-320px to the right of every other page's, and the page is short
+  # enough to scan without it. Every hub page now shares one column (see "One
+  # column" in styles.css). TEACHING_PORTFOLIO_ARCHITECTURE.md section 2 still
+  # describes that sidebar; its rule that Teaching must not become a second
+  # course directory is unaffected.
 
   page-footer:
     left: "© 2026 Matt Hester"

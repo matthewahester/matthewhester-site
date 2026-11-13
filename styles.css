@@ -1,20 +1,31 @@
 /* =============================================================
    matthewhester.com — site styles
    -------------------------------------------------------------
-   Visual identity: restrained rock / crystal / climbing.
-   The palette draws from cool stone (slate, granite, quartz)
-   with a single muted accent that suggests oxidized iron — the
-   color of weathered bolts and old chalk-stained holds. The aim
-   is "geology field notebook," not "alpine adventure brand."
+   Visual identity: restrained rock / crystal / climbing, set
+   sharp and simple. A white page, near-black ink, a black top
+   bar, and one accent that suggests oxidized iron — the color
+   of weathered bolts. The stone greys are the working palette:
+   panels, hairlines, and muted text. The portrait and the
+   course artwork carry the color; the page around them stays
+   plain.
 
    Design rules followed here:
-     - Quarto + Bootstrap (cosmo) supply the layout; we only
-       override colors, type, and a small set of components.
+     - Quarto + Bootstrap (cosmo) supply the base; this file
+       sets colors, type, the page column, and a small set of
+       components.
      - No JS. All visual variation is CSS-only.
-     - One accent color, used sparingly. Links and feature-card
-       hovers are the only places it appears by default.
+     - One accent color, iron. It marks links, hovers, and the
+       current page, and nothing else.
+     - One paper tone. Blocks are separated by rules and space,
+       not by boxes, fills, shadows, or rounded corners.
+     - One column. Every page puts its title on the same left
+       edge, and the navbar and footer share that edge.
      - Generous line-height and a slightly larger base size
        because most pages are prose.
+
+   Revised 2026-11-13 from the softer first version: a tinted
+   page, 8px rounded cards with shadows, pill tags, and colored
+   card edges. BRAND_STYLE_BRIEF.md still describes that version.
    ============================================================= */
 
 /* -------------------------------------------------------------
@@ -24,20 +35,21 @@
    them without re-picking hex values.
 */
 :root {
-  --stone-50:  #f6f5f3;   /* quartz dust — page background        */
-  --stone-100: #ecebe7;   /* limestone — card backgrounds         */
-  --stone-200: #d8d6d0;   /* weathered granite — soft borders     */
-  --stone-400: #8a8780;   /* basalt — muted text, captions        */
-  --stone-700: #3a3935;   /* slate — body text                    */
-  --stone-900: #1c1b19;   /* obsidian — headings                  */
+  --paper:     #ffffff;   /* the page, and everything set on it     */
+  --stone-50:  #f6f5f3;   /* quartz dust — navbar text, quiet plates */
+  --stone-100: #ecebe7;   /* limestone — panels: code, tags, quotes  */
+  --stone-200: #d8d6d0;   /* weathered granite — hairlines, borders  */
+  --stone-400: #8a8780;   /* basalt — rules and marks only. At 3.6:1
+                             on white it is too light to set text in */
+  --stone-500: #6b6862;   /* shale — muted text. 5.5:1 on white and
+                             4.7:1 on limestone                      */
+  --stone-700: #3a3935;   /* slate — body text                       */
+  --stone-900: #1c1b19;   /* obsidian — headings, navbar, firm rules */
 
-  --crystal-blue:   #5b7a8c;  /* oxidized copper / glacial ice    */
-  --iron-accent:    #8a4a2b;  /* weathered bolt / rust — accent   */
-  --moss-quiet:     #6b7a5a;  /* lichen — used only for callouts  */
+  --iron-accent: #8a4a2b; /* weathered bolt / rust — the one accent  */
 
-  --radius-card: 8px;          /* gentle, not pillowy             */
-  --shadow-card: 0 1px 2px rgba(28, 27, 25, 0.04),
-                 0 4px 12px rgba(28, 27, 25, 0.05);
+  --radius-tag: 2px;      /* tags and inline code. Every other edge
+                             on the site is square                   */
 }
 
 /* -------------------------------------------------------------
@@ -46,8 +58,14 @@
    Quarto already loads the Cosmo theme. We override colors and
    tighten the type so prose reads like a clean monograph.
 */
+/* Always draw the page scrollbar. A short page (Contact) has none, so
+   its centered column sat 7px to the right of every other page's. */
+html {
+  overflow-y: scroll;
+}
+
 body {
-  background-color: var(--stone-50);
+  background-color: var(--paper);
   color: var(--stone-700);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -63,6 +81,10 @@ h1 { font-size: 2.1rem; margin-top: 0.5rem; }
 h2 { font-size: 1.45rem; margin-top: 2.2rem; }
 h3 { font-size: 1.15rem; margin-top: 1.6rem; }
 
+/* The theme rules a section heading in Bootstrap's cool grey. Keep the
+   rule, in the palette's own grey. */
+h2 { border-bottom-color: var(--stone-200); }
+
 p, li { color: var(--stone-700); }
 
 a {
@@ -72,9 +94,34 @@ a {
   transition: border-color 120ms ease;
 }
 a:hover {
-  /* Underline only on hover — keeps prose visually quiet. */
+  /* A hairline on hover, for links that are links by position:
+     navigation, headings, and tags. */
   border-bottom-color: var(--iron-accent);
   color: var(--iron-accent);
+}
+
+/* Links in running text carry an underline. Iron against the slate of
+   body text differs by only 1.7:1, so color alone did not mark a link
+   inside a paragraph. Components that are plainly links (card titles,
+   tags, browse links) turn the underline off again in their own rules. */
+main p a,
+main li a,
+main td a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  border-bottom: 0;
+}
+main p a:hover,
+main li a:hover,
+main td a:hover {
+  text-decoration-thickness: 2px;
+}
+/* A long link text, usually a bare URL, may break inside a word. On a
+   phone the repository URL on the CV page was wider than the screen and
+   pushed the whole page 33px sideways. */
+main a {
+  overflow-wrap: break-word;
 }
 
 /* -------------------------------------------------------------
@@ -96,59 +143,104 @@ a:hover {
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
   color: #ffffff !important;
-  /* Subtle crystal-blue hairline — the only accent in the nav. */
-  border-bottom: 2px solid var(--crystal-blue);
+  /* A hairline in the bar's own light ink marks the current page. Iron
+     is the accent everywhere else, but on obsidian it is only 2.5:1. */
+  border-bottom: 2px solid var(--stone-50);
   margin-bottom: -2px;
 }
-/* Narrow-width navigation toggles: focus visibility.
+/* Narrow-width navigation toggle: focus visibility.
    Bootstrap zeroes the outline on .navbar-toggler:focus and falls back to a
-   box-shadow that computes to nothing against the stone navbar; Quarto's
-   sidebar toggle ships with no focus style at all. Below 992px those two
-   buttons are the only routes into the navbar and the course sidebar, and
-   neither showed a keyboard focus state. Scoped to :focus-visible, so
-   pointer users see no change and only keyboard focus draws the ring.
-   The navbar sits on obsidian, the sidebar toggle on the page, so each
-   takes the ring color that actually contrasts with what is behind it. */
+   box-shadow that computes to nothing against the stone navbar. Below 992px
+   that button is the only route into the navbar, and it showed no keyboard
+   focus state. Scoped to :focus-visible, so pointer users see no change and
+   only keyboard focus draws the ring. */
 .navbar-toggler:focus-visible {
   outline: 3px solid var(--stone-50);
   outline-offset: 2px;
   box-shadow: none;
 }
-.quarto-btn-toggle:focus-visible {
-  outline: 3px solid var(--crystal-blue);
-  outline-offset: 2px;
-  box-shadow: none;
+
+/* -------------------------------------------------------------
+   One column
+   -------------------------------------------------------------
+   Every page sets its content in the same 800px column, and the
+   navbar and footer put their contents on that column's edges.
+   Measured on the live site before this rule (1280px window), the
+   seven page titles started at 65, 233, 383, 193, 160, 160 and
+   240px, while the name in the navbar stayed at 29px.
+
+   Quarto lays a page out on a named-line grid whose tracks depend
+   on whether the page has a sidebar, a contents list, or a full
+   layout. No hub page has any of those now, so from the navbar's
+   expanded breakpoint up the grid is switched off and the column
+   is stated outright. That is what lets the navbar agree with it
+   at every width: both are 800px, centered. Below 992px the navbar
+   collapses to its toggle and Quarto's own single-column grid is
+   left alone.
+
+   A page that later needs Quarto's column-* classes (margin notes,
+   a wide figure) would need the grid back on that page.
+*/
+@media (min-width: 992px) {
+  #quarto-content.page-columns {
+    display: block;
+  }
+  #quarto-content > main.content {
+    max-width: 800px;
+    margin-inline: auto;
+  }
+  .navbar > .navbar-container {
+    max-width: 800px;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+  .navbar .navbar-brand-container {
+    margin-left: 0 !important;
+  }
+  .navbar .navbar-brand {
+    margin-left: 0;
+    padding-left: 0;
+  }
+  /* Written as `footer.footer .nav-footer` to outrank the theme's rule of
+     the same shape, which pads the footer 1em on each side and would set
+     the copyright line 16px inside the column's edge. */
+  footer.footer .nav-footer {
+    max-width: 800px;
+    margin-inline: auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 /* -------------------------------------------------------------
    Hero block (legacy single-column)
    -------------------------------------------------------------
-   A single quiet panel with a left rule, like a margin note in
-   a field notebook. No background image, no gradient. Kept for
-   secondary pages that still want a quiet intro panel.
+   A quiet intro block under a firm rule. No background image, no
+   gradient. Not used by any page at present; kept for a secondary
+   page that wants a set-off opening paragraph.
 */
 .hero {
   margin: 2.5rem 0 3rem 0;
-  padding: 1.25rem 1.5rem;
-  border-left: 3px solid var(--crystal-blue);
-  background-color: var(--stone-100);
-  border-radius: 0 var(--radius-card) var(--radius-card) 0;
+  padding: 1rem 0 0 0;
+  border-top: 2px solid var(--stone-900);
 }
 .hero h2 {
   margin-top: 0;
   font-size: 1.6rem;
+  border-bottom: 0;
+  padding-bottom: 0;
 }
 .hero p {
   margin-bottom: 0.5rem;
 }
 
 /* -------------------------------------------------------------
-   Title block (homepage)
+   Title block
    -------------------------------------------------------------
-   The single page H1 lives in Quarto's title block, driven by
-   the YAML `title:`. We tighten its spacing so it sits cleanly
-   above the split-hero intro below — no banner, no background,
-   no decorative rule.
+   Every page's H1 lives in Quarto's title block, driven by the YAML
+   `title:`. We tighten its spacing so it sits cleanly above the
+   first paragraph — no banner, no background, no decorative rule.
+   Home also sets a `subtitle:`, its tagline.
 */
 #title-block-header.quarto-title-block {
   margin-bottom: 0.5rem;
@@ -161,8 +253,8 @@ a:hover {
 }
 #title-block-header.quarto-title-block .subtitle {
   font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--stone-400);
+  font-weight: 400;
+  color: var(--stone-500);
   letter-spacing: 0.02em;
   margin: 0;
 }
@@ -170,67 +262,103 @@ a:hover {
 /* -------------------------------------------------------------
    Split hero (homepage)
    -------------------------------------------------------------
-   Two-column section below the title block: intro paragraph and
-   page links on the left, stylized portrait on the right. The
-   single page H1 lives in Quarto's title block above this block,
-   so .hero-split-text deliberately contains NO heading.
-   Collapses to a single column on narrow viewports with the
-   portrait below the text (deliberate — on a small screen the
-   user is reading first, looking second).
+   The portrait and the intro paragraph, under the title block.
+
+   Two layouts for a wide screen, the second improving on the first.
+
+   1. The plain one: text on the left, portrait on the right, both
+      starting at the top of the block. Nothing is centered against
+      anything else, so the first sentence starts directly under the
+      tagline. (Centering the text against a 683px portrait card left
+      about 270px of empty page between the two.)
+
+   2. Where the browser supports :has(), the portrait moves up to
+      stand beside the name. Quarto keeps the H1 in its title block,
+      outside this block, so the portrait cannot be put beside it in
+      markup. Instead the page's <main> becomes a two-column grid on
+      Home only, .hero-split dissolves into it (display: contents),
+      and the portrait takes the right-hand column across the title
+      block's row and the paragraph's row. Every other child of
+      <main> spans both columns and flows as before.
+
+   The markup order is portrait, then text, so the narrow layout
+   needs no reordering: one column reads name, portrait, paragraph.
+
+   The portrait is set straight on the page with no card. Its file has
+   a pure white ground for that reason; see tools/make_portrait.py.
 */
 .hero-split {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-  gap: 2.5rem;
-  align-items: center;
-  margin: 1.5rem 0 3rem 0;
-  padding: 0.5rem 0 1.25rem 0;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  grid-template-areas: "text portrait";
+  column-gap: 2.5rem;
+  align-items: start;
+  margin: 1.25rem 0 0 0;
+}
+.hero-split-text {
+  grid-area: text;
 }
 .hero-split-text p {
   font-size: 1.05rem;
   margin-bottom: 0.9rem;
 }
-.hero-split-text ul {
-  list-style: none;
-  padding: 0;
-  margin: 1rem 0 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
-}
-.hero-split-text ul li {
-  margin: 0;
-}
-.hero-split-text ul li a {
-  font-weight: 500;
-  border-bottom: 1px solid var(--stone-200);
-}
-.hero-split-text ul li a:hover {
-  border-bottom-color: var(--iron-accent);
-}
 .hero-split-portrait {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  grid-area: portrait;
+}
+.hero-split-portrait p {
+  margin: 0;
 }
 .hero-split-portrait img,
 .portrait-img {
+  display: block;
   max-width: 100%;
   height: auto;
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
-  background-color: var(--stone-100);
+}
+
+@media (min-width: 721px) {
+  main:has(> .hero-split) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 250px;
+    /* The second row is the flexible one, so the height the portrait
+       adds goes below the paragraph, not between it and the tagline. */
+    grid-template-rows: auto 1fr;
+    column-gap: 2.5rem;
+    align-items: start;
+  }
+  main:has(> .hero-split) > * {
+    grid-column: 1 / -1;
+  }
+  main:has(> .hero-split) > #title-block-header {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  main:has(> .hero-split) > .hero-split {
+    display: contents;
+  }
+  main:has(> .hero-split) .hero-split-text {
+    grid-area: auto;
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 1.25rem;
+  }
+  main:has(> .hero-split) .hero-split-portrait {
+    grid-area: auto;
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
 }
 
 /* Collapse to a single column on narrow screens. */
 @media (max-width: 720px) {
   .hero-split {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "portrait"
+      "text";
+    row-gap: 1.25rem;
   }
   .hero-split-portrait {
-    order: -1; /* portrait above text on mobile */
-    max-width: 280px;
+    max-width: 240px;
     margin: 0 auto;
   }
   #title-block-header.quarto-title-block .title {
@@ -239,75 +367,75 @@ a:hover {
 }
 
 /* -------------------------------------------------------------
-   Feature grid (homepage cards)
+   Feature grid (homepage section links)
    -------------------------------------------------------------
-   A four-up card grid on wide screens, collapsing gracefully to
-   two and then one. Cards are plain stone tiles with a thin
-   accent edge that warms on hover — the only "interactive"
-   flourish on the site.
+   Three ruled columns, collapsing to two and then one. Each is a
+   heading and a sentence under a firm rule: no tile, no fill, no
+   shadow. The rule turns iron on hover, which is the only motion
+   on the page.
+
+   These were .feature-card tiles (white fill, shadow, 8px corners,
+   a colored left edge, a 1px lift on hover). The old .course-card
+   variant differed from a plain card only in the color of that
+   edge, so it went with the edge.
+
+   Each block's heading is an H2. The "Explore" H2 that used to sit
+   above the grid is gone, so these are the page's first sections
+   after the H1 and an H3 here would skip a level.
 */
+/* Margins: on a wide screen this block is a grid item of <main> (see the
+   split hero above), and a grid item's margins do not collapse with its
+   neighbors'. So the space above is all here, and the space below is left
+   to the next section heading's own top margin. */
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0 2.5rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.75rem;
+  margin: 2.25rem 0 1.25rem 0;
 }
 
 .feature-card {
-  background-color: #ffffff;
-  border: 1px solid var(--stone-200);
-  border-left: 3px solid var(--stone-400);
-  border-radius: var(--radius-card);
-  padding: 1.1rem 1.2rem;
-  box-shadow: var(--shadow-card);
-  transition: border-left-color 160ms ease,
-              transform 160ms ease;
+  border-top: 2px solid var(--stone-900);
+  padding: 0.75rem 0 0 0;
+  transition: border-top-color 160ms ease;
 }
 .feature-card:hover {
-  border-left-color: var(--iron-accent);
-  transform: translateY(-1px);
+  border-top-color: var(--iron-accent);
 }
+.feature-card h2,
 .feature-card h3 {
   margin-top: 0;
   margin-bottom: 0.4rem;
+  padding-bottom: 0;
+  border-bottom: 0;
   font-size: 1.1rem;
 }
+/* The theme sets every link to weight 400, so a linked heading was
+   lighter than a plain one. Take the heading's weight back. */
+.feature-card h2 a,
 .feature-card h3 a {
   color: var(--stone-900);
+  font-weight: inherit;
   border-bottom: none;
 }
+.feature-card h2 a:hover,
 .feature-card h3 a:hover {
   color: var(--iron-accent);
   border-bottom: none;
 }
 .feature-card p {
   margin-bottom: 0;
-  color: var(--stone-400);
   font-size: 0.95rem;
-}
-
-/* -------------------------------------------------------------
-   Course card variant
-   -------------------------------------------------------------
-   Same skeleton as .feature-card but with a slightly warmer left
-   edge by default to signal "this is an external public course
-   site, not a section of this site." Hover behavior matches.
-*/
-.feature-card.course-card {
-  border-left-color: var(--crystal-blue);
-}
-.feature-card.course-card:hover {
-  border-left-color: var(--iron-accent);
 }
 
 /* -------------------------------------------------------------
    Feature cards with images
    -------------------------------------------------------------
-   When a card carries a motif image, the image sits at the top
-   inside the card padding, cropped to a consistent aspect via
-   object-fit so different source ratios don't break the grid.
-   Source images are 600px wide / native aspect; the 3:2 frame
-   keeps them visually quiet and uniform.
+   Parked, not in use (see CLAUDE.md, editorial conventions). When
+   a block carries a motif image, the image sits at the top,
+   cropped to a consistent aspect via object-fit so different
+   source ratios don't break the grid. Source images are 600px
+   wide / native aspect; the 3:2 frame keeps them uniform.
 */
 .feature-card.feature-card-with-image {
   padding: 0;
@@ -328,19 +456,13 @@ a:hover {
   background-color: var(--stone-100);
 }
 .feature-card.feature-card-with-image > section,
+.feature-card.feature-card-with-image > h2,
 .feature-card.feature-card-with-image > h3 {
-  padding: 1.1rem 1.2rem;
+  padding: 0.75rem 0 0 0;
 }
+.feature-card.feature-card-with-image h2,
 .feature-card.feature-card-with-image h3 {
   margin: 0 0 0.4rem 0;
-}
-.feature-card.feature-card-with-image p {
-  padding: 0 1.2rem 1.1rem 1.2rem;
-}
-/* The image-bearing <p> gets `padding: 0` reset above; the prose
-   <p> inside .level3 sections gets the side padding. */
-.feature-card.feature-card-with-image section.level3 > p {
-  padding: 0;
 }
 
 /* -------------------------------------------------------------
@@ -369,25 +491,26 @@ a:hover {
    complete, never cropped (the hero already contains the course
    title), with a small caption below. A separate class from the
    .feature-card system so the no-crop rule can't leak into it.
+
+   The artwork is the ornament, so the frame is only a hairline:
+   square, flat, darkening on hover. Two to a row in the 800px
+   column, one below 576px. The minimum is 300px rather than the
+   earlier 430px, because two 430px tracks do not fit in the column
+   and the posters fell to one a row, each 800px wide.
 */
 .course-hero-card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 430px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 1.25rem;
   margin: 1.5rem 0 2.5rem 0;
 }
 .course-hero-card {
-  background-color: #ffffff;
   border: 1px solid var(--stone-200);
-  border-left: 3px solid var(--crystal-blue);
-  border-radius: var(--radius-card);
   overflow: hidden;
-  box-shadow: var(--shadow-card);
-  transition: border-left-color 160ms ease, transform 160ms ease;
+  transition: border-color 160ms ease;
 }
 .course-hero-card:hover {
-  border-left-color: var(--iron-accent);
-  transform: translateY(-1px);
+  border-color: var(--stone-900);
 }
 /* The full hero, uncropped and responsive. */
 .course-hero-card > p {
@@ -415,23 +538,31 @@ a:hover {
   color: var(--stone-900);
   font-weight: 600;
   font-size: 1.08rem;
+  text-decoration: none;
   border-bottom: none;
 }
 .course-hero-card-caption a:hover {
   color: var(--iron-accent);
+  text-decoration: none;
   border-bottom: none;
+}
+/* The course name is written **bold** inside its link. `strong` means
+   "bolder than the parent", and the parent link is already 600, so the
+   name computed to 900: the heaviest text on the site. Hold it at 600. */
+.course-hero-card-caption a strong {
+  font-weight: inherit;
 }
 
 /* -------------------------------------------------------------
    Course status labels
    -------------------------------------------------------------
    The six course states from TEACHING_PORTFOLIO_ARCHITECTURE.md
-   section 4. The status *word* carries the meaning; the pill is
+   section 4. The status *word* carries the meaning; the tag is
    only a frame. So the label still reads correctly in greyscale,
    in forced-colors mode, and to a screen reader — and the markup
    pairs it with a visually-hidden "Course status:" prefix. The
-   shape is borrowed from .artifact-pills so the site keeps one
-   pill vocabulary.
+   shape is shared with .artifact-pills so the site keeps one
+   tag vocabulary: a small square-cornered label.
 
    Modifier names are the status string slugified, because the
    Course Library template emits them mechanically from courses.yml:
@@ -446,13 +577,13 @@ a:hover {
   color: var(--stone-700);
   background-color: var(--stone-100);
   border: 1px solid var(--stone-200);
-  border-radius: 999px;
+  border-radius: var(--radius-tag);
 }
-/* Current offering — the only state that earns the crystal edge. */
+/* Current offering — the only state drawn in full ink on bare paper. */
 .course-status-current-offering {
-  color: var(--crystal-blue);
-  border-color: var(--crystal-blue);
-  background-color: #ffffff;
+  color: var(--stone-900);
+  border-color: var(--stone-900);
+  background-color: var(--paper);
 }
 /* Maintained public reference — the base pill, named explicitly so
    every state has a class of its own. */
@@ -464,7 +595,7 @@ a:hover {
 .course-status-in-development {
   border-style: dashed;
   border-color: var(--stone-400);
-  background-color: #ffffff;
+  background-color: var(--paper);
 }
 /* No public materials yet — the course is real, nothing public
    exists. Quiet, and deliberately not dashed: nothing is underway. */
@@ -480,9 +611,9 @@ a:hover {
   background-color: var(--stone-50);
 }
 /* Archived resource — receded by its fill, not by faint text. The
-   stone-50 plate drops to the page background while the word itself
-   stays at body ink; stone-400 here would be 3.3:1, worse than the
-   contrast .future-courses-note above just rejected. */
+   stone-50 plate is the faintest fill a tag can take on the white page,
+   while the word itself stays at body ink; stone-400 text here would be
+   3.3:1, worse than the contrast .future-courses-note above rejected. */
 .course-status-archived-resource {
   color: var(--stone-700);
   background-color: var(--stone-50);
@@ -491,52 +622,28 @@ a:hover {
 /* -------------------------------------------------------------
    Course Library — page frame
    -------------------------------------------------------------
-   courses.qmd uses page-layout: full and carries no sidebar, which
-   hands the main column ~1135px at 1280px and up. Left to itself that
-   is wider than anything on the page wants to be: prose caps at a
-   reading measure, so the section rules and record separators ran on
-   for another 300-500px past the last word on every line. Rules that
-   advertise a column the content never reaches read as a layout bug.
+   The Library sits in the site's one 800px column like every other
+   page (see "One column" above), so it needs no frame of its own:
+   the title, the browse links, the section rules, and the record rows
+   all share the edges the navbar and footer use.
 
-   So the catalog gets an explicit measure instead. 880px is derived,
-   not picked: a record row is a 224px thumbnail + a 1.35rem gap + its
-   text, and 880 leaves that text column ~634px — about 70 characters,
-   which is a sentence measure rather than a banner. The structural
-   edge (rules, rows, record text) therefore lands in one place, and
-   prose sits at its own narrower measure inside it. Two intentional
-   edges instead of five accidental ones.
+   A record row is an 80px course mark, a 1.35rem gap, and its text,
+   which leaves the text about 700px. That is longer than a reading
+   measure, but a record is one sentence, so it mostly sets on a single
+   line, which is what makes the list scannable.
+
+   Before 2026-11-13 this page had a measure of its own, 880px, derived
+   from a 224px hero thumbnail. TEACHING_PORTFOLIO_ARCHITECTURE.md
+   section 3 still says the Library gets more room than the prose
+   column and that a record carries a hero thumbnail; both sentences
+   predate this change.
 
    .course-builder-note is a CLASS, not the #course-builder id: that id
    also exists on research.html and index.html, and styling through it
    would silently re-lay-out a section of a page this stylesheet has no
-   business reflowing.
+   business reflowing. No rule uses the class at present; it stays on
+   the heading as the hook for one.
 */
-/* Centre the whole column, title included. page-layout: full gives main
-   ~1135px while the catalog only wants 880, and a capped-but-left-aligned
-   block sits off-centre on a wide screen — 393px of margin on the left
-   against 654px on the right at 1920. Capping main itself moves the H1
-   with the content, so the page reads as one centred column.
-
-   :has() scopes this to the Library without needing a body class. Where
-   it is unsupported the rule is skipped and the per-block caps below
-   still apply, which is exactly the previous left-aligned behaviour —
-   a degradation, not a break. */
-main:has(.course-library-list) {
-  max-width: 880px;
-  margin-inline: auto;
-}
-.course-library-intro,
-.course-library-list,
-.course-library-outro,
-.course-builder-note,
-.quarto-listing .listing-actions-group {
-  max-width: 880px;
-}
-/* Prose gets no cap of its own: it fills the same 880px the section
-   rules and record rows use, so every line on the page breaks on one
-   right edge. A narrower reading measure here is the more orthodox
-   choice, but it leaves the paragraphs visibly short of the catalog
-   they introduce, which reads as a mistake rather than as restraint. */
 
 /* -------------------------------------------------------------
    Course Library sections
@@ -549,17 +656,23 @@ main:has(.course-library-list) {
    searchable values and no categories, so they drop out of their own
    accord whenever a filter is active. That is the intent: a filtered
    view is a result list, not a catalog.
+
+   One firm rule closes each section head. The theme would also rule
+   the H2 itself, which put two lines a blurb apart, so the heading's
+   own rule is turned off here.
 */
 .course-section-head {
   margin: 2.4rem 0 0.25rem 0;
   padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--stone-200);
+  border-bottom: 2px solid var(--stone-900);
 }
 .course-library-list > .course-section-head:first-child {
   margin-top: 1rem;
 }
 .course-section-title {
   margin: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
   font-size: 1.3rem;
 }
 .course-section-blurb {
@@ -573,31 +686,45 @@ main:has(.course-library-list) {
    -------------------------------------------------------------
    Compact catalog rows, deliberately NOT hero cards: the library has
    to stay scannable toward 25-30 records. A published course site is
-   a media row — thumbnail, title, one line of metadata, one sentence,
+   a media row — course mark, title, one line of metadata, one sentence,
    and an explicit link. A course whose materials do not exist yet, and
-   a planning-stage direction, are text-only rows with no image column
-   at all (no reserved blank frame), no anchor, and nothing focusable.
+   a planning-stage direction, carry no anchor and nothing focusable,
+   and a record with no image has no image column at all (no reserved
+   blank frame).
+
+   The image is the course MARK: the crystal or object cut out of the
+   course's poster, the same mark the course site shows in its navbar.
+   It replaced a 224px thumbnail of the whole poster, whose lettering
+   and side panels were unreadable at that size (and at 108px on a
+   phone). The marks are transparent, so they sit on the page with no
+   frame. tools/make_library_marks.py writes them.
+
+   That tool does the lining up, so this stylesheet does none per image:
+   it trims each mark to its object, gives every object the same optical
+   size, centres it in an 80px square, and writes that square at 80, 160
+   and 240 pixels so a screen draws it without resampling. The 80px
+   column below, SLOT_PX in the tool, and the width and height the
+   template puts on the img are one number in three places: change them
+   together.
 */
 .course-library-list {
   margin: 1.25rem 0 2rem 0;
 }
 /* One column is the default and the media grid is keyed off the
-   thumbnail actually being there, not off the record's kind. `image` is
-   optional in the registry, so a published site with no thumbnail is a
-   legal record; keying the thumbnail track off .course-record-site would
+   image actually being there, not off the record's kind. `image` is
+   optional in the registry, so a published site with no image is a
+   legal record; keying the image track off .course-record-site would
    drop that record's whole text block into the empty image column. */
 .course-record {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 1.35rem;
   align-items: start;
-  padding: 1.25rem 0.2rem;
+  padding: 1.25rem 0;
   border-bottom: 1px solid var(--stone-200);
 }
-/* One visual step up from 200px (+12%). Enough that the hero art reads at a
-   glance; not enough to compete with the title and summary beside it. */
 .course-record-has-thumb {
-  grid-template-columns: 224px minmax(0, 1fr);
+  grid-template-columns: 80px minmax(0, 1fr);
 }
 /* Text-only rows get an indented rule. Keyed off :not(.course-record-site)
    so a new non-linking kind inherits the treatment automatically, and so a
@@ -614,12 +741,16 @@ main:has(.course-library-list) {
 .course-record-main > p:first-child {
   margin-top: 0;
 }
+/* The tallest marks reach the top of their square. Dropping the square
+   this far puts that top on the capitals of the title beside it, where
+   it otherwise stood a few pixels above them. */
+.course-record-thumb {
+  margin-top: 0.35rem;
+}
 .course-record-thumb img {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid var(--stone-200);
-  border-radius: var(--radius-card);
 }
 .course-record-title {
   font-size: 1.12rem;
@@ -627,12 +758,17 @@ main:has(.course-library-list) {
   color: var(--stone-900);
   line-height: 1.35;
 }
+/* font-weight: inherit, because the theme sets every link to 400 and a
+   linked title was lighter than an unlinked one. */
 .course-record-title a {
   color: var(--stone-900);
+  font-weight: inherit;
+  text-decoration: none;
   border-bottom: none;
 }
 .course-record-title a:hover {
   color: var(--iron-accent);
+  text-decoration: none;
   border-bottom: none;
 }
 /* Curriculum records read a step quieter than published sites. */
@@ -658,9 +794,8 @@ main:has(.course-library-list) {
   font-family: "JetBrains Mono", Consolas, Menlo, monospace;
   font-size: 0.82rem;
 }
-/* No cap: the record's text column is already ~634px (about 70
-   characters) inside the 880px measure, so the summary fills it and
-   ends exactly where the row's separator rule does. */
+/* No cap: the summary fills the record's text column and ends where
+   the row's separator rule does. */
 .course-record-summary {
   margin-top: 0.5rem;
   font-size: 0.97rem;
@@ -670,15 +805,11 @@ main:has(.course-library-list) {
   margin-top: 0.35rem;
   font-size: 0.85rem;
 }
+/* The call to action is an ordinary underlined text link (see the
+   running-text link rule near the top). */
 .course-record-cta {
   margin-top: 0.55rem;
   font-size: 0.92rem;
-}
-.course-record-cta a {
-  border-bottom: 1px solid var(--stone-200);
-}
-.course-record-cta a:hover {
-  border-bottom-color: var(--iron-accent);
 }
 /* Says out loud what the missing link already implies. */
 .course-record-nolink {
@@ -703,7 +834,9 @@ main:has(.course-library-list) {
    width. "All courses" points at the bare page URL, because an empty
    category in the hash is falsy and does not clear the filter. Quarto
    filters one category at a time, so these are shortcuts rather than
-   combinable facets — the page copy says so.
+   combinable facets. The page no longer says so in a sentence; what
+   keeps them from reading as combinable is that only one link is ever
+   drawn as applied.
 
    Level has no text-search equivalent — List.js matches substrings, so
    typing "Graduate" also matches "Undergraduate" — which is why these
@@ -720,7 +853,8 @@ main:has(.course-library-list) {
 .course-facets a {
   padding: 0.14rem 0.55rem;
   border: 1px solid var(--stone-200);
-  border-radius: 999px;
+  border-radius: var(--radius-tag);
+  text-decoration: none;
   white-space: nowrap;
 }
 .course-facets a:hover,
@@ -761,7 +895,7 @@ main:has(.course-library-list) {
   font-size: 0.92rem;
 }
 .course-status-key > summary:focus-visible {
-  outline: 2px solid var(--crystal-blue);
+  outline: 2px solid var(--stone-900);
   outline-offset: 2px;
 }
 .course-status-key[open] > summary {
@@ -803,25 +937,27 @@ main:has(.course-library-list) {
   border-color: var(--stone-200);
   color: var(--stone-700);
 }
+.quarto-listing .form-control,
+.quarto-listing .input-group-text {
+  border-radius: 0;
+}
 .quarto-listing .form-control:focus {
-  border-color: var(--crystal-blue);
-  box-shadow: 0 0 0 2px rgba(91, 122, 140, 0.25);
+  border-color: var(--stone-900);
+  box-shadow: 0 0 0 2px rgba(28, 27, 25, 0.18);
 }
 .listing-no-matching {
   margin: 1.5rem 0;
   color: var(--stone-700);
 }
 
-/* Narrow screens: keep the media row, just a smaller thumbnail. Turning
-   each record into a stacked full-width hero would triple the page
-   height for no gain. */
+/* Narrow screens: keep the media row, just a smaller mark. */
 @media (max-width: 720px) {
   .course-record {
     gap: 0.9rem;
-    padding: 1rem 0.1rem;
+    padding: 1rem 0;
   }
   .course-record-has-thumb {
-    grid-template-columns: 108px minmax(0, 1fr);
+    grid-template-columns: 56px minmax(0, 1fr);
   }
   .course-record-title {
     font-size: 1.02rem;
@@ -846,8 +982,9 @@ main:has(.course-library-list) {
    -------------------------------------------------------------
    A two-column block (text + a portrait climbing image) that
    collapses to one column on narrow screens, plus a single wide
-   image below. Images are shown whole (no crop) and kept modest
-   so the page still reads as an academic personal site.
+   image below. Images are shown whole (no crop), square-cornered
+   and unshadowed, and kept modest so the page still reads as an
+   academic personal site.
 */
 .about-split {
   display: grid;
@@ -863,16 +1000,12 @@ main:has(.course-library-list) {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
 }
 .about-wide-img {
   display: block;
   width: 100%;
   height: auto;
   max-width: 760px;
-  border-radius: var(--radius-card);
-  box-shadow: var(--shadow-card);
   margin: 0.5rem 0 1.75rem 0;
 }
 @media (max-width: 720px) {
@@ -888,31 +1021,29 @@ main:has(.course-library-list) {
 /* -------------------------------------------------------------
    Research highlight + link list
    -------------------------------------------------------------
-   A single feature panel for the current preprint, matching the
-   feature-card skeleton but with the crystal-blue left edge to mark
-   it as the page's anchor. The link list below stacks the external
-   identifiers (arXiv, DOIs, repository) as quiet, scannable rows.
+   The current preprint: title, a line of metadata, the abstract,
+   and a row of artifact links. It sits directly under its section
+   heading's rule with no panel of its own; the heading already
+   sets it off. (It was a white card with a shadow and a colored
+   left edge.) The link list below stacks the external identifiers
+   (arXiv, DOIs, repository) as quiet, scannable rows.
 */
 .research-highlight {
-  background-color: #ffffff;
-  border: 1px solid var(--stone-200);
-  border-left: 3px solid var(--crystal-blue);
-  border-radius: var(--radius-card);
-  padding: 1.25rem 1.4rem;
   margin: 1.25rem 0 2rem 0;
-  box-shadow: var(--shadow-card);
 }
 .research-highlight h3 {
   margin-top: 0;
   margin-bottom: 0.3rem;
 }
 .research-highlight .preprint-meta {
-  color: var(--stone-400);
+  color: var(--stone-500);
   font-size: 0.92rem;
   margin: 0 0 0.75rem 0;
 }
-/* Artifact pills — small, sober links to public research artifacts
-   (arXiv, repository, Zenodo, ORCID). No JS, quiet until hovered. */
+/* Artifact tags — small, sober links to public research artifacts
+   (arXiv, repository, Zenodo, ORCID). No JS, quiet until hovered.
+   The class keeps its old name, .artifact-pills; the shape is the
+   site's square-cornered tag. */
 .artifact-pills ul {
   list-style: none;
   padding: 0;
@@ -931,7 +1062,8 @@ main:has(.course-library-list) {
   color: var(--stone-700);
   background-color: var(--stone-100);
   border: 1px solid var(--stone-200);
-  border-radius: 999px;
+  border-radius: var(--radius-tag);
+  text-decoration: none;
   transition: border-color 120ms ease, color 120ms ease;
 }
 .artifact-pills li a:hover {
@@ -958,37 +1090,46 @@ main:has(.course-library-list) {
 /* -------------------------------------------------------------
    Footer
    -------------------------------------------------------------
-   Quiet, single hairline, basalt text. Matches the navbar's
-   stone-on-stone restraint.
+   Quiet: one hairline across the window, muted text set on the
+   column's edges. The hairline is on the outer footer element so
+   that it spans the window while .nav-footer itself is held to the
+   column (see "One column"). A link in the footer is underlined,
+   because it is the same color as the text around it.
 */
-.nav-footer {
+footer.footer {
   border-top: 1px solid var(--stone-200);
-  color: var(--stone-400);
-  background-color: var(--stone-50);
+  background-color: var(--paper);
+}
+.nav-footer {
+  border-top: 0;
+  color: var(--stone-500);
+  background-color: var(--paper);
 }
 .nav-footer a {
-  color: var(--stone-400);
+  color: var(--stone-500);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  border-bottom: 0;
 }
 .nav-footer a:hover {
   color: var(--iron-accent);
-  border-bottom-color: var(--iron-accent);
 }
 
 /* -------------------------------------------------------------
    Misc content
    ------------------------------------------------------------- */
 blockquote {
-  border-left: 3px solid var(--moss-quiet);
+  border-left: 3px solid var(--stone-400);
   background-color: var(--stone-100);
   color: var(--stone-700);
   padding: 0.5rem 1rem;
-  border-radius: 0 var(--radius-card) var(--radius-card) 0;
 }
 
 code {
   background-color: var(--stone-100);
   color: var(--stone-900);
   padding: 0.1rem 0.3rem;
-  border-radius: 3px;
+  border-radius: var(--radius-tag);
   font-size: 0.9em;
 }

@@ -2,7 +2,6 @@
 title: "Teaching"
 description-meta: "Teaching by Matt Hester at UA Little Rock — current mathematics and statistics courses, a concepts-first and reproducible teaching approach, and the Math Assistance Center. The complete public course collection lives in the Course Library."
 toc: false
-sidebar: teaching
 ---
 
 I teach mathematics and statistics at the **University of Arkansas at Little
@@ -19,10 +18,10 @@ the [Course Library](courses.qmd).
 Public, durable resource sites for two of my current courses. Roster- and
 section-specific material lives in the LMS, not here.
 
-::: {.course-hero-card-grid .column-page-right}
+::: {.course-hero-card-grid}
 
 ::: {.course-hero-card}
-[![](assets/images/course-motifs/thumbs/intro-math-software-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/intro-math-software-hero-480.webp 480w, assets/images/course-motifs/thumbs/intro-math-software-hero.webp 800w" sizes="(min-width: 576px) 585px, 90vw" fig-alt="Course identity hero for Intro to Mathematical Software — a blue-violet crystal cluster surrounded by mathematical software, workflow, simulation, and version-control graphics, with the course title."}](/math-software/)
+[![](assets/images/course-motifs/thumbs/intro-math-software-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/intro-math-software-hero-480.webp 480w, assets/images/course-motifs/thumbs/intro-math-software-hero.webp 800w" sizes="(min-width: 992px) 390px, (min-width: 660px) 46vw, 90vw" fig-alt="Course identity hero for Intro to Mathematical Software — a blue-violet crystal cluster surrounded by mathematical software, workflow, simulation, and version-control graphics, with the course title."}](/math-software/)
 
 ::: {.course-hero-card-caption}
 [**Intro to Mathematical Software**](/math-software/)
@@ -33,7 +32,7 @@ reproducible workflow, and careful AI-assisted work.
 :::
 
 ::: {.course-hero-card}
-[![](assets/images/course-motifs/thumbs/intro-stats-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/intro-stats-hero-480.webp 480w, assets/images/course-motifs/thumbs/intro-stats-hero.webp 800w" sizes="(min-width: 576px) 585px, 90vw" fig-alt="Course identity hero for Intro to Statistics — an amber crystal cluster surrounded by introductory statistics graphics including distributions, uncertainty, scatterplots, center and spread, and sampling distributions, with the course title."}](/intro-stats/)
+[![](assets/images/course-motifs/thumbs/intro-stats-hero-480.webp){.course-hero-card-img srcset="assets/images/course-motifs/thumbs/intro-stats-hero-480.webp 480w, assets/images/course-motifs/thumbs/intro-stats-hero.webp 800w" sizes="(min-width: 992px) 390px, (min-width: 660px) 46vw, 90vw" fig-alt="Course identity hero for Intro to Statistics — an amber crystal cluster surrounded by introductory statistics graphics including distributions, uncertainty, scatterplots, center and spread, and sampling distributions, with the course title."}](/intro-stats/)
 
 ::: {.course-hero-card-caption}
 [**Intro to Statistics**](/intro-stats/)
