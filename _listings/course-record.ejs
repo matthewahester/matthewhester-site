@@ -100,9 +100,23 @@ if (leftover.length) {
 <% const isSite = item.kind === 'site' && item.path; %>
 <% const statusClass = 'course-status-' + (item.status || '').toLowerCase().replace(/[^a-z]+/g, '-'); %>
 <% const hasThumb = !!item.image; %>
+<%
+/* A course mark is written at three pixel sizes by tools/make_library_marks.py:
+   NAME-mark.webp (80 px), NAME-mark-2x.webp and NAME-mark-3x.webp. The registry
+   names the first. The other two names are derived here, so each screen is
+   sent the file that matches its pixel density and draws it without
+   resampling it. tools/validate_courses.py fails the render if either is
+   missing. width and height reserve the square before the lazy image arrives.
+   An image that is not a course mark is emitted as it always was. */
+const isMark = hasThumb && /-mark\.webp$/.test(item.image);
+const markAttrs = isMark
+  ? ' srcset="' + item.image + ' 1x, ' + item.image.replace(/\.webp$/, '-2x.webp') + ' 2x, ' + item.image.replace(/\.webp$/, '-3x.webp') + ' 3x" width="80" height="80"'
+  : '';
+const thumbImg = hasThumb ? '<img src="' + item.image + '"' + markAttrs + ' alt="" loading="lazy" decoding="async" />' : '';
+%>
 <div class="course-record course-record-<%= item.kind || 'course' %><%= hasThumb ? ' course-record-has-thumb' : '' %>" <%= metadataAttrs(item) %>>
 <% if (hasThumb) { %>
-<div class="course-record-thumb"><% if (isSite) { %><a href="<%= item.path %>" tabindex="-1" aria-hidden="true"><img src="<%= item.image %>" alt="" loading="lazy" /></a><% } else { %><img src="<%= item.image %>" alt="" loading="lazy" /><% } %></div>
+<div class="course-record-thumb"><% if (isSite) { %><a href="<%= item.path %>" tabindex="-1" aria-hidden="true"><%= thumbImg %></a><% } else { %><%= thumbImg %><% } %></div>
 <% } %>
 <div class="course-record-main">
 <p class="course-record-title listing-title"><% if (isSite) { %><a href="<%= item.path %>"><%- item.title %></a><% } else { %><%- item.title %><% } %></p>

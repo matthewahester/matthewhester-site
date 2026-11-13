@@ -70,6 +70,13 @@ PATH_RE = re.compile(r"^/[a-z0-9]+(?:-[a-z0-9]+)*/$")
 IMAGE_RE = re.compile(r"^assets/images/[A-Za-z0-9._/-]+\.(?:webp|png|jpg|jpeg)$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
+# A course mark is three files: the one the registry names, NAME-mark.webp,
+# and the two the Library template derives from it for denser screens. The
+# names are a contract between tools/make_library_marks.py (which writes
+# them), _listings/course-record.ejs (which emits them) and this check.
+MARK_SUFFIX = "-mark.webp"
+MARK_COMPANIONS = ("-mark-2x.webp", "-mark-3x.webp")
+
 
 def fail(problems, idx, title, msg):
     problems.append("  [%02d] %s\n        %s" % (idx, title or "<untitled>", msg))
@@ -142,6 +149,16 @@ def validate(records, root):
                 fail(problems, idx, title, "image %r must be an assets/images/... webp/png/jpg path" % image)
             elif not os.path.isfile(os.path.join(root, image)):
                 fail(problems, idx, title, "image %r does not exist on disk" % image)
+            elif str(image).endswith(MARK_SUFFIX):
+                # The page would name these two in its srcset whether or not
+                # they exist, and a missing one is a broken image only on a
+                # dense screen, where no desktop check would see it.
+                for companion in MARK_COMPANIONS:
+                    other = str(image)[:-len(MARK_SUFFIX)] + companion
+                    if not os.path.isfile(os.path.join(root, other)):
+                        fail(problems, idx, title,
+                             "course mark %r has no %r beside it: run tools/make_library_marks.py"
+                             % (image, os.path.basename(other)))
         if rec.get("reviewed") is not None and not DATE_RE.match(str(rec["reviewed"])):
             fail(problems, idx, title, "reviewed %r must be an ISO date (YYYY-MM-DD)" % rec["reviewed"])
         if rec.get("code") is not None and not str(rec["code"]).strip():

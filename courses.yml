@@ -29,10 +29,15 @@
 #   group      required. Curriculum grouping, shared across levels.
 #   summary    required. One concise catalog sentence. Not curriculum content.
 #   path       ONLY for kind: site. The public URL. Absent means non-clickable.
-#   image      optional. Hero thumbnail. Absent is fine. Any kind may carry one:
-#              artwork is not what separates a published site from a planning-stage
-#              direction (control section 2, display invariant 4) -- the link, the
-#              call to action, and the status line are.
+#   image      optional. The course mark: the object cut out of the course's
+#              poster, written by tools/make_library_marks.py. (Until 2026-11-13
+#              this was a thumbnail of the whole poster.) Name the 80 px file,
+#              <slug>-mark.webp. Its -2x and -3x companions must sit beside it;
+#              the Library offers them to denser screens. Absent is fine. Any
+#              kind may carry one: artwork is not what separates a published
+#              site from a planning-stage direction (control section 2, display
+#              invariant 4) -- the link, the call to action, and the status
+#              line are.
 #   reviewed   optional. Last substantive review date. NEVER invent one; omit
 #              until a real review date is curated.
 #   categories derived index of [level, status, group] so Quarto's listing can
@@ -53,7 +58,7 @@
   group: "Introductory statistics"
   summary: "Data, evidence, models, uncertainty, and simulation."
   path: "/intro-stats/"
-  image: "assets/images/course-motifs/thumbs/intro-stats-hero-480.webp"
+  image: "assets/images/course-motifs/marks/intro-stats-mark.webp"
   categories: ["Undergraduate", "Current offering", "Introductory statistics"]
 
 - order: 20
@@ -64,7 +69,7 @@
   group: "Computing and workflow"
   summary: "LaTeX, R, Quarto, reproducible workflow, and careful AI-assisted work."
   path: "/math-software/"
-  image: "assets/images/course-motifs/thumbs/intro-math-software-hero-480.webp"
+  image: "assets/images/course-motifs/marks/intro-math-software-mark.webp"
   categories: ["Undergraduate", "Current offering", "Computing and workflow"]
 
 - order: 30
@@ -75,7 +80,7 @@
   group: "Probability and inference"
   summary: "Sample spaces, conditioning and Bayes' rule, random variables, the standard distributions, and simulation."
   path: "/intro-probability/"
-  image: "assets/images/course-motifs/thumbs/intro-probability-hero-480.webp"
+  image: "assets/images/course-motifs/marks/intro-probability-mark.webp"
   categories: ["Undergraduate", "Maintained public reference", "Probability and inference"]
 
 - order: 40
@@ -86,7 +91,7 @@
   group: "Probability and inference"
   summary: "Sampling distributions, likelihood, confidence intervals, hypothesis tests, the bootstrap, and Bayesian inference."
   path: "/statistical-inference/"
-  image: "assets/images/course-motifs/thumbs/statistical-inference-hero-480.webp"
+  image: "assets/images/course-motifs/marks/statistical-inference-mark.webp"
   categories: ["Undergraduate", "Maintained public reference", "Probability and inference"]
 
 - order: 50
@@ -97,7 +102,7 @@
   group: "Modeling and regression"
   summary: "Regression, diagnostics, adjustment and interactions, prediction and validation, and logistic regression."
   path: "/statistical-modeling/"
-  image: "assets/images/course-motifs/thumbs/statistical-modeling-hero-480.webp"
+  image: "assets/images/course-motifs/marks/statistical-modeling-mark.webp"
   categories: ["Undergraduate", "Maintained public reference", "Modeling and regression"]
 
 - order: 60
@@ -108,7 +113,7 @@
   group: "Modeling and regression"
   summary: "Group comparisons and ANOVA, regression and ANCOVA, contingency tables, and logistic regression."
   path: "/applied-statistics/"
-  image: "assets/images/course-motifs/thumbs/applied-statistics-hero-480.webp"
+  image: "assets/images/course-motifs/marks/applied-statistics-mark.webp"
   categories: ["Undergraduate", "Maintained public reference", "Modeling and regression"]
 
 - order: 70
@@ -119,7 +124,7 @@
   group: "Design and causal evidence"
   summary: "Sampling versus assignment, bias and confounding, blocked and factorial experiments, causal diagrams, and study critique."
   path: "/statistical-design/"
-  image: "assets/images/course-motifs/thumbs/statistical-design-hero-480.webp"
+  image: "assets/images/course-motifs/marks/statistical-design-mark.webp"
   categories: ["Undergraduate", "Maintained public reference", "Design and causal evidence"]
 
 - order: 80
@@ -130,7 +135,7 @@
   group: "Bayesian methods"
   summary: "Priors, likelihoods, and posteriors; Bayesian regression, model checking, and hierarchical models."
   path: "/bayesian-statistics/"
-  image: "assets/images/course-motifs/thumbs/bayesian-statistics-hero-480.webp"
+  image: "assets/images/course-motifs/marks/bayesian-statistics-mark.webp"
   categories: ["Undergraduate", "Maintained public reference", "Bayesian methods"]
 
 - order: 90
@@ -141,7 +146,7 @@
   group: "Resampling and robust methods"
   summary: "Permutation and randomization tests, the bootstrap, rank-based methods, and robust estimation."
   path: "/nonparametrics/"
-  image: "assets/images/course-motifs/thumbs/nonparametrics-hero-480.webp"
+  image: "assets/images/course-motifs/marks/nonparametrics-mark.webp"
   categories: ["Undergraduate", "Maintained public reference", "Resampling and robust methods"]
 
 - order: 100
@@ -152,7 +157,7 @@
   group: "Computing and workflow"
   summary: "DATA steps, PROC SQL, cleaning and validation, the core procedures, ODS output, and reproducible reporting."
   path: "/modern-sas/"
-  image: "assets/images/course-motifs/thumbs/modern-sas-hero-480.webp"
+  image: "assets/images/course-motifs/marks/modern-sas-mark.webp"
   categories: ["Undergraduate", "Maintained public reference", "Computing and workflow"]
 
 # ---------------------------------------------------------------------------
@@ -169,7 +174,7 @@
   group: "Mathematical statistics"
   summary: "Probability, likelihood, and estimation: sampling distributions, convergence, sufficiency, and information. Public materials are still being assembled, so dates, policies, and assessments remain provisional."
   path: "/math-stats-1/"
-  image: "assets/images/course-motifs/thumbs/math-stats-1-hero-480.webp"
+  image: "assets/images/course-motifs/marks/math-stats-1-mark.webp"
   categories: ["Graduate", "In development", "Mathematical statistics"]
 
 - order: 210
@@ -181,7 +186,7 @@
   group: "Mathematical statistics"
   summary: "The established second course in the sequence: hypothesis testing, interval procedures, decision theory, asymptotics, and resampling. Public materials are still being assembled, so dates, policies, and assessments remain provisional."
   path: "/math-stats-2/"
-  image: "assets/images/course-motifs/thumbs/math-stats-2-hero-480.webp"
+  image: "assets/images/course-motifs/marks/math-stats-2-mark.webp"
   categories: ["Graduate", "In development", "Mathematical statistics"]
 
 - order: 300
@@ -200,7 +205,7 @@
   status: "Curriculum direction"
   group: "Computing and workflow"
   summary: "Computation as a tool for statistical reasoning, with reproducible analysis as the working standard. A planning-stage direction, not a scheduled course."
-  image: "assets/images/course-motifs/thumbs/computational-statistics-hero-480.webp"
+  image: "assets/images/course-motifs/marks/computational-statistics-mark.webp"
   categories: ["Graduate", "Curriculum direction", "Computing and workflow"]
 
 - order: 320
@@ -210,7 +215,7 @@
   status: "Curriculum direction"
   group: "Bayesian methods"
   summary: "Graduate Bayesian modeling and workflow, following the conditional-probability and likelihood foundations of the mathematical-statistics sequence. A planning-stage direction, not a scheduled course."
-  image: "assets/images/course-motifs/thumbs/bayesian-modeling-hero-480.webp"
+  image: "assets/images/course-motifs/marks/bayesian-modeling-mark.webp"
   categories: ["Graduate", "Curriculum direction", "Bayesian methods"]
 
 - order: 330
@@ -220,5 +225,5 @@
   status: "Curriculum direction"
   group: "Design and causal evidence"
   summary: "Estimands, identification, and causal reasoning at the graduate level. A planning-stage direction, not a scheduled course."
-  image: "assets/images/course-motifs/thumbs/causal-inference-hero-480.webp"
+  image: "assets/images/course-motifs/marks/causal-inference-mark.webp"
   categories: ["Graduate", "Curriculum direction", "Design and causal evidence"]
