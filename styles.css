@@ -85,6 +85,16 @@ h3 { font-size: 1.15rem; margin-top: 1.6rem; }
    rule, in the palette's own grey. */
 h2 { border-bottom-color: var(--stone-200); }
 
+/* An old address. When a section is renamed, an empty span inside its
+   heading keeps the former id working (research.html#course-builder and
+   courses.html#course-builder, renamed 2026-11-13). A section's own
+   address lands with its heading about 6rem down the window, clear of
+   the pinned navbar. The span sits on the heading's first line, so
+   without this margin the navbar would cover the heading on arrival. */
+h2 > span[id]:empty {
+  scroll-margin-top: 6rem;
+}
+
 p, li { color: var(--stone-700); }
 
 a {
@@ -638,11 +648,15 @@ main a {
    column and that a record carries a hero thumbnail; both sentences
    predate this change.
 
-   .course-builder-note is a CLASS, not the #course-builder id: that id
-   also exists on research.html and index.html, and styling through it
-   would silently re-lay-out a section of a page this stylesheet has no
-   business reflowing. No rule uses the class at present; it stays on
-   the heading as the hook for one.
+   .course-builder-note is a CLASS, not an id: the section's id,
+   #governed-courseware, also exists on research.html, and styling
+   through it would silently re-lay-out part of a page this stylesheet
+   has no business reflowing. No rule uses the class at present; it
+   stays on the heading as the hook for one. The class keeps the
+   section's first name, Course Builder, and so does the old address
+   #course-builder, which an empty span in each of the two headings
+   keeps working. The pages have called it governed courseware since
+   2026-11-13.
 */
 
 /* -------------------------------------------------------------

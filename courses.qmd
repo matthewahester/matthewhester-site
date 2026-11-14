@@ -2,6 +2,9 @@
 title: "Course Library"
 description-meta: "The complete public course-material library of Matt Hester at UA Little Rock — undergraduate course sites and the graduate statistics curriculum in one catalog, each record labeled with its level, curriculum grouping, and public-material status."
 toc: false
+# The empty span in the "How these materials are built" heading below keeps
+# courses.html#course-builder working. That was the section's address until
+# 2026-11-13; it is now #governed-courseware.
 format:
   html:
     # Labels Quarto's generated Filter input, which ships with no id, no
@@ -75,17 +78,18 @@ grades, and announcements — belongs in the LMS, not here.
 
 :::
 
-## How these materials are built {#course-builder .course-builder-note}
+## []{#course-builder}How these materials are built {#governed-courseware .course-builder-note}
 
-The sites above are the current public demonstration layer for **Course
-Builder**, a developing course-design harness I build and use. A Course
-Builder run does not improvise a course from a prompt; it extends a course as
-an explicit analytic object under stated controls — course context, source
+The sites above are the current public demonstration layer for **governed
+courseware**: course materials produced with a developing, human-governed
+course-authoring harness I build and use. A run of the harness does not
+improvise a course from a prompt; it extends a course as an explicit
+analytic object under stated controls — course context, source
 boundaries, pedagogy references, durable state, diagnostic gates, and human
 review. It is not autonomous course design: instructor judgment and release
 authority stay central, and graded, answer-key, and roster-specific material
 stays in the LMS, not on these public sites. See the
-[research page](research.qmd#course-builder) for more.
+[research page](research.qmd#governed-courseware) for more.
 
 See the [Teaching overview](teaching.qmd) for current courses, the teaching
 approach, and the Math Assistance Center.

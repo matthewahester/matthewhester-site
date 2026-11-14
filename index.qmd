@@ -20,7 +20,7 @@ toc: false
      paragraph with no reordering.
 
      Card-image policy: the three section links (Teaching / Research /
-     Course Builder) are text-only blocks under a rule. The two course cards
+     Governed courseware) are text-only blocks under a rule. The two course cards
      carry the full course hero artwork (which already contains the course
      title) with a small caption below, via `.course-hero-card`. Hero images
      live under `assets/images/course-motifs/`. -->
@@ -53,14 +53,14 @@ Current courses, my teaching approach, and the Math Assistance Center.
 
 ::: {.feature-card}
 ## [Research](research.qmd)
-Bias-robust Bayesian evidence synthesis, publication bias, corpus-scale
-evidential auditing, and human-governed AI infrastructure.
+Bias-robust Bayesian evidence synthesis, replication and reanalysis in
+education research, and human-governed AI infrastructure.
 :::
 
 ::: {.feature-card}
-## [Course Builder](research.qmd#course-builder)
-A developing course-design harness for coherent, reproducible, and
-reviewable AI-assisted curriculum work.
+## [Governed courseware](research.qmd#governed-courseware)
+A developing, human-governed course-authoring harness for coherent,
+reproducible, and reviewable AI-assisted curriculum work.
 :::
 
 :::

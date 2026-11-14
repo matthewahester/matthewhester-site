@@ -1,6 +1,6 @@
 ---
 title: "CV"
-description-meta: "Brief CV for Matt Hester — statistician, teacher, and researcher at UA Little Rock: Bayesian evidence synthesis, a public course-material portfolio, and the human-governed Course Builder course-design harness."
+description-meta: "Brief CV for Matt Hester — statistician, teacher, and researcher at UA Little Rock: Bayesian evidence synthesis, a public course-material portfolio, and a human-governed course-authoring harness."
 toc: false
 ---
 
@@ -17,11 +17,12 @@ statistics; director of the Math Assistance Center.
   factors, selection models).
 - Publication bias and evidential fragility in applied literatures.
 - Nutrition and health evidence synthesis.
+- Replication and reanalysis in education research.
 - Reproducible statistical workflows (R, Quarto, Git, simulation).
 - Statistics education, including Bayesian intuition at the introductory
   level and responsible use of AI tools.
-- Human-governed AI and curriculum infrastructure, including the
-  Course Builder course-design harness.
+- Human-governed AI and curriculum infrastructure, including a
+  course-authoring harness for governed courseware.
 
 See the [Research page](research.qmd) for current project descriptions.
 
@@ -31,8 +32,8 @@ See the [Research page](research.qmd) for current project descriptions.
 - Director of the Math Assistance Center (MAC) at UA Little Rock.
 - Maintainer of a public mathematics and statistics course-material
   portfolio (the [Course Library](courses.qmd)).
-- Developer of Course Builder, a human-governed course-design harness for
-  AI-assisted curriculum work.
+- Developer of a human-governed course-authoring harness for AI-assisted
+  curriculum work.
 
 See the [Teaching page](teaching.qmd) for current courses.
 
@@ -50,11 +51,23 @@ Nutrition Case Study.* Public preprint, arXiv:2606.01428.
 
 See the [Research page](research.qmd) for a plain-language description.
 
-**System development.** *Course Builder* — a human-governed course-design
-harness (repo-native analytic exoskeleton) for AI-assisted curriculum work.
-Its current public demonstration layer is the public course-material
-portfolio. See the [Research page](research.qmd#course-builder) and the
+**System development.** *Governed courseware.* A human-governed
+course-authoring harness (repo-native analytic exoskeleton) for AI-assisted
+curriculum work. Its current public demonstration layer is the public
+course-material portfolio. See the
+[Research page](research.qmd#governed-courseware) and the
 [Course Library](courses.qmd).
+
+## Talks
+
+- Upcoming: American Statistical Association, Central Arkansas Chapter
+  (CASA), virtual Spring Meeting, April 2027. Title to be announced.
+- *Measuring Evidence and Adjusting for Bias: A Bayesian Approach to
+  Meta-Research.* Applied Science Graduate Program seminar, UA Little Rock,
+  November 12, 2026.
+- *Bias-Robust Bayesian Reanalysis of Intervention Trial Meta-Analyses in
+  Nutrition.* Mathematical Association of America, Oklahoma-Arkansas Section
+  Meeting, UA Little Rock, April 2026.
 
 ## Identifiers
 

@@ -20,9 +20,9 @@ corpora and demonstrates it with a nutrition intervention corpus.
 I also build public course materials and the systems behind them. The
 [Course Library](courses.qmd) collects every public course-material site I
 maintain. It also provides a public demonstration layer for
-[Course Builder](research.qmd#course-builder), a developing course-design
-harness for coherent, reproducible, and reviewable AI-assisted curriculum
-work.
+[governed courseware](research.qmd#governed-courseware), built with a
+developing course-authoring harness for coherent, reproducible, and
+reviewable AI-assisted curriculum work.
 
 Across both areas, I care about work that is transparent, reusable, and
 straightforward for someone else to inspect, rerun, or extend.

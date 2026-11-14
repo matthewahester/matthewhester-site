@@ -1,16 +1,22 @@
 ---
 title: "Research"
-description-meta: "Research by Matt Hester — bias-robust Bayesian evidence synthesis, publication bias, corpus-scale evidential auditing, and human-governed AI infrastructure for curriculum-scale work. Includes a public arXiv preprint and the Course Builder course-design harness."
+description-meta: "Research by Matt Hester — Bayesian evidence synthesis that measures evidence and adjusts for bias, replication and reanalysis in education research, and human-governed AI systems for course production. Includes a public arXiv preprint and a section on governed courseware."
 toc: false
+# The empty span in the "Governed courseware" heading below keeps
+# research.html#course-builder working. That was the section's address
+# until 2026-11-13, when the section was renamed from Course Builder. This
+# note sits here, not beside the heading, because an HTML comment in the
+# body is published in the page source and a YAML comment is not.
 ---
 
-My research runs along two connected strands. The first is **bias-robust
-Bayesian evidence synthesis**: reproducible statistical workflows for applied
-literatures where publication bias, small-study effects, and selective
-reporting make conventional summaries difficult to interpret. The second is
-**human-governed AI infrastructure for curriculum-scale knowledge work**:
-systems that keep large, AI-assisted course production coherent, bounded,
-reproducible, and reviewable, with instructor judgment in control.
+My research runs along three connected strands. The first is **Bayesian
+evidence synthesis**: methods that measure the evidence in a body of studies
+and adjust for bias in how results get reported. The second is **replication
+and reanalysis in education research**: reproducing a published evidence
+base, reanalyzing it with those methods, and using the result to design
+replication studies. The third is **human-governed AI systems for course
+production**: tools that keep AI-assisted course building bounded,
+reproducible, and reviewable, with the instructor in control.
 
 ## Bayesian evidence synthesis
 
@@ -42,13 +48,15 @@ literatures.
 :::
 :::
 
-## Course Builder
+## []{#course-builder}Governed courseware {#governed-courseware}
 
-Course Builder is a developing course-design harness — a repo-native
-analytic exoskeleton for building course materials. Rather than improvising
-from an open-ended prompt, a run extends a course as an explicit analytic
-object under a set of controls: the course context, source boundaries,
-pedagogy references, durable state, diagnostic gates, and human review.
+Governed courseware is course material produced with AI assistance under
+stated controls. I build it with a human-governed course-authoring harness
+that I develop, a repo-native analytic exoskeleton for building course
+materials. Rather than improvising from an open-ended prompt, a run extends
+a course as an explicit analytic object under a set of controls: the course
+context, source boundaries, pedagogy references, durable state, diagnostic
+gates, and human review.
 
 It is **not** an autonomous "make me a course" generator. Instructor
 judgment and release authority remain central: the harness prepares and
@@ -56,13 +64,13 @@ proposes work and records honest status, but a person verifies correctness,
 confirms source licenses, signs off on accessibility, and authorizes any
 release.
 
-The public [Course Library](courses.qmd) is Course Builder's current
-demonstration layer. The public course sites carry durable notes,
+The public [Course Library](courses.qmd) is the current demonstration layer
+for this work. The public course sites carry durable notes,
 labs, worked examples, and curated resources; roster-specific, graded,
 answer-key, and instructor-only materials stay in the LMS or in private
 workspaces, never on the public sites.
 
-Course Builder is still under active development. It has not been empirically
+The harness is still under active development. It has not been empirically
 validated, makes no claim about learning gains, and its working manuscript is
 a developing draft rather than a publication.
 
@@ -83,6 +91,10 @@ a developing draft rather than a publication.
 - **Nutrition and health evidence synthesis.**
   Applying bias-aware Bayesian methods to intervention meta-analyses in
   nutrition, fitness, and health.
+
+- **Replication and reanalysis in education research.**
+  Reproducing published evidence bases, reanalyzing them with bias-robust
+  Bayesian methods, and designing replication studies.
 
 - **Reproducible statistical workflows.**
   R, Quarto, Git, simulation studies, public repositories, and transparent
