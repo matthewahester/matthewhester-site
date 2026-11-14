@@ -1,7 +1,9 @@
 # Image asset plan — matthewhester.com
 
 _Phase 4A. Local planning only; not rendered into `_site/`._
-_Last updated: 2026-05-23._
+_Last updated: 2026-05-23. Updated 2026-11-13 for the favicon, the portrait
+export, and the course artwork (sections 1, 4, 6 and 7). The privacy rules
+in sections 2, 3 and 5 are unchanged._
 
 How images get from raw originals on disk into the public site without
 leaking metadata, identifying other people, or echoing exact climbing
@@ -18,9 +20,12 @@ as automation.
 assets/
   images/
     raw/              # gitignored; full-size originals, with EXIF intact
-    processed/        # optimized web images (committed)
-    brand/            # portrait, logo, favicon, OG card (committed)
-    course-motifs/    # course-specific images for cards / banners (committed)
+    processed/        # optimized web images (committed; none in use)
+    brand/            # portrait, favicon, OG card (committed)
+    about/            # the About page image (committed)
+    course-motifs/    # course posters, their thumbnails (thumbs/), the
+                      # Library's course marks (marks/), and mark masters
+                      # (icons/) (committed)
   css/                # reserved; styles.css currently lives at repo root
   icons/              # reserved for SVG icons if needed later
 ```
@@ -76,7 +81,10 @@ These rules apply to every image before it lands in `processed/`,
 | Course-card motif           | 600px  | 3:2 or 1:1| WebP + JPEG fallback    |
 | Page banner (optional)      | 1600px | 4:1       | WebP + JPEG fallback    |
 | OG card (`og-card.png`)     | 1200×630 | fixed   | PNG (per OG spec)       |
-| Favicon                     | 32×32  | square    | ICO + SVG               |
+| Favicon                     | 96×96  | square    | PNG (`tools/make_favicon.py`) |
+| Course poster thumbnail     | 480px and 800px | 4:3 | WebP (`tools/make_hero_thumbs.py`) |
+| Course mark, Course Library | 80, 160 and 240px | 1:1 | WebP with alpha (`tools/make_library_marks.py`) |
+| Course mark, navbar and favicon | 128px | 1:1   | PNG with alpha (`tools/make_navbar_logo.py`) |
 | Thumbnail (listings)        | 320px  | 1:1       | WebP + JPEG fallback    |
 
 The processing helper writes both a WebP (`<name>.webp`) and a JPEG
@@ -107,6 +115,13 @@ Source folders:
   which the user moved into the repo as part of Phase 4B and was
   re-staged into `assets/images/raw/`).
 
+As of 2026-11-13 only the first two rows are in use. The card motifs in
+the other rows are no longer in the repo: the homepage section links are
+text-only, and the course cards carry course posters. The portrait is now
+exported by `tools/make_portrait.py` from `raw/Hester_profile_art_2026.png`;
+it also moves the white point so the picture's ground matches the white
+page.
+
 | Slot                        | Raw source (under `raw/`)       | Processed output                                  | Alt text used                                                       |
 | --------------------------- | ------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------- |
 | Homepage portrait           | `Hester_profile_art.png`        | `brand/portrait-matt-hester-800.{webp,jpg}`       | Stylized illustrated portrait of Matt Hester.                       |
@@ -134,7 +149,8 @@ filenames are preserved at the source folders for personal reference.
 
 **What remains placeholder:**
 
-- No favicon — see `_quarto.yml` `TODO(Phase 4C)`.
+- Nothing. The favicon was added on 2026-11-13: `brand/favicon.png`,
+  written by `tools/make_favicon.py`.
 
 Image curation remains an ad-hoc, in-chat process. Phase 4B picks are
 filename-based best guesses; swap any image by dropping a new raw file
@@ -166,6 +182,11 @@ Pillow is the only dependency:
 ```bash
 pip install Pillow
 ```
+
+The other helpers in `tools/` each write one kind of image and say how in
+their own header: `make_portrait.py`, `make_favicon.py`,
+`make_hero_thumbs.py`, `make_course_icon.py`, `make_navbar_logo.py`, and
+`make_library_marks.py`.
 
 If Pillow is unavailable, fall back to ImageMagick:
 

@@ -1,18 +1,22 @@
 # Brand assets
 
-Portrait, logo, favicon, OG card, and any other identity-anchoring
-imagery for matthewhester.com.
+Portrait, favicon, OG card, and any other identity-anchoring imagery for
+matthewhester.com.
 
-Suggested files (drop in as they're produced):
+Files:
 
-- `hester-portrait-800.webp` / `.jpg` — homepage hero portrait
-  (stylized; source: `D:/My Drive Personal/Personal/hester_profile_art*`)
-- `logo.svg` — wordmark or monogram, monochrome on transparent
-- `favicon.svg` and `favicon.ico` — wire into `_quarto.yml` under
-  `website.favicon` once they exist
-- `og-card.png` — 1200×630 Open Graph card, wire into
-  `website.image` once it exists
+- `portrait-matt-hester-800.webp` / `.jpg` — the homepage portrait
+  (stylized). Written by `tools/make_portrait.py` with a pure white
+  ground, so it can sit on the page with no card. The page names the
+  `.webp`; the `.jpg` is a fallback copy and is not published.
+- `favicon.png` — a 96×96 monogram, written by `tools/make_favicon.py`.
+  `_quarto.yml` names it as `website.favicon`.
+- `og-default-og.jpg` / `.webp` — the 1200×630 Open Graph card.
+  `_quarto.yml` names the `.jpg` as `website.image`.
 
-Visual identity is restrained rock / crystal / climbing — see
-`../../../BRAND_STYLE_BRIEF.md` for the palette and treatment rules,
-and the top of `../../../styles.css` for the palette tokens.
+Not made: a `logo.svg` wordmark. The navbar shows the site name as text.
+
+Visual identity is restrained rock / crystal / climbing, set sharp and
+simple — see `../../../BRAND_STYLE_BRIEF.md` for the rules, palette and
+image treatment, and the top of `../../../styles.css` for the palette
+tokens.

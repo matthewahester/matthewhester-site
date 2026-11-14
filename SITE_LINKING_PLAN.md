@@ -3,6 +3,13 @@
 _Phase 4A. Local planning only; not rendered into `_site/`._
 _Last updated: 2026-05-23._
 
+> **Status, 2026-11-13: historical.** This plan was written before launch.
+> The site is live, and one manual workflow in this repo builds the hub and
+> every course repo into a single GitHub Pages deployment. `README.md`
+> describes that as it runs now. The course sites also share more than this
+> plan expected: each one carries the same look block at the end of its
+> stylesheet (`BRAND_STYLE_BRIEF.md`, section 2).
+
 This plan defines how `matthewhester.com` (the main hub) relates to
 the public course sites at `matthewhester.com/math-software/` and
 `matthewhester.com/intro-stats/`.

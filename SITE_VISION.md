@@ -1,7 +1,9 @@
 # Site vision — matthewhester.com
 
-_Phase 4A vision document. Local planning only; not rendered into `_site/`._
-_Last updated: 2026-05-23._
+_Vision document, first written 2026-05-23 (Phase 4A). Local planning only;
+not rendered into `_site/`._
+_Sections 4 to 7 revised 2026-11-13 to match the live site. Sections 1 to 3
+are unchanged._
 
 This document defines what matthewhester.com is _for_, who it's for, and the
 constraints that should keep it from drifting into either a generic faculty
@@ -60,21 +62,27 @@ or any "personal brand" funnel.
 
 ## 4. Site architecture
 
-### Pages (Phase 4A)
+### Pages
 
 | Page         | File           | Purpose                                                           |
 | ------------ | -------------- | ----------------------------------------------------------------- |
-| Home         | `index.qmd`    | Split hero + three category cards + featured course sites         |
+| Home         | `index.qmd`    | Name, portrait, short statement, three section links, featured course sites |
 | About        | `about.qmd`    | Short professional bio + brief personal note                      |
-| Teaching     | `teaching.qmd` | Current courses, public-site vs LMS distinction, MAC              |
-| Research     | `research.qmd` | Interests, projects, publications, talks, collaborators           |
-| Resources    | `resources.qmd`| Software guides, Quarto/R/LaTeX notes, cross-links to course sites|
-| CV           | `cv.qmd`       | PDF link + position summary + interests                           |
+| Teaching     | `teaching.qmd` | Current courses, teaching approach, MAC                           |
+| Courses      | `courses.qmd`  | The Course Library: every public course record, from `courses.yml` |
+| Research     | `research.qmd` | Research strands, the preprint, governed courseware, interests    |
+| CV           | `cv.qmd`       | Position summary, interests, selected work, talks, identifiers    |
 | Contact      | `contact.qmd`  | Professional contact only                                         |
 
-`projects.qmd` (Phase 3) was folded into `research.qmd` as the "Projects"
-section. The old page is removed; if cross-references appear, redirect to
-`research.qmd`.
+The navbar carries the six pages after Home; the site name is the home
+link. `404.qmd` is served for any missing address and is not in the navbar.
+
+`projects.qmd` (Phase 3) was folded into `research.qmd`, and
+`teaching-graduate.qmd` into the Course Library. Both remain as redirect
+stubs so the old URLs keep working.
+
+A Resources page was planned in Phase 4A and was not built. Software guides
+and notes live on the course sites.
 
 ### Possible later pages
 
@@ -91,54 +99,52 @@ Each one of these is a deliberate decision, not a default.
 
 ## 5. Public course links
 
-Two public course sites are scaffolded and Phase 4A links to them as
-featured cards on the homepage and from the Teaching page:
+The course sites are separate repos, served under this domain at
+`/<course>/`. The Course Library (`courses.qmd`, rendered from
+`courses.yml`) is the one inventory of them. The homepage and the Teaching
+page feature the current courses as poster cards.
 
-- **Intro to Mathematical Software** — `D:/Github/math-software/`,
-  configured for `https://matthewhester.com/math-software/`.
-- **Intro to Statistics** — `D:/Github/intro-stats/`, configured for
-  `https://matthewhester.com/intro-stats/`.
+The pattern is: _public course site exists_ → a linked record in the
+Library; _no public site yet_ → an unlinked record that says so in words.
+Status describes the public materials, not whether a course exists.
 
-A third, **Applied Statistics I**, may get a public site later but is
-currently private (Blackboard only). It will appear on the Teaching page
-as a course-without-public-site until that changes.
-
-The pattern is: _public course site exists_ → link out from Home + Teaching;
-_no public site yet_ → list on Teaching with a short description and no link.
-
-See [SITE_LINKING_PLAN.md](SITE_LINKING_PLAN.md) for the technical
-linking model (subdirectory deploy, shared visual language, back-links).
+See [TEACHING_PORTFOLIO_ARCHITECTURE.md](TEACHING_PORTFOLIO_ARCHITECTURE.md)
+for the approved rules and [README.md](README.md) for how the sites are
+built into one deployment.
 
 ## 6. Visual system
 
-Anchored in the existing rock/crystal/climbing palette already in
-`styles.css`. See [BRAND_STYLE_BRIEF.md](BRAND_STYLE_BRIEF.md) for the
-full brief. Quick summary of what Phase 4A adds on top of Phase 3:
+Anchored in the rock/crystal/climbing identity, set sharp and simple since
+2026-11-13. See [BRAND_STYLE_BRIEF.md](BRAND_STYLE_BRIEF.md) for the full
+brief and its five rules. In short:
 
-- **Stylized portrait** as the homepage identity anchor (right side of
-  the split hero, not full-bleed).
-- **Stylized boulder/landscape images** as section and course motifs
-  (small card images, never decorative wallpaper).
+- **One column, one paper tone, one accent.** A white page, every hub page
+  in the same 800 px column, iron for links.
+- **Stylized portrait** as the homepage identity anchor, beside the name,
+  set on the page with no card and not full-bleed.
+- **Course posters and course marks** as the site's imagery. The boulder
+  and landscape motifs are not in use.
 - **Clean Quarto layout** — cosmo base, plain CSS, no SCSS pipeline, no JS.
-- **High contrast** for body text on the off-white stone background.
+- **High contrast** for body text on the white page.
 - **Strong typography** — Inter for body, JetBrains Mono for code,
   no decorative display fonts.
-- **Restrained animations** — only the existing card-hover micro-motion;
-  no scroll-triggered animations, no parallax.
-- **No clutter** — every block earns its space.
+- **No motion** — no hover lift, no scroll-triggered animations, no
+  parallax.
+- **No clutter** — every block earns its space, and a page does not
+  explain how to read itself.
 
 ## 7. Deployment philosophy
 
-- **Build locally first.** `quarto render` from the repo root.
+- **Build locally first.** `quarto render` from the repo root. A local
+  render covers the hub only; each course site renders from its own repo.
 - **Preview in the browser** before considering anything live.
-- **Do not touch DNS in Phase 4A.** `matthewhester.com` currently points
-  at a Google Site; switching is a separate, deliberate step.
-- **Workflow stays on `workflow_dispatch` only.** No push-to-deploy until
-  the site is approved for first publication.
-- **Choose Pages vs Netlify vs other later.** The current CI is wired for
-  GitHub Pages and that is the path of least resistance, but the
-  decision is not final.
-- **First publish is a checkpoint, not an automatic step.** Switching the
-  trigger back to push, configuring DNS, and verifying the CNAME on the
-  Pages side are all explicit decisions that the user makes, not the
-  assistant.
+- **The site is live on GitHub Pages** at the custom domain, since the
+  May 2026 launch. DNS points there. Do not touch DNS without a separate,
+  deliberate decision.
+- **Workflow stays on `workflow_dispatch` only.** No push-to-deploy.
+- **A deploy is a checkpoint, not an automatic step.** Dispatching the
+  workflow, switching its trigger, and any DNS or CNAME change are
+  explicit decisions that the user makes, not the assistant.
+- **Check the live site after a deploy.** The workflow installs the newest
+  Quarto, which can be newer than the local one, so the live pages are the
+  test.
